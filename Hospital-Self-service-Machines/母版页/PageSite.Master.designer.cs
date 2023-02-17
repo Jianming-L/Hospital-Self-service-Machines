@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Hospital_Self_service_Machines
+namespace Hospital_Self_service_Machines.母版页
 {
 
 

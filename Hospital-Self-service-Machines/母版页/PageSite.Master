@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageSite.master.cs" Inherits="Hospital_Self_service_Machines.PageSite" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageSite.master.cs" Inherits="Hospital_Self_service_Machines.母版页.PageSite" %>
 
 <!DOCTYPE html>
 
@@ -6,8 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="CSS.css" rel="stylesheet" />
-    
+    <link href="../CSS样式/CSS.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -17,7 +16,7 @@
         <div class="div_top">
             <table style="margin-left:50px">
                 <tr>
-                    <td rowspan="2"><a href="PageOne.aspx"><img src="image/会徽.png" height="70" width="70" border="0" /></a></td>
+                    <td rowspan="2"><a href="PageOne.aspx"><img src="../image/会徽.png" height="70" width="70" border="0" /></a></td>
                     <td rowspan="1"><a class="a_Home">西虹市健康医疗自助服务机</a></td>
                     <td style="width:150px"></td>
                     <td style="color:white">
@@ -38,13 +37,13 @@
         </div>
         <div class="div_content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                
+
             </asp:ContentPlaceHolder>
         </div>
         <div class="div_bottom">
             <table style="margin-left:550px">
                 <tr>
-                    <td><img src="image/公司.png" width="60" height="50" /></td>
+                    <td><img src="../image/公司.png" width="60" height="50"/></td>
                     <td style="text-align:left"><h1>西虹市智强公司</h1></td>
                 </tr>
             </table>
