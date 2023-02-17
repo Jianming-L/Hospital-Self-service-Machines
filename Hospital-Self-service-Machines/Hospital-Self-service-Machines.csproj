@@ -67,17 +67,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS.css" />
     <Content Include="Global.asax" />
+    <Content Include="image\会徽.png" />
+    <Content Include="image\公司.png" />
+    <Content Include="PageOne.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="PageOne.aspx.cs">
+      <DependentUpon>PageOne.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageOne.aspx.designer.cs">
+      <DependentUpon>PageOne.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSite.Master.cs">
+      <DependentUpon>PageSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSite.Master.designer.cs">
+      <DependentUpon>PageSite.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="PageSite.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

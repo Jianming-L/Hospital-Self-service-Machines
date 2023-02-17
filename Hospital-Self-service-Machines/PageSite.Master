@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageSite.master.cs" Inherits="Hospital_Self_service_Machines.PageSite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="CSS.css" rel="stylesheet" />
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div><asp:ScriptManager ID="sm_NowTime" runat="Server" ></asp:ScriptManager></div>
+        <div class="div_top">
+            <table style="margin-left:50px">
+                <tr>
+                    <td rowspan="2"><a href="PageOne.aspx"><img src="image/会徽.png" height="70" width="70" border="0" /></a></td>
+                    <td rowspan="1"><a class="a_Home">西虹市健康医疗自助服务机</a></td>
+                    <td style="width:150px"></td>
+                    <td style="color:white">
+                        <asp:UpdatePanel ID="up_NowTime" runat="server">
+    	                    <ContentTemplate>当前时间是：
+    	                        <asp:Label ID="lbl_NowTime" runat="server" Text="Label"></asp:Label> 
+    	                        <asp:Timer ID="time_NowTime" runat="server" Interval="1000"></asp:Timer><!-- 用于更新时间，每1秒更新一次-->
+    	                    </ContentTemplate>    	        
+    	                </asp:UpdatePanel>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="1"><a class="a_Home_One">XIHONG HEALTH MEDICAL SELF-SERVICE MACHINE</a></td>
+                    <td style="width:150px"></td>
+                    <td style="color:white;text-align:center"><asp:Label runat="server" ID="lbl_Weekly"></asp:Label></td>
+                </tr>
+            </table>
+        </div>
+        <div class="div_content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="div_bottom">
+            <table style="margin-left:550px">
+                <tr>
+                    <td><img src="image/公司.png" width="60" height="50" /></td>
+                    <td style="text-align:left"><h1>西虹市智强公司</h1></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
