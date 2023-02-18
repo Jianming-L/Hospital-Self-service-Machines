@@ -1,11 +1,10 @@
 ﻿.div_top{
-    margin-top:10px;
+    margin-top:4px;
     background-color:mediumslateblue;
-    height:100px;
+    height:120px;
 }
 .div_content{
     background-color:deepskyblue;
-    height:550px;
 }
 .div_bottom {
     background-color: white;
@@ -13,12 +12,12 @@
 }
 .a_Home {
     color: white;
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing:18px;
     text-decoration:none;
 }
 .a_Home_One {
     color: white;
-    font-size: 35px;
+    font-size: 25px;
     text-decoration: none;
 }

@@ -14,11 +14,11 @@
     <form id="form1" runat="server">
         <div><asp:ScriptManager ID="sm_NowTime" runat="Server" ></asp:ScriptManager></div>
         <div class="div_top">
-            <table style="margin-left:50px">
+            <table style="margin-left:30px">
                 <tr>
                     <td rowspan="2"><a href="PageOne.aspx"><img src="../image/会徽.png" height="70" width="70" border="0" /></a></td>
                     <td rowspan="1"><a class="a_Home">西虹市健康医疗自助服务机</a></td>
-                    <td style="width:150px"></td>
+                    <td style="width:25px"></td>
                     <td style="color:white">
                         <asp:UpdatePanel ID="up_NowTime" runat="server">
     	                    <ContentTemplate>当前时间是：
@@ -27,13 +27,18 @@
     	                    </ContentTemplate>    	        
     	                </asp:UpdatePanel>
                     </td>
+                    
                 </tr>
                 <tr>
                     <td rowspan="1"><a class="a_Home_One">XIHONG HEALTH MEDICAL SELF-SERVICE MACHINE</a></td>
-                    <td style="width:150px"></td>
+                    <td style="width:25px"></td>
                     <td style="color:white;text-align:center"><asp:Label runat="server" ID="lbl_Weekly"></asp:Label></td>
+                    <td style="color:white"><a href="../个人中心/Register.aspx">注册</a> 或 <a>登录</a></td>
                 </tr>
             </table>
+        </div>
+        <div style="background-color:white;height:10px">
+
         </div>
         <div class="div_content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -41,7 +46,7 @@
             </asp:ContentPlaceHolder>
         </div>
         <div class="div_bottom">
-            <table style="margin-left:550px">
+            <table style="margin-left:580px">
                 <tr>
                     <td><img src="../image/公司.png" width="60" height="50"/></td>
                     <td style="text-align:left"><h1>西虹市智强公司</h1></td>
