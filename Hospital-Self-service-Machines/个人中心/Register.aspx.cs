@@ -11,6 +11,11 @@ namespace Hospital_Self_service_Machines.个人中心
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+        }
+
+        protected void cuw_Register_CreatedUser(object sender, EventArgs e)
+        {
 
         }
     }
