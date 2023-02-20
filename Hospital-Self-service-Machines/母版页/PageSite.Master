@@ -43,7 +43,7 @@
             </asp:ContentPlaceHolder>
         </div>
         <div class="div_bottom">
-            <table style="margin-left:580px">
+            <table>
                 <tr>
                     <td><img src="../image/公司.png" width="60" height="50"/></td>
                     <td style="text-align:left"><h1>西虹市智强公司</h1></td>
