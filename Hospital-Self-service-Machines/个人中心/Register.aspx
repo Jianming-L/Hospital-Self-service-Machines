@@ -9,7 +9,7 @@
             left:58%;
             margin-left:-325px;
             background-color:whitesmoke;
-            width:350px;
+            width:450px;
             height:350px;
             border-radius:20px;
         }
@@ -17,8 +17,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="div_Register">
-        <h2 style="margin-left:100px">注册新用户</h2>
-        <table>
+        <h2 style="margin-left:150px">注册新用户</h2>
+        <table autocomplete="off">
             <tr style="text-align:right">
                 <td>
                     用户名:
@@ -26,8 +26,8 @@
                 <td>
                     <asp:TextBox runat="server" ID="txt_UserName"></asp:TextBox>
                 </td>
-                <td>
-
+                <td style="text-align:left">
+                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="*" ControlToValidate="txt_UserName" Display="Dynamic"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr style="text-align:right">
@@ -37,8 +37,8 @@
                 <td>
                     <asp:TextBox runat="server" ID="txt_Password"></asp:TextBox>
                 </td>
-                <td>
-
+                <td style="text-align:left">
+                    <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="*" ControlToValidate="txt_Password" Display="Dynamic"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr style="text-align:right">
@@ -48,14 +48,25 @@
                 <td>
                     <asp:TextBox runat="server" ID="txt_ConfirmPassword"></asp:TextBox>
                 </td>
+                <td style="text-align:left">
+                    <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ErrorMessage="*" ControlToValidate="txt_ConfirmPassword" Display="Dynamic"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr style="text-align:right">
                 <td>
-
+                    电话号码:
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="txt_PhoneNumber"></asp:TextBox>
+                </td>
+                <td style="text-align:left">
+                    <asp:RequiredFieldValidator ID="rfvPhoneNumber" runat="server" ErrorMessage="*" ControlToValidate="txt_PhoneNumber" Display="Dynamic"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" ID="lbl_msg" Text="*" ForeColor="Red" ></asp:Label>
+                    <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="两次密码不一致！" ControlToValidate="txt_ConfirmPassword" ControlToCompare="txt_Password" Display="Dynamic" ForeColor="Red"></asp:CompareValidator>
                 </td>
             </tr>
             <tr>
