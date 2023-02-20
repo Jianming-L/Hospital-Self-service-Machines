@@ -93,6 +93,7 @@
     <Compile Include="个人中心\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="服务助手\UserService.cs" />
     <Compile Include="母版页\PageSite.Master.cs">
       <DependentUpon>PageSite.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

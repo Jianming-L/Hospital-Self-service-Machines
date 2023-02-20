@@ -27,7 +27,18 @@
                     <asp:TextBox runat="server" ID="txt_UserName"></asp:TextBox>
                 </td>
                 <td style="text-align:left">
-                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="*" ControlToValidate="txt_UserName" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ErrorMessage="*" ControlToValidate="txt_UserName" Display="Dynamic"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr style="text-align:right">
+                <td>
+                    账号:
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="txt_UserNo"></asp:TextBox>
+                </td>
+                <td style="text-align:left">
+                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="*" ControlToValidate="txt_UserNo" Display="Dynamic"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr style="text-align:right">
@@ -52,17 +63,6 @@
                     <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ErrorMessage="*" ControlToValidate="txt_ConfirmPassword" Display="Dynamic"></asp:RequiredFieldValidator>
                 </td>
             </tr>
-            <tr style="text-align:right">
-                <td>
-                    电话号码:
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txt_PhoneNumber"></asp:TextBox>
-                </td>
-                <td style="text-align:left">
-                    <asp:RequiredFieldValidator ID="rfvPhoneNumber" runat="server" ErrorMessage="*" ControlToValidate="txt_PhoneNumber" Display="Dynamic"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
             <tr>
                 <td></td>
                 <td>
@@ -78,4 +78,5 @@
             </tr>
         </table>
     </div>
+    <asp:Label runat="server" ID="lbl_msg"></asp:Label>
 </asp:Content>
