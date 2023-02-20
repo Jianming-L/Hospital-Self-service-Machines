@@ -15,30 +15,48 @@ namespace Hospital_Self_service_Machines.个人中心
     {
 
         /// <summary>
-        /// cuw_Register 控件。
+        /// txt_UserName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CreateUserWizard cuw_Register;
+        protected global::System.Web.UI.WebControls.TextBox txt_UserName;
 
         /// <summary>
-        /// CreateUserWizardStep1 控件。
+        /// txt_Password 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CreateUserWizardStep CreateUserWizardStep1;
+        protected global::System.Web.UI.WebControls.TextBox txt_Password;
 
         /// <summary>
-        /// CompleteWizardStep1 控件。
+        /// txt_ConfirmPassword 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompleteWizardStep CompleteWizardStep1;
+        protected global::System.Web.UI.WebControls.TextBox txt_ConfirmPassword;
+
+        /// <summary>
+        /// lbl_msg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_msg;
+
+        /// <summary>
+        /// btn_SignUp 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_SignUp;
     }
 }

@@ -13,8 +13,7 @@ namespace Hospital_Self_service_Machines.个人中心
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
-
-        protected void cuw_Register_CreatedUser(object sender, EventArgs e)
+        protected void btn_SignUp_Click(object sender, EventArgs e)
         {
 
         }
