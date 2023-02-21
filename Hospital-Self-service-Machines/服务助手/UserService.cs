@@ -5,6 +5,7 @@ using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Data;
 
 namespace Hospital_Self_service_Machines.服务助手
 {
@@ -14,10 +15,13 @@ namespace Hospital_Self_service_Machines.服务助手
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
-                $@"INSERT INTO tb_User(UserNo,UserName,Password) VALUES('{userno}','{usename}',HASHBYTES('MD2','{password}'))";
-            //$@"INSERT INTO tb_User(UserNo,UserName,Password) VALUES(UserNo='@userno',UserName='@usename',PASSWORD=HASHBYTES('MD2','@password'))";
+                $@"INSERT INTO tb_User(UserNo,UserName,Password) VALUES(@UserNo,@UserName,HASHBYTES('MD2',@Password))";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlCommand cmd = new SqlCommand(commandText, con);
+            cmd.Parameters.AddWithValue("@UserNo", userno);
+            cmd.Parameters.AddWithValue("@UserName", usename);
+            cmd.Parameters.AddWithValue("@Password", password);
+            cmd.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
             try
             {
                 con.Open();

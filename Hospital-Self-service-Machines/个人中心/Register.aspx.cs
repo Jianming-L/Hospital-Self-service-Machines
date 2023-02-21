@@ -35,22 +35,6 @@ namespace Hospital_Self_service_Machines.个人中心
                     Response.Write("<script language=javascript>alert('注册失败！');</" + "script>");
                 }
             }
-            //SqlConnection con = new SqlConnection();
-            //con.ConnectionString = ConfigurationManager.ConnectionStrings["sql"].ConnectionString;
-            //SqlCommand cmd = new SqlCommand();
-            //cmd.Connection = con;
-            //cmd.CommandText = 
-            //    $"SELECT 1 FROM tb_User WHERE UserNo='{txt_UserNo.Text}' AND Password=HASHBYTES('MD2','{this.txt_ConfirmPassword.Text.Trim()}');";
-            //con.Open();
-            //int rowAffect = (int)cmd.ExecuteScalar();
-            //if (rowAffect == 1)
-            //{
-            //    lbl_msg.Text = "测试成功";
-            //}
-            //else
-            //{
-            //    lbl_msg.Text = "测试失败";
-            //}
         }
     }
 }
