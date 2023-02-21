@@ -24,7 +24,7 @@
                     用户名:
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txt_UserName"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txt_UserName" autocomplete="off"></asp:TextBox>
                 </td>
                 <td style="text-align:left">
                     <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ErrorMessage="*" ControlToValidate="txt_UserName" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -35,7 +35,7 @@
                     账号:
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txt_UserNo"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txt_UserNo" autocomplete="off"></asp:TextBox>
                 </td>
                 <td style="text-align:left">
                     <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="*" ControlToValidate="txt_UserNo" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -46,7 +46,7 @@
                     密码:
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txt_Password"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txt_Password" autocomplete="off"></asp:TextBox>
                 </td>
                 <td style="text-align:left">
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="*" ControlToValidate="txt_Password" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -57,7 +57,7 @@
                     确认新密码:
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txt_ConfirmPassword"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txt_ConfirmPassword" autocomplete="off"></asp:TextBox>
                 </td>
                 <td style="text-align:left">
                     <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ErrorMessage="*" ControlToValidate="txt_ConfirmPassword" Display="Dynamic"></asp:RequiredFieldValidator>
