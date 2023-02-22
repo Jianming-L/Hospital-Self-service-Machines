@@ -47,9 +47,42 @@ namespace Hospital_Self_service_Machines.服务助手
         public bool IsHasUserRecord(string userno)
         {
             string commandText =
-                $@"SELECT 1 FROM tb_User WHERE UserNo='{userno}'";
+                $@"SELECT 1 FROM tb_User WHERE UserNo=@userno";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlCommand cmd = new SqlCommand(commandText, con);
+            cmd.Parameters.AddWithValue("@UserNo", userno);
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool IsSucceedLoad(string userno,string password)
+        {
+            string commandText =
+                $@"SELECT 1 FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            cmd.Parameters.AddWithValue("@UserNo", userno);
+            cmd.Parameters.AddWithValue("@Password", password);
+            cmd.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
             SqlDataReader reader;
             try
             {

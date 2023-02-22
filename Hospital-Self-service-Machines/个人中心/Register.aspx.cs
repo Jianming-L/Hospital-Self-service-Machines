@@ -23,16 +23,28 @@ namespace Hospital_Self_service_Machines.个人中心
             if (usersrv.IsHasUserRecord(txt_UserNo.Text))
             {
                 Response.Write("<script language=javascript>alert('已注册过该账号，请勿重复操作！');</" + "script>");
+                txt_UserNo.Text = null;
+                txt_UserName.Text = null;
+                txt_Password.Text = null;
+                txt_ConfirmPassword.Text = null;
             }
             else
             {
                 if (usersrv.IsSignUp(txt_UserNo.Text, txt_UserName.Text, txt_ConfirmPassword.Text))
                 {
                     Response.Write("<script language=javascript>alert('注册成功！');</" + "script>");
+                    txt_UserNo.Text = null;
+                    txt_UserName.Text = null;
+                    txt_Password.Text = null;
+                    txt_ConfirmPassword.Text = null;
                 }
                 else
                 {
                     Response.Write("<script language=javascript>alert('注册失败！');</" + "script>");
+                    txt_UserNo.Text = null;
+                    txt_UserName.Text = null;
+                    txt_Password.Text = null;
+                    txt_ConfirmPassword.Text = null;
                 }
             }
         }
