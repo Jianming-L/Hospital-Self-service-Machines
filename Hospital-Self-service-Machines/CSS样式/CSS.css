@@ -3,13 +3,9 @@
     background-color:mediumslateblue;
     height:100px;
 }
-.div_content{
-    background-color:deepskyblue;
-    height:500px;
-}
-.div_bottom {
-    background-color: white;
-    height:50px;
+.div_content {
+    background-color: lavender;
+    height: 620px;
 }
 .a_Home {
     color: white;
@@ -22,3 +18,7 @@
     font-size: 25px;
     text-decoration: none;
 }
+/*.DoctorImage{
+    width:auto;
+    height:auto;
+}*/

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="CSS样式\CSS.css" />
     <Content Include="Global.asax" />
+    <Content Include="image\Doctor.png" />
     <Content Include="image\会徽.png" />
     <Content Include="image\公司.png" />
     <Content Include="PageOne.aspx" />
