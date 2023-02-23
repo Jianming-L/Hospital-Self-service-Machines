@@ -8,13 +8,6 @@
     <title></title>
     <link href="../CSS样式/CSS.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
-         <style type="text/css">
-            .auto-style1 {
-                height: 620px;
-                width: 1435px;
-                float:left;
-            }
-        </style>
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -46,7 +39,7 @@
         <div style="height:4px"></div>
         <div class="div_content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                <img src="../image/Doctor.png" class="auto-style1" />
+                
             </asp:ContentPlaceHolder>
         </div>
     </form>
