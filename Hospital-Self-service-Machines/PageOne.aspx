@@ -39,7 +39,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="div_backgroud">
         <div class="div_guide"><a class="a_guide">在使用该服务机前，请先看使用说明详细内容确保你能顺利使用该服务机</a>
-            <br /><a class="a_FindGuide">点击该处文字查看使用说明</a>
+            <br /><a href="个人中心/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
         </div>
         <table style="float:right">
            <tr>
