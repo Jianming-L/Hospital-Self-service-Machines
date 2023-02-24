@@ -33,7 +33,7 @@
                 margin-left:200px;
                 font-size:22px;
                 font-weight:400;
-            }
+            }        
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
