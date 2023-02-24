@@ -1,39 +1,34 @@
 ﻿<%@ Page Title="首页" Language="C#" MasterPageFile="~/母版页/PageSite.Master" AutoEventWireup="true" CodeBehind="PageOne.aspx.cs" Inherits="Hospital_Self_service_Machines.PageOne" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-/*    .auto-style1 {
-        height: 620px;
-        width: 1435px;
-        float:left;
-    }*/
-    .btnSize{
-        height:200px;
-        width:300px;
-        border-radius:20px;
-    }
-    .div_backgroud{
-        background:url(image/Doctor.png) no-repeat;
-        position:fixed;
-        width:99%;
-        height:100%;
-    }
-    .div_backgroud img{
-        object-fit:cover;
-        height:200%;
-        width:100%;
-    }
-    .div_guide{
-        float:left;
-        margin-top:550px;
-    }
-        .a_guide{
-            margin-left:10px;
+        .btnSize {
+            height: 200px;
+            width: 300px;
+            border-radius: 20px;
         }
-            .a_FindGuide{
-                margin-left:200px;
-                font-size:22px;
-                font-weight:400;
-            }        
+        .div_backgroud {
+            background: url(image/Doctor.png) no-repeat;
+            position: fixed;
+            width: 99%;
+            height: 100%;
+        }
+        .div_backgroud img {
+            object-fit: cover;
+            height: 200%;
+            width: 100%;
+        }
+        .div_guide {
+            float: left;
+            margin-top: 550px;
+        }
+        .a_guide {
+            margin-left: 10px;
+        }
+        .a_FindGuide {
+            margin-left: 200px;
+            font-size: 22px;
+            font-weight: 400;
+        }        
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
