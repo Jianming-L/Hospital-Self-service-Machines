@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="首页" Language="C#" MasterPageFile="~/母版页/PageSite.Master" AutoEventWireup="true" CodeBehind="PageOne.aspx.cs" Inherits="Hospital_Self_service_Machines.PageOne" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .btnSize {
+/*        .btnSize {
             height: 200px;
             width: 300px;
             border-radius: 20px;
-        }
+        }*/
         .div_backgroud {
             background: url(image/Doctor.png) no-repeat;
             position: fixed;
@@ -38,7 +38,7 @@
         </div>
         <table style="float:right">
            <tr>
-               <td><asp:Button runat="server" ID="btn_Registered" Text="挂号" BackColor="#ffcc00" CssClass="btnSize" /></td>
+               <td><asp:Button runat="server" ID="btn_Registered" Text="" BackColor="#ffcc00" CssClass="btnSize_guahao"/></td>
                <td><asp:Button runat="server" ID="btn_BulidInfo" Text="建档" BackColor="#66ff66" CssClass="btnSize"/></td>
            </tr>
            <tr>

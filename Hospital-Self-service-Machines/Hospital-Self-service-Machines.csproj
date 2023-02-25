@@ -72,6 +72,7 @@
     <Content Include="image\Doctor.png" />
     <Content Include="image\会徽.png" />
     <Content Include="image\公司.png" />
+    <Content Include="image\挂号.png" />
     <Content Include="PageOne.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -18,3 +18,47 @@
     font-size: 25px;
     text-decoration: none;
 }
+.btnSize_guahao {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: url('../image/挂号.png') no-repeat;
+    font-size: 20px;
+}
+.btnSize_jiaofei {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: url('../image/挂号.png') no-repeat;
+    font-size: 20px;
+}
+.btnSize_quhao {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: url('../image/挂号.png') no-repeat;
+    font-size: 20px;
+}
+.btnSize_jiandang {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: url('../image/挂号.png') no-repeat;
+    font-size: 20px;
+}
+.btnSize_yuyueguahao {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: url('../image/挂号.png') no-repeat;
+    font-size: 20px;
+}
+.btnSize_qita {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: url('../image/挂号.png') no-repeat;
+    font-size: 20px;
+}
+
+
