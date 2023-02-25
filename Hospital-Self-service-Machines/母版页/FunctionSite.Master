@@ -41,7 +41,12 @@
                         <td rowspan="1"><a class="a_Home_One">XIHONG HEALTH MEDICAL SELF-SERVICE MACHINE</a></td>
                         <td style="width:200px"></td>
                         <td style="color:white;text-align:center"><asp:Label runat="server" ID="lbl_Weekly"></asp:Label></td>
-                        <td style="color:white"><a href="../个人中心/Register.aspx" style="text-decoration:none;color:white">注册</a> 或 <a href="../个人中心/Load.aspx" style="text-decoration:none;color:white">登录</a></td>
+                        <td style="color:white"><asp:Label runat="server" ID="lbl_Register"><a href="../个人中心/Register.aspx" style="text-decoration:none;color:white">注册</a> </asp:Label>
+                        <asp:Label runat="server" ID="lbl_huo">或 </asp:Label>
+                        <asp:Label runat="server" ID="lbl_load"><a href="../个人中心/Load.aspx" style="text-decoration:none;color:white">登录</a></asp:Label>
+                    </td>
+                    <td><asp:Label runat="server" ID="lbl_myinfo" BackColor="White" Height="40"><a><img src="../image/我的.png"/ height="40" width="40"></a></asp:Label></td>
+                    <td><asp:Label runat="server" ID="lbl_my"><h3 style="color:white">我的</h3></asp:Label></td>
                     </tr>
                 </table>
             </div>

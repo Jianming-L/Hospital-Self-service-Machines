@@ -20,7 +20,8 @@ namespace Hospital_Self_service_Machines.个人中心
         {
             if (usersrv.IsSucceedLoad(txt_UserNo.Text, txt_Password.Text))
             {
-                Response.Write("<script language=javascript>alert('登录成功！');</" + "script>");
+                Session["UserNo"]=txt_UserNo.Text;
+                Response.Write("<script language=javascript>alert('登录成功！');location.href='../PageOne.aspx'</" + "script>");
             }
             else
             {

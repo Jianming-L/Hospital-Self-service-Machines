@@ -42,10 +42,11 @@
                 </td>
             </tr>
             <tr><td><asp:Label runat="server" ID="lbl_msg"></asp:Label></td></tr>
+            <tr><td style="height:30px"></td></tr>
             <tr>
                 <td></td>
-                <td style="text-align:center">
-                    <asp:Button runat="server" ID="btn_SignUp" Text="登录" OnClick="btn_SignUp_Click" />
+                <td style="text-align:center;">
+                    <asp:Button runat="server" ID="btn_SignUp" Text="登录" OnClick="btn_SignUp_Click" Width="80px" Height="40px" />
                 </td>
             </tr>
         </table>

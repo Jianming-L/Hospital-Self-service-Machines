@@ -15,6 +15,17 @@ namespace Hospital_Self_service_Machines.母版页
             lbl_NowTime.Text = DateTime.Now.ToString();
             int weekdaycount = (int)DateTime.Now.DayOfWeek;
             lbl_Weekly.Text = weekday[weekdaycount];
+            if (Session["UserNo"] != null)
+            {
+                lbl_huo.Text = null;
+                lbl_load.Text = null;
+                lbl_Register.Text = null;
+            }
+            else
+            {
+                lbl_myinfo.Text = null;
+                lbl_my.Text = null;
+            }
         }
     }
 }

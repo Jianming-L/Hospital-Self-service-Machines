@@ -71,8 +71,14 @@
     <Content Include="Global.asax" />
     <Content Include="image\Doctor.png" />
     <Content Include="image\会徽.png" />
+    <Content Include="image\充值缴费.png" />
     <Content Include="image\公司.png" />
-    <Content Include="image\挂号.png" />
+    <Content Include="image\其它.png" />
+    <Content Include="image\建档.png" />
+    <Content Include="image\我的.png" />
+    <Content Include="image\挂号-.png" />
+    <Content Include="image\排队取号.png" />
+    <Content Include="image\预约.png" />
     <Content Include="PageOne.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

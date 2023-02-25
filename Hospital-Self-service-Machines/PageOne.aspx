@@ -30,14 +30,19 @@
             font-size: 22px;
             font-weight: 400;
         }
+/*        span{
+            float:left;
+            text-align:center;
+            display:block
+        }*/
         .zitistyle {
-            vertical-align:text-top;text-align:center;
-            color:brown; 
+            display:block;
+            color:deepskyblue; 
             font-size: 30px; 
             font-weight: bolder; 
-            -webkit-animation: flicker 1s infinite; 
+/*            -webkit-animation: flicker 1s infinite; */
         }
-        @-webkit-keyframes flicker { 
+/*        @-webkit-keyframes flicker { 
             0% {
                 opacity: 1;
             }
@@ -47,7 +52,7 @@
             100% {
                 opacity: 1;
             }
-        }
+        }*/
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -55,26 +60,26 @@
         <div class="div_guide"><a class="a_guide">在使用该服务机前，请先看使用说明详细内容确保你能顺利使用该服务机</a>
             <br /><a href="个人中心/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
         </div>
-        <table style="float:left;margin-top:4px" class="table_button">
+        <table style="float:left;margin-top:4px;margin-left:100px;" class="table_button">
             <tr>
-                <td><asp:Button runat="server" ID="btn_Registered" Text="" BackColor="#ffcc00" CssClass="btnSize_guahao"/><br /><a  class="zitistyle">挂号</a></td>
-                <td style="width:50px"></td>
-                <td><asp:Button runat="server" ID="btn_BulidInfo" Text="" BackColor="#66ff66" CssClass="btnSize_jiandang"/></td>
-                <td style="width:50px"></td>
-                <td><asp:Button runat="server" ID="btn_Payment" Text="" BackColor="#66ffcc" CssClass="btnSize_jiaofei" /></td>
+                <td class="auto-style1"><asp:Button runat="server" ID="btn_Registered" Text="" BackColor="transparent" CssClass="btnSize_guahao"/><br /><span class="zitistyle">挂号</span></td>
+                <td class="auto-style2"></td>
+                <td class="auto-style1"><asp:Button runat="server" ID="btn_BulidInfo" Text="" BackColor="transparent" CssClass="btnSize_jiandang"/><vr></vr><span class="zitistyle">建档</span></td>
+                <td class="auto-style2"></td>
+                <td class="auto-style1"><asp:Button runat="server" ID="btn_Payment" Text="" BackColor="transparent" CssClass="btnSize_jiaofei" /><br /><span class="zitistyle">缴费</span></td>
             </tr>
-            <tr><td style="height:70px;vertical-align:text-top;text-align:center;" class="zitistyle"></td>
+            <tr><td style="height:40px"></td>
                 <td></td>
-                <td style="vertical-align:text-top;text-align:center;">建档</td>
                 <td></td>
-                <td style="vertical-align:text-top;text-align:center;">缴费</td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td><asp:Button runat="server" ID="btn_AppointmentRegistration" Text="" BackColor="#3399ff" CssClass="btnSize_yuyueguahao"/></td>
+                <td><asp:Button runat="server" ID="btn_AppointmentRegistration" Text="" BackColor="transparent" CssClass="btnSize_yuyueguahao"/><span class="zitistyle">预约挂号</span></td>
                 <td ></td>
-                <td><asp:Button runat="server" ID="btn_TakeNumber" Text="" BackColor="#ff9933" CssClass="btnSize_quhao" /></td>
+                <td><asp:Button runat="server" ID="btn_TakeNumber" Text="" BackColor="transparent" CssClass="btnSize_quhao" /><span class="zitistyle">取号</span></td>
                 <td></td>
-                <td><asp:Button runat="server" ID="btn_OtherFunction" Text="" BackColor="#00ff00" CssClass="btnSize_qita"/></td>
+                <td><asp:Button runat="server" ID="btn_OtherFunction" Text="" BackColor="transparent" CssClass="btnSize_qita"/><span class="zitistyle">其它</span></td>
             </tr>
         </table>
     </div>

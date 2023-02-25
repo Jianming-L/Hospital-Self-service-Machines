@@ -22,42 +22,42 @@
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号.png') no-repeat;
+    background: url('../image/挂号-.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_jiaofei {
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号.png') no-repeat;
+    background: url('../image/充值缴费.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_quhao {
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号.png') no-repeat;
+    background: url('../image/排队取号.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_jiandang {
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号.png') no-repeat;
+    background: url('../image/建档.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_yuyueguahao {
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号.png') no-repeat;
+    background: url('../image/预约.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_qita {
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号.png') no-repeat;
+    background: url('../image/其它.png') no-repeat;
     font-size: 20px;
 }
 
