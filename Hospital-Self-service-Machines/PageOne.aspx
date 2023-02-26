@@ -58,11 +58,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="div_backgroud">
         <div class="div_guide"><a class="a_guide">在使用该服务机前，请先看使用说明详细内容确保你能顺利使用该服务机</a>
-            <br /><a href="个人中心/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
+            <br /><a href="使用说明/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
         </div>
         <table style="float:left;margin-top:4px;margin-left:100px;" class="table_button">
             <tr>
-                <td class="auto-style1"><asp:Button runat="server" ID="btn_Registered" Text="" BackColor="transparent" CssClass="btnSize_guahao"/><br /><span class="zitistyle">挂号</span></td>
+                <td class="auto-style1"><asp:Button runat="server" ID="btn_Registered" Text="" BackColor="transparent" CssClass="btnSize_guahao" OnClick="btn_Registered_Click"/><br /><span class="zitistyle">挂号</span></td>
                 <td class="auto-style2"></td>
                 <td class="auto-style1"><asp:Button runat="server" ID="btn_BulidInfo" Text="" BackColor="transparent" CssClass="btnSize_jiandang"/><vr></vr><span class="zitistyle">建档</span></td>
                 <td class="auto-style2"></td>

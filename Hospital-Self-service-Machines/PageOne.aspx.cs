@@ -13,5 +13,14 @@ namespace Hospital_Self_service_Machines
         {
 
         }
+        /// <summary>
+        /// 挂号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btn_Registered_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("挂号/GuaHao.aspx");
+        }
     }
 }

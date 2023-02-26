@@ -16,7 +16,7 @@
         <div class="div_top">
             <table style="margin-left:50px">
                 <tr>
-                    <td rowspan="2"><a href="../PageOne.aspx"><img src="../image/会徽.png" height="70" width="70" border="0" /></a></td>
+                    <td rowspan="2"><a href="../PageOne.aspx"><img src="../image/医院.png" height="70" width="70" border="0" /></a></td>
                     <td rowspan="1"><a class="a_Home">西虹市健康医疗自助服务机</a></td>
                     <td style="width:200px"></td>
                     <td style="color:white">

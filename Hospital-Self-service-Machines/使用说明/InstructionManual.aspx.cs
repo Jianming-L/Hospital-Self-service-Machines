@@ -13,5 +13,10 @@ namespace Hospital_Self_service_Machines.个人中心
         {
 
         }
+
+        protected void btn_Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../PageOne.aspx");
+        }
     }
 }
