@@ -37,7 +37,7 @@ USE 医院自助服务机
 		(DepartmentNo
 			CHAR(10)
 			NOT NULL
-			CONSTRAINT DepartmentNo
+			CONSTRAINT pk_Department_DepartmentNo
 				PRIMARY KEY(DepartmentNo)
 		,DepartmentName
 			VARCHAR(40)
@@ -52,3 +52,66 @@ USE 医院自助服务机
 	('05','皮肤性病科'),
 	('06','精神心理科'),
 	('07','其它科室')
+
+	IF OBJECT_ID('tb_DepartmentDetail')IS NOT NULL
+		DROP TABLE tb_DepartmentDetail;
+	GO
+	CREATE TABLE tb_DepartmentDetail
+		(DepartmentDetailNo
+			CHAR(10)
+			NOT NULL
+			CONSTRAINT pk_DepartmentDetail_DepartmentDetailNo
+				PRIMARY KEY(DepartmentDetailNo)
+		,DepartmentDetailName
+			VARCHAR(40)
+			NOT NULL
+		,DepartmentNo
+			CHAR(10)
+			NOT NULL
+			CONSTRAINT fk_DepartmentDetail_DepartmentNo
+			FOREIGN KEY (DepartmentNo)
+			REFERENCES tb_Department(DepartmentNo)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
+		)
+	INSERT INTO tb_DepartmentDetail(DepartmentDetailNo,DepartmentDetailName,DepartmentNo) VALUES
+	('000','---请选择---','00'),
+	('001','呼吸内科','01'),
+	('002','心血管内科','01'),
+	('003','神经内科','01'),
+	('004','消化内科','01'),
+	('005','内分泌科','01'),
+	('006','风湿免疫科','01'),
+	('007','肾内科','01'),
+	('008','脑外科','02'),
+	('009','心胸外科','02'),
+	('010','乳腺外科','02'),
+	('011','泌尿外科','02'),
+	('012','肝胆外科','02'),
+	('013','胃肠外科','02'),
+	('014','肛肠外科','02'),
+	('015','眼科','03'),
+	('016','耳鼻咽喉科','03'),
+	('017','口腔科','03'),
+	('018','头颈外科','03'),
+	('019','妇科','04'),
+	('020','产科','04'),
+	('021','皮肤病科','05'),
+	('022','性病科','05'),
+	('023','精神病科','06'),
+	('024','心理咨询科','06'),
+	('025','儿科','07'),
+	('026','肿瘤科','07'),
+	('027','传染科','07'),
+	('028','急诊科','07'),
+	('029','老年科','07'),
+	('030','整形科','07')
+
+
+
+
+
+
+
+
+
