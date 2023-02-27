@@ -11,35 +11,44 @@ namespace Hospital_Self_service_Machines.个人中心
 {
 
 
-    public partial class Load
+    public partial class Load1
     {
 
         /// <summary>
-        /// txt_UserNo 控件。
+        /// form1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_UserNo;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// rfvName 控件。
+        /// txb_UserNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvName;
+        protected global::System.Web.UI.WebControls.TextBox txb_UserNo;
 
         /// <summary>
-        /// txt_Password 控件。
+        /// rfvNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Password;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNo;
+
+        /// <summary>
+        /// txb_Password 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txb_Password;
 
         /// <summary>
         /// rfvPassword 控件。

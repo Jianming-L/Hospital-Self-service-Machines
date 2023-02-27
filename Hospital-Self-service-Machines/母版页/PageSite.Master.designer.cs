@@ -78,24 +78,6 @@ namespace Hospital_Self_service_Machines.母版页
         protected global::System.Web.UI.WebControls.Label lbl_Weekly;
 
         /// <summary>
-        /// lbl_Register 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Register;
-
-        /// <summary>
-        /// lbl_huo 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_huo;
-
-        /// <summary>
         /// lbl_load 控件。
         /// </summary>
         /// <remarks>

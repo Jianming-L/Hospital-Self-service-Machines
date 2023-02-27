@@ -8,7 +8,7 @@ using Hospital_Self_service_Machines.服务助手;
 
 namespace Hospital_Self_service_Machines.个人中心
 {
-    public partial class Load : System.Web.UI.Page
+    public partial class Load1 : System.Web.UI.Page
     {
         UserService usersrv = new UserService();
         protected void Page_Load(object sender, EventArgs e)
@@ -18,9 +18,9 @@ namespace Hospital_Self_service_Machines.个人中心
 
         protected void btn_SignUp_Click(object sender, EventArgs e)
         {
-            if (usersrv.IsSucceedLoad(txt_UserNo.Text, txt_Password.Text))
+            if (usersrv.IsSucceedLoad(txb_UserNo.Text, txb_Password.Text))
             {
-                Session["UserNo"]=txt_UserNo.Text;
+                Session["UserNo"] = txb_UserNo.Text;
                 Response.Write("<script language=javascript>alert('登录成功！');location.href='../PageOne.aspx'</" + "script>");
             }
             else

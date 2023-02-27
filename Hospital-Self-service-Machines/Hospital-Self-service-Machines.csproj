@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS样式\CSS.css" />
+    <Content Include="CSS样式\virtualkeyboard.css" />
     <Content Include="Global.asax" />
     <Content Include="image\Doctor.png" />
     <Content Include="image\会徽.png" />
@@ -80,7 +81,13 @@
     <Content Include="image\挂号-.png" />
     <Content Include="image\排队取号.png" />
     <Content Include="image\预约.png" />
+    <Content Include="JS文件\virtualkeyboard.js" />
     <Content Include="PageOne.aspx" />
+    <None Include="Scripts\jquery-3.6.3.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.3.js" />
+    <Content Include="Scripts\jquery-3.6.3.min.js" />
+    <Content Include="Scripts\jquery-3.6.3.slim.js" />
+    <Content Include="Scripts\jquery-3.6.3.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -95,19 +102,19 @@
       <DependentUpon>PageOne.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="使用说明\InstructionManual.aspx.cs">
-      <DependentUpon>InstructionManual.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="使用说明\InstructionManual.aspx.designer.cs">
-      <DependentUpon>InstructionManual.aspx</DependentUpon>
-    </Compile>
     <Compile Include="个人中心\Load.aspx.cs">
       <DependentUpon>Load.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="个人中心\Load.aspx.designer.cs">
       <DependentUpon>Load.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="使用说明\InstructionManual.aspx.cs">
+      <DependentUpon>InstructionManual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="使用说明\InstructionManual.aspx.designer.cs">
+      <DependentUpon>InstructionManual.aspx</DependentUpon>
     </Compile>
     <Compile Include="个人中心\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -141,14 +148,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.6.3.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Load.aspx" />
+    <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
     <Content Include="挂号\GuaHao.aspx" />
     <Content Include="母版页\PageSite.Master" />
