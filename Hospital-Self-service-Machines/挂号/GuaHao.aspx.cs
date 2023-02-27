@@ -43,6 +43,40 @@ namespace Hospital_Self_service_Machines.挂号
             {
                 ddl_guahao.Text = "暂无此数据";
             }
+            string commandText2 =
+                $@"SELECT * FROM tb_DepartmentDetail WHERE DepartmentNo='{ddl_guahao.SelectedValue}'";
+            SqlDataAdapter adsa2 = new SqlDataAdapter(commandText2, con);
+            DataTable dt2=new DataTable();
+            adsa2.Fill(dt2);
+            if(dt2.Rows.Count > 0)
+            {
+                ddl_guahaoxiangxi.DataSource = dt2;
+                ddl_guahaoxiangxi.DataValueField = "DepartmentDetailNo";
+                ddl_guahaoxiangxi.DataTextField = "DepartmentDetailName";
+                ddl_guahaoxiangxi.DataBind();
+            }
+            else
+            {
+                ddl_guahaoxiangxi.Text = "暂无此数据";
+            }
+            con.Close();
+        }
+
+        protected void ddl_guahao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string DepartmentNo = this.ddl_guahao.SelectedValue;
+            SqlConnection con = new SqlConnection(connectionstring);
+            string commandText =
+                $@"SELECT * FROM tb_DepartmentDetail WHERE DepartmentNo=" + DepartmentNo;
+            con.Open();
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            this.ddl_guahaoxiangxi.DataSource = sdr;
+            this.ddl_guahaoxiangxi.DataTextField = "DepartmentDetailName";
+            this.ddl_guahaoxiangxi.DataValueField = "DepartmentDetailNo";
+            this.ddl_guahaoxiangxi.DataBind();
+            sdr.Close();
+            con.Close();
         }
     }
 }
