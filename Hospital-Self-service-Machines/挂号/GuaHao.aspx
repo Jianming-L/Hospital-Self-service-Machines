@@ -5,24 +5,24 @@
             border-color:darkturquoise;
         }
         .lb_guahao{
-            background-color:rgba(255,255,255,0.5);
+            background-color:rgba(192,192,192,0.5);
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="margin-left:10%;width:900px;padding-top:40px;padding-left:30px">
+    <div style="margin-left:10%;width:900px;padding-top:40px;padding-left:60px">
         <table>
             <tr>
                 <td>
-                    <asp:ListBox ID="lb_guahao" runat="server" Width="200px" Height="400px" CssClass="lb_guahao"></asp:ListBox>
-                    <asp:DropDownList ID="ddl_guahao" runat="server" Width="200px" BackColor="transparent" CssClass="ddl_keshi" OnSelectedIndexChanged="ddl_guahao_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:ListBox ID="lb_guahao" runat="server" Width="400px" Height="200px" SelectionMode="Single" CssClass="lb_guahao" OnSelectedIndexChanged="lb_guahao_SelectedIndexChanged"></asp:ListBox>
                 </td>
-                <td style="width:20px"></td>
+                <td style="width:50px"></td>
                 <td>
-                    <asp:DropDownList ID="ddl_guahaoxiangxi" runat="server" Width="200px" BackColor="transparent" CssClass="ddl_keshi"></asp:DropDownList>
+                    <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="400px" Height="200px" CssClass="lb_guahao"></asp:ListBox>
                 </td>
             </tr>
         </table>
+        <asp:Label ID="Label1" runat="server"></asp:Label>
         <br />
 <%--        <asp:GridView ID="gv_guahao" runat="server" Width="700px">
         </asp:GridView>--%>

@@ -24,21 +24,21 @@ namespace Hospital_Self_service_Machines.挂号
         protected global::System.Web.UI.WebControls.ListBox lb_guahao;
 
         /// <summary>
-        /// ddl_guahao 控件。
+        /// lb_guahaoxiangxi 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_guahao;
+        protected global::System.Web.UI.WebControls.ListBox lb_guahaoxiangxi;
 
         /// <summary>
-        /// ddl_guahaoxiangxi 控件。
+        /// Label1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_guahaoxiangxi;
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }
