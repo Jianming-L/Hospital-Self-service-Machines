@@ -14,7 +14,7 @@
             temp += '</div>'
             temp += '<div class="page">1/1</div>'
             temp += '</div>'
-            temp += '<div class="keyboardOp">可复用中英文输入虚拟键盘'
+            temp += '<div class="keyboardOp">键盘'
             temp += '<span class="slideDown">关闭</span>'
             temp += '</div>'
             temp += '<div class="inputZone">'
@@ -111,14 +111,14 @@
             updateVal(e);
         } else {
             var focusEl = $(defaults.el); console.log($text)
-            focusEl.val(focusEl.val().length < 5 ? (focusEl.val() + $text) : (focusEl.val() + ''));
+            focusEl.val(focusEl.val().length < 100 ? (focusEl.val() + $text) : (focusEl.val() + $text));//突破输入限制数量
         }
     }; function inputSpace(e) {
         if (defaults.ZH) {
             $('.outputZone').show(); var inputVal = $('.virtualkeyboard .key'); inputVal.text(inputVal.text() + ' ')
             updateVal(e);
         } else { var focusEl = $(defaults.el); focusEl.val(focusEl.val() + ' '); }
-    }; function output(e) { var focusEl = $(defaults.el); focusEl.val(focusEl.val().length < 5 ? (focusEl.val() + $(e.target).text()) : (focusEl.val() + '')); emptyZH() }; function symbolOutput(e) { var focusEl = $(defaults.el); focusEl.val(focusEl.val().length < 5 ? (focusEl.val() + $(e.target).text()) : (focusEl.val() + '')); }; function backspace(e) {
+    }; function output(e) { var focusEl = $(defaults.el); focusEl.val(focusEl.val().length < 100 ? (focusEl.val() + $(e.target).text()) : (focusEl.val() + '')); emptyZH() }; function symbolOutput(e) { var focusEl = $(defaults.el); focusEl.val(focusEl.val().length < 100 ? (focusEl.val() + $(e.target).text()) : (focusEl.val() + '')); }; function backspace(e) {
         var key = $('.virtualkeyboard .key'); if (key.text()) {
             key.text(key.text().substring(0, key.text().length - 1)); updateVal(e)
             if (!key.text()) { emptyZH(e); }
