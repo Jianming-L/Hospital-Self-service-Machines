@@ -95,5 +95,45 @@ namespace Hospital_Self_service_Machines.挂号
             }
             con.Close();
         }
+
+        protected void lb_guahaoxiangxi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string commandText =
+                $@"SELECT DD.DepartmentDetailName,S.Symptom
+                    FROM tb_DepartmentDetail AS DD
+                    LEFT JOIN tb_Symptom AS S ON DD.DepartmentDetailNo=S.SuggestDepartmentDetailNo
+                    WHERE DD.DepartmentDetailName='{lb_guahaoxiangxi.SelectedValue.ToString().Trim()}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlDataAdapter adsa = new SqlDataAdapter(commandText, con);
+            try
+            {
+                con.Open();
+                DataSet ds = new DataSet();
+                adsa.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    gv_guahao.DataSource = ds;
+                    gv_guahao.DataBind();
+                }
+                else
+                {
+                    gv_guahao.DataSource = null;
+                    gv_guahao.DataBind();
+                }
+            }
+            catch
+            {
+                Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        protected void gv_guahao_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
