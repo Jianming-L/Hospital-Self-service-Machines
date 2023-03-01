@@ -75,7 +75,7 @@
                 <td></td>
             </tr>
             <tr>
-                <td><asp:Button runat="server" ID="btn_AppointmentRegistration" Text="" BackColor="transparent" CssClass="btnSize_yuyueguahao"/><span class="zitistyle">预约挂号</span></td>
+                <td><asp:Button runat="server" ID="btn_FindDepartment" Text="" BackColor="transparent" CssClass="btnSize_findkeshi"/><span class="zitistyle">查询科室</span></td>
                 <td ></td>
                 <td><asp:Button runat="server" ID="btn_TakeNumber" Text="" BackColor="transparent" CssClass="btnSize_quhao" /><span class="zitistyle">取号</span></td>
                 <td></td>

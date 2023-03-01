@@ -78,8 +78,8 @@
     <Content Include="image\医院.png" />
     <Content Include="image\建档.png" />
     <Content Include="image\我的.png" />
-    <Content Include="image\挂号-.png" />
     <Content Include="image\排队取号.png" />
+    <Content Include="image\查询科室.png" />
     <Content Include="image\预约.png" />
     <Content Include="JS文件\virtualkeyboard.js" />
     <Content Include="PageOne.aspx" />

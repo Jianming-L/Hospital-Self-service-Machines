@@ -106,5 +106,71 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
+
+        public bool IsInsertRegister(string userno,int xiangxikeshi,DateTime dtnow)
+        {
+            string commandText =
+                $@"INSERT INTO tb_Registerd VALUES('{userno}',{xiangxikeshi},'{dtnow}')";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            int rowAffect=0;
+            try
+            {
+                con.Open();
+                rowAffect = cmd.ExecuteNonQuery();
+                if (rowAffect == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 避免重复预约同一科室
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <param name="keshidalei"></param>
+        /// <param name="xiangxikeshi"></param>
+        /// <returns></returns>
+        public bool IsHasRegiserd(string userno, int xiangxikeshi)
+        {
+            string commandText =
+                $@"SELECT * FROM tb_Registerd WHERE UserNo='{userno}' AND DepartmentDetailNo={xiangxikeshi}";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

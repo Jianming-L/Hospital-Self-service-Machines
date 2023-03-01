@@ -22,7 +22,7 @@
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/挂号-.png') no-repeat;
+    background: url('../image/预约.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_jiaofei {
@@ -46,11 +46,11 @@
     background: url('../image/建档.png') no-repeat;
     font-size: 20px;
 }
-.btnSize_yuyueguahao {
+.btnSize_findkeshi {
     height: 200px;
     width: 200px;
     border-radius: 20px;
-    background: url('../image/预约.png') no-repeat;
+    background: url('../image/查询科室.png') no-repeat;
     font-size: 20px;
 }
 .btnSize_qita {

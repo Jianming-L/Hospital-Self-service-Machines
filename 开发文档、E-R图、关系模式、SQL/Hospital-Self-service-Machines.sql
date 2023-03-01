@@ -228,7 +228,7 @@ USE 医院自助服务机
 			CHAR(10)
 			NOT NULL
 			PRIMARY KEY (UserNo)
-		,tb_Department--科室号
+		,DepartmentNo--科室号
 			INT
 			NULL
 		,DepartmentDetailNo--详细科室号
