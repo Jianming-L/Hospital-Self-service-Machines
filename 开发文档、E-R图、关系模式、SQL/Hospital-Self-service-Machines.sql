@@ -227,10 +227,6 @@ USE 医院自助服务机
 		(UserNo
 			CHAR(10)
 			NOT NULL
-			PRIMARY KEY (UserNo)
-		,DepartmentNo--科室号
-			INT
-			NULL
 		,DepartmentDetailNo--详细科室号
 			INT
 			NOT NULL
