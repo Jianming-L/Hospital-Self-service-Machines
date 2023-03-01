@@ -14,15 +14,14 @@
         <table>
             <tr>
                 <td>
-                    <asp:ListBox ID="lb_guahao" runat="server" Width="400px" Height="200px" SelectionMode="Single" CssClass="lb_guahao" OnSelectedIndexChanged="lb_guahao_SelectedIndexChanged"></asp:ListBox>
+                    <asp:ListBox ID="lb_guahao" runat="server" Width="400px" Height="200px" SelectionMode="Single" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahao_SelectedIndexChanged"></asp:ListBox>
                 </td>
                 <td style="width:50px"></td>
                 <td>
-                    <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="400px" Height="200px" CssClass="lb_guahao"></asp:ListBox>
+                    <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="400px" Height="200px" CssClass="lb_guahao" AutoPostBack=true ></asp:ListBox>
                 </td>
             </tr>
         </table>
-        <asp:Label ID="Label1" runat="server"></asp:Label>
         <br />
 <%--        <asp:GridView ID="gv_guahao" runat="server" Width="700px">
         </asp:GridView>--%>
