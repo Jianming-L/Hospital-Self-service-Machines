@@ -231,6 +231,6 @@ USE 医院自助服务机
 			INT
 			NOT NULL
 		,RegisterTime--确认预约所在时间
-			DATE
+			SMALLDATETIME
 			NOT NULL
 		)

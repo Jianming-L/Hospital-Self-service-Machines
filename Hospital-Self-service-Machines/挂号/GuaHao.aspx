@@ -16,9 +16,12 @@
             text-align: center;
         }
     </style>
+    <script src="../My97DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="margin-left:10%;width:900px;padding-top:40px;padding-left:20px">
+        <asp:Label runat="server" ID="lbl_msg" ForeColor="Red" Text="***注意预约时间范围：当天或隔日7：00-21：00可预约，其余时间或其它日期不可预约"></asp:Label>
+        <br />
         <table>
             <tr>
                 <td>
@@ -37,6 +40,7 @@
                 <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                 <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                 <asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                <asp:TemplateField HeaderText="点击确认预约时间"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd H:m:s',minDate:'%y-%M-%d 7:00:00',maxDate:'%y-%M-{%d+1} 21:00:00'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
                 <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
 <ControlStyle CssClass="btn_yuyue"></ControlStyle>
                 </asp:ButtonField>
@@ -53,5 +57,4 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </div>
-<%--    <asp:Label runat="server" ID="lbl_msg"></asp:Label>--%>
 </asp:Content>

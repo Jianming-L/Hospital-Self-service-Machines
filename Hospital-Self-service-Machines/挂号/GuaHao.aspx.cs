@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using Hospital_Self_service_Machines.服务助手;
+using System.Reflection.Emit;
 
 namespace Hospital_Self_service_Machines.挂号
 {
@@ -156,6 +157,7 @@ namespace Hospital_Self_service_Machines.挂号
 
             if (e.CommandName == "btn_yuyue")
             {
+                int index = Convert.ToInt32(e.CommandArgument);
                 if (lb_guahao.SelectedIndex == 0)
                 {
                     Response.Write("<script language=javascript>alert('未选择科室，预约失败')</" + "script>");
@@ -166,7 +168,7 @@ namespace Hospital_Self_service_Machines.挂号
                 {
                     if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
                     {
-                        if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Now.Date))
+                        if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text)))
                         {
                             Response.Write("<script language=javascript>alert('预约成功')</" + "script>");
                             Bind();
