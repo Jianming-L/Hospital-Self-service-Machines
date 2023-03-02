@@ -16,7 +16,7 @@
             text-align: center;
         }
     </style>
-    <script src="../My97DatePicker/WdatePicker.js"></script>
+    <script src="../DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="margin-left:10%;width:900px;padding-top:40px;padding-left:20px">
