@@ -28,5 +28,10 @@ namespace Hospital_Self_service_Machines.个人中心
                 Response.Write("<script language=javascript>alert('账号/密码错误，登录失败！');</" + "script>");
             }
         }
+
+        protected void btn_Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../PageOne.aspx");
+        }
     }
 }

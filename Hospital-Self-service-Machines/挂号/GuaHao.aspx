@@ -57,4 +57,6 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </div>
+    <asp:Label runat="server" ID="lbl"></asp:Label>
+    <asp:Label runat="server" ID="Label1"></asp:Label>
 </asp:Content>

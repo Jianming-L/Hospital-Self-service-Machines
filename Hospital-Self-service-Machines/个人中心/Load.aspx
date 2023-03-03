@@ -27,6 +27,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="div_Load">
+            <asp:Button runat="server" ID="btn_Back" Text="返回首页" CausesValidation="false" OnClick="btn_Back_Click"  Width="80px" Height="30px" />
                 <h2 style="margin-left:200px">登录</h2>
                 <table style="margin:40px">
                     <tr style="text-align:right">
@@ -55,7 +56,7 @@
                     <tr><td style="height:30px"></td></tr>
                     <tr>
                         <td></td>
-                        <td style="margin-left:290px">
+                        <td style="margin-left:290px" width="80px">
                             <asp:Button runat="server" ID="btn_SignUp" Text="登录" OnClick="btn_SignUp_Click" Width="80px" Height="40px" />
                         </td>
                     </tr>

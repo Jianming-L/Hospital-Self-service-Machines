@@ -166,17 +166,32 @@ namespace Hospital_Self_service_Machines.挂号
                 }
                 else
                 {
-                    if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
+                    if (((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text != "")
                     {
-                        if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text)))
+                        //预约时间不可早于当前时间
+                        if (DateTime.Now.ToLocalTime() <= DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text))
                         {
-                            Response.Write("<script language=javascript>alert('预约成功')</" + "script>");
-                            Bind();
+                            if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
+                            {
+                                if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text)))
+                                {
+                                    Response.Write("<script language=javascript>alert('预约成功')</" + "script>");
+                                    Bind();
+                                }
+                            }
+                            else
+                            {
+                                Response.Write("<script language=javascript>alert('您已经预约过该科室，不可重复预约')</" + "script>");
+                            }
+                        }
+                        else
+                        {
+                            Response.Write("<script language=javascript>alert('请重新选择预约时间\\n预约时间不可早于当前时间\\n请认真看当前时间并比较')</" + "script>");
                         }
                     }
                     else
                     {
-                        Response.Write("<script language=javascript>alert('您已经预约过该科室，不可重复预约')</" + "script>");
+                        Response.Write("<script language=javascript>alert('预约时间不得为空！！！')</" + "script>");
                     }
                 }
             }
