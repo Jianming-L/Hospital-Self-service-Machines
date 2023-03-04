@@ -186,6 +186,13 @@
       <DependentUpon>GuaHao.aspx</DependentUpon>
     </Compile>
     <Compile Include="服务助手\UserService.cs" />
+    <Compile Include="查询科室\FindDepartment.aspx.cs">
+      <DependentUpon>FindDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="查询科室\FindDepartment.aspx.designer.cs">
+      <DependentUpon>FindDepartment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="母版页\FunctionSite.Master.cs">
       <DependentUpon>FunctionSite.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -215,6 +222,7 @@
     <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
     <Content Include="挂号\GuaHao.aspx" />
+    <Content Include="查询科室\FindDepartment.aspx" />
     <Content Include="母版页\PageSite.Master" />
     <Content Include="母版页\FunctionSite.Master" />
   </ItemGroup>

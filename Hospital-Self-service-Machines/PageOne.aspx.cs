@@ -22,5 +22,10 @@ namespace Hospital_Self_service_Machines
         {
             Response.Redirect("挂号/GuaHao.aspx");
         }
+
+        protected void btn_FindDepartment_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("查询科室/FindDepartment.aspx");
+        }
     }
 }
