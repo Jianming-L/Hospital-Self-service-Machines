@@ -19,7 +19,7 @@
     <script src="../DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="margin-left:10%;width:900px;padding-top:40px;padding-left:20px">
+    <div style="margin-left:15%;width:1100px;padding-top:40px;padding-left:20px">
         <asp:Label runat="server" ID="lbl_msg" ForeColor="Red" Text="***注意预约时间范围：当天或隔日7：00-21：00可预约，其余时间或其它日期不可预约"></asp:Label>
         <br />
         <table>
@@ -32,31 +32,42 @@
                     <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="400px" Height="200px" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahaoxiangxi_SelectedIndexChanged" ></asp:ListBox>
                 </td>
             </tr>
+            <tr>
+                <td rowspan="1" colspan="3">
+                    <asp:GridView ID="gv_guahao" runat="server" Width="950px" CssClass="gv_yuyue" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_guahao_RowCommand">
+                                <AlternatingRowStyle BackColor="White" />
+                                <Columns>
+                                    <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="点击确认预约时间"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd H:m:s',minDate:'%y-%M-%d 7:00:00',maxDate:'%y-%M-{%d+1} 21:00:00'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
+                                    <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
+                        <ControlStyle CssClass="btn_yuyue"></ControlStyle>
+                                    </asp:ButtonField>
+                                </Columns>
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="padding-top:20px;text-align:right">
+                    <asp:Button runat="server" ID="btn_Back" Text="返回" Width="80" Height="40" OnClick="btn_Back_Click" />
+                </td>
+            </tr>
         </table>
         <br />
-        <asp:GridView ID="gv_guahao" runat="server" Width="1200px" CssClass="gv_yuyue" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_guahao_RowCommand">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                <asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                <asp:TemplateField HeaderText="点击确认预约时间"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd H:m:s',minDate:'%y-%M-%d 7:00:00',maxDate:'%y-%M-{%d+1} 21:00:00'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
-                <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
-<ControlStyle CssClass="btn_yuyue"></ControlStyle>
-                </asp:ButtonField>
-            </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
-        </asp:GridView>
     </div>
-    <asp:Label runat="server" ID="lbl"></asp:Label>
-    <asp:Label runat="server" ID="Label1"></asp:Label>
+<%--    <asp:Label runat="server" ID="lbl"></asp:Label>
+    <asp:Label runat="server" ID="Label1"></asp:Label>--%>
 </asp:Content>

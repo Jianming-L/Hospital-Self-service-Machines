@@ -6,22 +6,26 @@
             Height:200px;
             background-color:rgba(192,192,192,0.5);
         }
+        .gv_finddepartment{
+            text-align:center;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="margin-left:10%;padding-top:30px">
+    <div style="margin-left:3%;padding-top:30px">
         <table>
             <tr>
                 <td>
-                    <asp:ListBox runat="server" ID="lb_keshidalei" CssClass="finddepartment"></asp:ListBox>
+                    <asp:ListBox runat="server" ID="lb_keshidalei" Height="500px" AutoPostBack="true" CssClass="finddepartment" OnSelectedIndexChanged="lb_keshidalei_SelectedIndexChanged"></asp:ListBox>
                 </td>
-                <td style="width:50px"></td>
+                <td style="width:100px"></td>
                 <td>
-                    <asp:ListBox runat="server" ID="lb_xiangxikeshi" CssClass="finddepartment"></asp:ListBox>
+                    <%--<asp:ListBox runat="server" ID="lb_xiangxikeshi" AutoPostBack="true" CssClass="finddepartment" OnSelectedIndexChanged="lb_xiangxikeshi_SelectedIndexChanged"></asp:ListBox>--%>
+                    <asp:GridView runat="server" ID="gv_FindDepartment" CssClass="gv_finddepartment" Width="900px"></asp:GridView>
                 </td>
             </tr>
         </table>
         <br />
-        <asp:GridView runat="server" Width="1000px"></asp:GridView>
     </div>
+    <asp:Label runat="server" ID="lbl_msg"></asp:Label>
 </asp:Content>

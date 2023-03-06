@@ -1,4 +1,5 @@
 USE master
+GO
 IF DB_ID('医院自助服务机')IS NOT NULL
 	DROP DATABASE 医院自助服务机;
 GO
@@ -67,7 +68,7 @@ USE 医院自助服务机
 			VARCHAR(200)
 		)
 	INSERT INTO tb_SymptomStype(SymptomStypeNo,Symptom) VALUES
-	(00,'无'),
+	(00,'---请选择---'),
 	(01,'头晕、眩晕'),
 	(02,'头疼'),
 	(03,'失眠'),

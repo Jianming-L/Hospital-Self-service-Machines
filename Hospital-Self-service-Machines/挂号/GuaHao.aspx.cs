@@ -100,15 +100,14 @@ namespace Hospital_Self_service_Machines.挂号
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-
                     Session["DepartmentDetailNo"] = Int32.Parse(reader["DepartmentDetailNo"].ToString());
                     //lbl_msg.Text = Session["DepartmentDetailNo"].ToString();
                 }
             }
             catch
             {
-                throw;
-                //Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
+                //throw;
+                Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
             }
             finally
             {
@@ -143,8 +142,8 @@ namespace Hospital_Self_service_Machines.挂号
             }
             catch
             {
-                throw;
-                //Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
+                //throw;
+                Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
             }
             finally
             {
@@ -195,6 +194,11 @@ namespace Hospital_Self_service_Machines.挂号
                     }
                 }
             }
+        }
+
+        protected void btn_Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../PageOne.aspx");
         }
     }
 }
