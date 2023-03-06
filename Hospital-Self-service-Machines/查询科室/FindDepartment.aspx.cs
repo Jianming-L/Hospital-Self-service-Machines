@@ -16,22 +16,21 @@ namespace Hospital_Self_service_Machines.查询科室
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    if (Session["UserNo"] == null)
-            //    {
-            //        Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
-            //    }
-            //    else
-            //    {
-            listboxBind();
-            //lbl_msg.Text = "wu";
-            //    }
-            //}
+            if (Session["UserNo"] == null)
+            {
+                Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
+            }
+            else
+            {
+                listboxBind();
+                btn_Back.Visible = false;
+            }
         }
         public void listboxBind()
         {
-            
+            lbl_Symptom.Text = lb_keshidalei.SelectedValue;
+            FindNumber();
+            lb_keshidalei.Items.Clear();
             string commandText =
                 $@"SELECT * FROM tb_SymptomStype";
             SqlConnection con = new SqlConnection(connectionstring);
@@ -51,20 +50,14 @@ namespace Hospital_Self_service_Machines.查询科室
                 lb_keshidalei.Items.Add("暂无此数据");
             }
             con.Close();
+
         }
 
         protected void lb_keshidalei_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //lbl_msg.Text = lb_keshidalei.SelectedIndex.ToString();
-            FindNumber();
             Bind();
         }
 
-        //protected void lb_xiangxikeshi_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    FindNumber();
-        //    Bind();
-        //}
         public void FindNumber()
         {
             string commandText =
@@ -97,7 +90,7 @@ namespace Hospital_Self_service_Machines.查询科室
         public void Bind()
         {
             string commandText =
-                $@"SELECT D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 所在科室,SS.Symptom AS 常见病症,S.Symptom AS 详细症状
+                $@"SELECT S.Symptom AS 详细症状,D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 所在科室
                     FROM tb_SymptomStype AS SS
                     LEFT JOIN tb_Symptom AS S ON SS.SymptomStypeNo=S.SymptomNo
                     LEFT JOIN tb_DepartmentDetail AS DD ON S.SuggestDepartmentDetailNo=DD.DepartmentDetailNo
@@ -114,11 +107,13 @@ namespace Hospital_Self_service_Machines.查询科室
                 {
                     gv_FindDepartment.DataSource = ds;
                     gv_FindDepartment.DataBind();
+                    btn_Back.Visible = true;
                 }
                 else
                 {
                     gv_FindDepartment.DataSource = null;
                     gv_FindDepartment.DataBind();
+                    btn_Back.Visible = false;
                 }
             }
             catch
@@ -130,6 +125,11 @@ namespace Hospital_Self_service_Machines.查询科室
             {
                 con.Close();
             }
+        }
+
+        protected void btn_Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../PageOne.aspx");
         }
     }
 }
