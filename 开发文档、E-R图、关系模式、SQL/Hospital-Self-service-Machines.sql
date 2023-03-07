@@ -235,3 +235,17 @@ USE 医院自助服务机
 			SMALLDATETIME
 			NOT NULL
 		)
+
+	--预约时间
+	IF OBJECT_ID('tb_RegisterdTime')IS NOT NULL
+		DROP TABLE tb_RegisterdTime;
+	GO
+	CREATE TABLE tb_RegisterdTime
+		(No
+			CHAR(10)
+			NOT NULL
+		,RegisterTime--预约时间
+			SMALLDATETIME
+			NOT NULL
+		)
+

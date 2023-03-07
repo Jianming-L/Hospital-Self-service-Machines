@@ -40,7 +40,8 @@
                                     <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                                    <asp:TemplateField HeaderText="点击确认预约时间"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd H:m:s',minDate:'%y-%M-%d 7:00:00',maxDate:'%y-%M-{%d+1} 21:00:00'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="点击确认预约日期"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd ',minDate:'%y-%M-%d',maxDate:'%y-%M-{%d+1}'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="点击确认时间段"><ItemTemplate><asp:DropDownList runat="server" ID="ddl_time" Width="100px"></asp:DropDownList></ItemTemplate></asp:TemplateField>
                                     <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
                         <ControlStyle CssClass="btn_yuyue"></ControlStyle>
                                     </asp:ButtonField>
