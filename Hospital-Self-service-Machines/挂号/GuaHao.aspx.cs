@@ -20,14 +20,15 @@ namespace Hospital_Self_service_Machines.挂号
         {
             if (!IsPostBack)
             {
-                if (Session["UserNo"] == null)
-                {
-                    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
-                }
-                else
-                {
-                    listboxBind();
-                }
+                //if (Session["UserNo"] == null)
+                //{
+                //    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
+                //}
+                //else
+                //{
+                listboxBind();
+                DropDownList_Time();
+                //}
             }
         }
         public void listboxBind()
@@ -115,9 +116,9 @@ namespace Hospital_Self_service_Machines.挂号
             }
         }
         public void Bind()
-        {
+        {/*{Session["UserNo"].ToString().Trim()}*/
             string commandText =
-                $@"SELECT D.DepartmentName,DD.DepartmentDetailName,IIF(UserNo='{Session["UserNo"].ToString().Trim()}','是','否') AS IsRegisterd
+                $@"SELECT D.DepartmentName,DD.DepartmentDetailName,IIF(UserNo='3210707010','是','否') AS IsRegisterd
                     FROM tb_Department AS D
                     LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentNo=D.DepartmentNo
                     LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
@@ -150,50 +151,82 @@ namespace Hospital_Self_service_Machines.挂号
                 con.Close();
             }
         }
-
+        /// <summary>
+        /// 绑定下拉框数据
+        /// </summary>
+        /// <returns></returns>
+        public SqlDataReader DropDownList_Time()
+        {
+            string commandText =
+                $@"SELECT * FROM tb_RegisterdTime";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            con.Open();
+            return cmd.ExecuteReader();
+        }
         protected void gv_guahao_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
-            if (e.CommandName == "btn_yuyue")
+            int index = Convert.ToInt32(e.CommandArgument);
+            string time = ((DropDownList)gv_guahao.Rows[index].Cells[4].FindControl("ddl_time")).Text;
+            DateTime starttime = DateTime.Parse(time.Substring(0, 5));
+            DateTime date = DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text);
+            if (date.ToString("d") == DateTime.Now.ToString("d"))
             {
-                int index = Convert.ToInt32(e.CommandArgument);
-                if (lb_guahao.SelectedIndex == 0)
+                if (DateTime.Now.ToLocalTime() <= starttime)
                 {
-                    Response.Write("<script language=javascript>alert('未选择科室，预约失败')</" + "script>");
-                    gv_guahao.DataSource = null;
-                    gv_guahao.DataBind();
+                    lbl.Text = time;
                 }
                 else
                 {
-                    if (((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text != "")
-                    {
-                        //预约时间不可早于当前时间
-                        if (DateTime.Now.ToLocalTime() <= DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text))
-                        {
-                            if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
-                            {
-                                if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text)))
-                                {
-                                    Response.Write("<script language=javascript>alert('预约成功')</" + "script>");
-                                    Bind();
-                                }
-                            }
-                            else
-                            {
-                                Response.Write("<script language=javascript>alert('您已经预约过该科室，不可重复预约')</" + "script>");
-                            }
-                        }
-                        else
-                        {
-                            Response.Write("<script language=javascript>alert('请重新选择预约时间\\n预约时间不可早于当前时间\\n请认真看当前时间并比较')</" + "script>");
-                        }
-                    }
-                    else
-                    {
-                        Response.Write("<script language=javascript>alert('预约时间不得为空！！！')</" + "script>");
-                    }
+                    lbl.Text = "预约时间不得早于当前时间！！";
                 }
             }
+            else
+            {
+                lbl.Text = time;
+            }
+            //if (e.CommandName == "btn_yuyue")
+            //{
+            //    int index = Convert.ToInt32(e.CommandArgument);
+            //    string time = ((TextBox)gv_guahao.Rows[index].Cells[4].FindControl("ddl_time")).Text;
+            //    lbl_msg.Text = time;
+            //    //if (lb_guahao.SelectedIndex == 0)
+            //    //{
+            //    //    Response.Write("<script language=javascript>alert('未选择科室，预约失败')</" + "script>");
+            //    //    gv_guahao.DataSource = null;
+            //    //    gv_guahao.DataBind();
+            //    //}
+            //    //else
+            //    //{
+            //    //    if (((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text != "")
+            //    //    {
+            //    //        ////预约时间不可早于当前时间
+            //    //        //if (DateTime.Now.ToLocalTime() <= DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text))
+            //    //        //{
+            //    //        //    //if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
+            //    //        //    //{
+            //    //        //    //    if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text)))
+            //    //        //    //    {
+            //    //        //    //        Response.Write("<script language=javascript>alert('预约成功')</" + "script>");
+            //    //        //    //        Bind();
+            //    //        //    //    }
+            //    //        //    //}
+            //    //        //    //else
+            //    //        //    //{
+            //    //        //    //    Response.Write("<script language=javascript>alert('您已经预约过该科室，不可重复预约')</" + "script>");
+            //    //        //    //}
+            //    //        //}
+            //    //        //else
+            //    //        //{
+            //    //        //    Response.Write("<script language=javascript>alert('请重新选择预约时间\\n预约时间不可早于当前时间\\n请认真看当前时间并比较')</" + "script>");
+            //    //        //}
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        Response.Write("<script language=javascript>alert('预约时间不得为空！！！')</" + "script>");
+            //    //    }
+            //    //}
+            //}
         }
 
         protected void btn_Back_Click(object sender, EventArgs e)

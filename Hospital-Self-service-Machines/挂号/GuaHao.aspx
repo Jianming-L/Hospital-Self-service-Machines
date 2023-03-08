@@ -19,29 +19,29 @@
     <script src="../DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="margin-left:15%;width:1100px;padding-top:40px;padding-left:20px">
-        <asp:Label runat="server" ID="lbl_msg" ForeColor="Red" Text="***注意预约时间范围：当天或隔日7：00-21：00可预约，其余时间或其它日期不可预约"></asp:Label>
+    <div style="margin-left:10%;width:1200px;padding-top:40px;padding-left:20px">
+        <asp:Label runat="server" ID="lbl_msg" ForeColor="Red" Text="***注意预约时间范围：当天或隔日7：00-21：00可预约，其余时间或其它日期不可预约；预约时间段只能在当前时间下一个时间段"></asp:Label>
         <br />
         <table>
             <tr>
                 <td>
                     <asp:ListBox ID="lb_guahao" runat="server" Width="400px" Height="200px" SelectionMode="Single" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahao_SelectedIndexChanged"></asp:ListBox>
                 </td>
-                <td style="width:150px"></td>
+                <td style="width:200px"></td>
                 <td>
                     <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="400px" Height="200px" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahaoxiangxi_SelectedIndexChanged" ></asp:ListBox>
                 </td>
             </tr>
             <tr>
                 <td rowspan="1" colspan="3">
-                    <asp:GridView ID="gv_guahao" runat="server" Width="950px" CssClass="gv_yuyue" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_guahao_RowCommand">
+                    <asp:GridView ID="gv_guahao" runat="server" Width="1000px" CssClass="gv_yuyue" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_guahao_RowCommand">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                                    <asp:TemplateField HeaderText="点击确认预约日期"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd ',minDate:'%y-%M-%d',maxDate:'%y-%M-{%d+1}'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
-                                    <asp:TemplateField HeaderText="点击确认时间段"><ItemTemplate><asp:DropDownList runat="server" ID="ddl_time" Width="100px"></asp:DropDownList></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="确认预约日期"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd ',minDate:'%y-%M-%d',maxDate:'%y-%M-{%d+1}'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="确认时间段"><ItemTemplate><asp:DropDownList runat="server" ID="ddl_time" DataSource='<%# DropDownList_Time() %>' DataValueField="RegisterTime" DataTextField="RegisterTime" Width="150px" ></asp:DropDownList></ItemTemplate></asp:TemplateField>
                                     <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
                         <ControlStyle CssClass="btn_yuyue"></ControlStyle>
                                     </asp:ButtonField>
@@ -69,6 +69,6 @@
         </table>
         <br />
     </div>
-<%--    <asp:Label runat="server" ID="lbl"></asp:Label>
-    <asp:Label runat="server" ID="Label1"></asp:Label>--%>
+    <asp:Label runat="server" ID="lbl"></asp:Label>
+    <asp:Label runat="server" ID="Label1"></asp:Label>
 </asp:Content>
