@@ -232,7 +232,10 @@ USE 医院自助服务机
 			INT
 			NOT NULL
 		,RegisterTime--确认预约所在时间
-			SMALLDATETIME
+			DATE
+			NOT NULL
+		,SpecificTimePeriod--具体时间段
+			CHAR(20)
 			NOT NULL
 		)
 
@@ -280,4 +283,71 @@ USE 医院自助服务机
 	(27,'20:00-20:30'),
 	(28,'20:30-21:00')
 
+	----限制预约人数表
+	--IF OBJECT_ID('tb_LimitRegisterd')IS NOT NULL
+	--	DROP TABLE tb_LimitRegisterd;
+	--GO
+	--CREATE TABLE tb_LimitRegisterd
+	--	(DepartmentDetailNo--详细科室号
+	--		INT
+	--	,RegisterTime--确认预约所在时间
+	--		DATE
+	--	,SpecificTimePeriod--具体时间段
+	--		CHAR(20)
+	--	,NowCount--当前人数
+	--		INT
+	--	)
 
+	IF OBJECT_ID('tb_LimitCount')IS NOT NULL
+		DROP TABLE tb_LimitCount
+	GO
+	CREATE TABLE tb_LimitCount
+		(SpecificTimePeriod--具体时间段
+			CHAR(20)
+		,LimitCount--限制人数
+			INT
+		)
+	INSERT INTO tb_LimitCount(SpecificTimePeriod,LimitCount) VALUES
+	('07:00-07:30',5),
+	('07:30-08:00',5),
+	('08:00-08:30',5),
+	('08:30-09:00',5),
+	('09:00-09:30',5),
+	('09:30-10:00',5),
+	('10:00-10:30',5),
+	('10:30-11:00',5),
+	('11:00-11:30',5),
+	('11:30-12:00',5),
+	('12:00-12:30',5),
+	('12:30-13:00',5),
+	('13:00-13:30',5),
+	('13:30-14:00',5),
+	('14:00-14:30',5),
+	('14:30-15:00',5),
+	('15:00-15:30',5),
+	('15:30-16:00',5),
+	('16:00-16:30',5),
+	('16:30-17:00',5),
+	('17:00-17:30',5),
+	('17:30-18:00',5),
+	('18:00-18:30',5),
+	('18:30-19:00',5),
+	('19:00-19:30',5),
+	('19:30-20:00',5),
+	('20:00-20:30',5),
+	('20:30-21:00',5)
+
+--	INSERT INTO tb_Registerd(UserNo,DepartmentDetailNo,RegisterTime,SpecificTimePeriod) VALUES
+--(3210707010,1,'2023-3-9','07:00-07:30'),
+--(3210707011,1,'2023-3-9','07:00-07:30'),
+--(3210707012,1,'2023-3-9','07:00-07:30'),
+--(3210707013,1,'2023-3-9','07:00-07:30'),
+--(3210707014,1,'2023-3-9','07:00-07:30')
+
+
+--SELECT IIF(LC.LimitCount >=(SELECT COUNT(*) AS NowCount
+--		FROM tb_LimitCount AS LC
+--		RIGHT JOIN tb_Registerd AS R ON R.SpecificTimePeriod=LC.SpecificTimePeriod),'SHI','FOU')
+--FROM tb_LimitCount AS LC
+--RIGHT JOIN tb_Registerd AS R ON R.SpecificTimePeriod=LC.SpecificTimePeriod
+--WHERE R.RegisterTime='2023-3-9' AND R.SpecificTimePeriod='07:00-07:30' 

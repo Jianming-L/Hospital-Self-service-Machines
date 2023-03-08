@@ -107,10 +107,10 @@ namespace Hospital_Self_service_Machines.服务助手
             }
         }
 
-        public bool IsInsertRegister(string userno,int xiangxikeshi,DateTime yuyueshijian)
+        public bool IsInsertRegister(string userno,int xiangxikeshi,DateTime yuyueshijian,string jutishijianduan)
         {
             string commandText =
-                $@"INSERT INTO tb_Registerd VALUES('{userno}',{xiangxikeshi},@RegisterTime)";
+                $@"INSERT INTO tb_Registerd VALUES('{userno}',{xiangxikeshi},@RegisterTime,'{jutishijianduan}')";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlCommand cmd = new SqlCommand(commandText, con);
             cmd.Parameters.AddWithValue("@RegisterTime", yuyueshijian);
