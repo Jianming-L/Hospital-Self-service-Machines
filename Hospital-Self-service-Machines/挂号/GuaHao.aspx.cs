@@ -187,7 +187,14 @@ namespace Hospital_Self_service_Machines.挂号
                             //DateTime date = DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text);//预约日期
                             if (DateTime.Now.ToLocalTime() <= starttime)
                             {
-                                validate(index, time);
+                                if (IsFullRegister((int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text), time.Trim()))
+                                {
+                                    Response.Write("<script language=javascript>alert('预约失败！！！\\n该时间段预约人数已满！！！\\n请重新选另一时间段')</" + "script>");
+                                }
+                                else
+                                {
+                                    validate(index, time);
+                                }
                             }
                             else
                             {
@@ -206,7 +213,11 @@ namespace Hospital_Self_service_Machines.挂号
                 }
             }
         }
-        
+        /// <summary>
+        /// 验证是否存在用户、是否成功插入数据
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="time"></param>
         public void validate(int index,string time)
         {
             if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
@@ -224,6 +235,62 @@ namespace Hospital_Self_service_Machines.挂号
             else
             {
                 Response.Write("<script language=javascript>alert('您已经预约过该科室，不可重复预约')</" + "script>");
+            }
+        }
+        /// <summary>
+        /// 根据科室号、日期、时间段三个判断是否预约人满;若人满返回true，否则返回false
+        /// </summary>
+        public bool IsFullRegister(int keshihao, DateTime riqi, string shijianduan)
+        {
+            int flag = 0;
+            string commandText =
+                $@"SELECT COUNT(R.DepartmentDetailNo) AS PEOSUM,IIF(COUNT(R.DepartmentDetailNo)=5,'SHI','FOU') AS ISFULLREGISTER
+                FROM tb_Registerd AS R
+                GROUP BY R.DepartmentDetailNo,R.RegisterTime,R.SpecificTimePeriod
+                HAVING R.DepartmentDetailNo='{keshihao}' AND R.RegisterTime=@RegisterTime AND R.SpecificTimePeriod='{shijianduan}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            cmd.Parameters.AddWithValue("@RegisterTime", riqi);
+            cmd.Parameters["@RegisterTime"].SqlDbType = SqlDbType.Date;
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                string isfullregister;
+                if (reader.Read())
+                {
+                    isfullregister = reader["ISFULLREGISTER"].ToString();
+                    if (isfullregister == "SHI")
+                    {
+                        flag = 1;
+                    }
+                    else
+                    {
+                        flag = 0;
+                    }
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('读取数据失败！请联系前台工作员')</" + "script>");
+                }
+                if (flag == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+                //Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
+            }
+            finally
+            {
+                con.Close();
             }
         }
         protected void btn_Back_Click(object sender, EventArgs e)

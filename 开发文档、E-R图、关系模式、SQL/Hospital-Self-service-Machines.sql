@@ -338,11 +338,11 @@ USE 医院自助服务机
 	('20:30-21:00',5)
 
 --	INSERT INTO tb_Registerd(UserNo,DepartmentDetailNo,RegisterTime,SpecificTimePeriod) VALUES
---(3210707010,1,'2023-3-9','07:00-07:30'),
---(3210707011,1,'2023-3-9','07:00-07:30'),
---(3210707012,1,'2023-3-9','07:00-07:30'),
---(3210707013,1,'2023-3-9','07:00-07:30'),
---(3210707014,1,'2023-3-9','07:00-07:30')
+--(3210707010,1,'2023-3-11','07:00-07:30'),
+--(3210707011,1,'2023-3-11','07:00-07:30'),
+--(3210707012,1,'2023-3-11','07:00-07:30'),
+--(3210707013,1,'2023-3-11','07:00-07:30'),
+--(3210707014,1,'2023-3-11','07:00-07:30')
 
 
 --SELECT IIF(LC.LimitCount >=(SELECT COUNT(*) AS NowCount
@@ -351,3 +351,10 @@ USE 医院自助服务机
 --FROM tb_LimitCount AS LC
 --RIGHT JOIN tb_Registerd AS R ON R.SpecificTimePeriod=LC.SpecificTimePeriod
 --WHERE R.RegisterTime='2023-3-9' AND R.SpecificTimePeriod='07:00-07:30' 
+
+--SELECT D.DepartmentName,DD.DepartmentDetailName,IIF(U.UserNo='3210707010','是','否') AS IsRegisterd,R.UserNo
+--                    FROM tb_Department AS D
+--                    LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentNo=D.DepartmentNo
+--                    LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
+--					LEFT JOIN tb_User AS U ON U.UserNo=R.UserNo
+--                    WHERE D.DepartmentNo=1 AND DD.DepartmentDetailNo=1 AND R.RegisterTime='2023-3-10' AND R.SpecificTimePeriod='17:00-17:30'
