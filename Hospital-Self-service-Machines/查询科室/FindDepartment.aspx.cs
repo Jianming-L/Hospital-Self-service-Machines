@@ -90,7 +90,7 @@ namespace Hospital_Self_service_Machines.查询科室
         public void Bind()
         {
             string commandText =
-                $@"SELECT S.Symptom AS 详细症状,D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 所在科室
+                $@"SELECT S.Symptom AS 详细症状,D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 建议科室
                     FROM tb_SymptomStype AS SS
                     LEFT JOIN tb_Symptom AS S ON SS.SymptomStypeNo=S.SymptomNo
                     LEFT JOIN tb_DepartmentDetail AS DD ON S.SuggestDepartmentDetailNo=DD.DepartmentDetailNo

@@ -358,3 +358,8 @@ USE 医院自助服务机
 --                    LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
 --					LEFT JOIN tb_User AS U ON U.UserNo=R.UserNo
 --                    WHERE D.DepartmentNo=1 AND DD.DepartmentDetailNo=1 AND R.RegisterTime='2023-3-10' AND R.SpecificTimePeriod='17:00-17:30'
+
+--SELECT *,IIF(R.UserNo='3210707010','SHI','FOU')
+--FROM tb_User AS U
+--LEFT JOIN tb_Registerd AS R ON U.UserNo=R.UserNo
+--WHERE R.DepartmentDetailNo=1 AND R.RegisterTime='2023-3-10' AND R.SpecificTimePeriod='17:30-18:00'
