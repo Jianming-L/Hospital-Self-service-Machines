@@ -129,12 +129,10 @@ namespace Hospital_Self_service_Machines.挂号
         public void Bind()
         {
             string commandText =
-                $@"SELECT D.DepartmentName,DD.DepartmentDetailName,IIF(R.UserNo='{Session["UserNo"]}','是','否') AS IsRegisterd
+                $@"SELECT D.DepartmentName,DD.DepartmentDetailName
                     FROM tb_Department AS D
                     LEFT JOIN tb_DepartmentDetail AS DD ON D.DepartmentNo=DD.DepartmentNo
-                    LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
-                    LEFT JOIN tb_User AS U ON U.UserNo=R.UserNo
-                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}' AND U.UserNo='{Session["UserNo"]}' ";
+                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}'";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlDataAdapter adsa = new SqlDataAdapter(commandText, con);
             try
@@ -146,13 +144,13 @@ namespace Hospital_Self_service_Machines.挂号
                 {
                     gv_guahao.DataSource = ds;
                     gv_guahao.DataBind();
-                    lbl_null.Text = null;
+                    //lbl_null.Text = null;
                 }
                 else
                 {
                     gv_guahao.DataSource = null;
                     gv_guahao.DataBind();
-                    lbl_null.Text = "您已经预约过该科室，明天再来预约吧";
+                    //lbl_null.Text = "您已经预约过该科室，明天再来预约吧";
                 }
             }
             catch
@@ -164,7 +162,51 @@ namespace Hospital_Self_service_Machines.挂号
             {
                 con.Close();
             }
+            Bind1();
         }
+        /// <summary>
+        /// 第二个gridview，显示您预约成功的时间段
+        /// </summary>
+        public void Bind1()
+        {
+            string commandText =
+                $@"SELECT D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 详细科室,R.SpecificTimePeriod AS 时间段
+                    FROM tb_Department AS D
+                    LEFT JOIN tb_DepartmentDetail AS DD ON D.DepartmentNo=DD.DepartmentNo
+                    LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
+                    LEFT JOIN tb_User AS U ON U.UserNo=R.UserNo
+                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}' AND R.UserNo='{Session["UserNo"]}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlDataAdapter adsa = new SqlDataAdapter(commandText, con);
+            try
+            {
+                con.Open();
+                DataSet ds = new DataSet();
+                adsa.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    gv_xianshiyuyueshuju.DataSource = ds;
+                    gv_xianshiyuyueshuju.DataBind();
+                    lbl_myyuyue.Text = "您今天预约成功的科室";
+                }
+                else
+                {
+                    gv_xianshiyuyueshuju.DataSource = null;
+                    gv_xianshiyuyueshuju.DataBind();
+                    lbl_myyuyue.Text = null;
+                    //lbl_null.Text = "您已经预约过该科室，明天再来预约吧";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         /// <summary>
         /// 绑定下拉框数据
         /// </summary>
@@ -197,7 +239,7 @@ namespace Hospital_Self_service_Machines.挂号
                         if (time.TrimEnd() != "---请选择---")
                         {
                             DateTime starttime = DateTime.Parse(time.Substring(0, 5));
-                            //DateTime date = DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text);//预约日期
+                            DateTime date = DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text);//预约日期
                             if (DateTime.Now.ToLocalTime() <= starttime)
                             {
                                 if (IsFullRegister((int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text), time.Trim()))
@@ -231,11 +273,11 @@ namespace Hospital_Self_service_Machines.挂号
         /// </summary>
         /// <param name="index"></param>
         /// <param name="time"></param>
-        public void validate(int index,string time)
+        public void validate(int index, string time)
         {
-            if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"]))
+            if (usersrv.IsHasRegiserd(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], ((DropDownList)gv_guahao.Rows[index].Cells[4].FindControl("ddl_time")).Text))
             {
-                if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text),time.Trim()))
+                if (usersrv.IsInsertRegister(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text), time.Trim()))
                 {
                     Response.Write("<script language=javascript>alert('预约成功')</" + "script>");
                     Bind();

@@ -144,10 +144,10 @@ namespace Hospital_Self_service_Machines.服务助手
         /// <param name="keshidalei"></param>
         /// <param name="xiangxikeshi"></param>
         /// <returns></returns>
-        public bool IsHasRegiserd(string userno, int xiangxikeshi)
+        public bool IsHasRegiserd(string userno, int xiangxikeshi,string dateTime)
         {
             string commandText =
-                $@"SELECT * FROM tb_Registerd WHERE UserNo='{userno}' AND DepartmentDetailNo={xiangxikeshi}";
+                $@"SELECT * FROM tb_Registerd WHERE UserNo='{userno}' AND DepartmentDetailNo={xiangxikeshi} AND SpecificTimePeriod='{dateTime}'";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlCommand cmd = new SqlCommand(commandText, con);
             SqlDataReader reader;

@@ -60,13 +60,22 @@ namespace Hospital_Self_service_Machines.挂号
         protected global::System.Web.UI.WebControls.GridView gv_guahao;
 
         /// <summary>
-        /// lbl_null 控件。
+        /// lbl_myyuyue 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_null;
+        protected global::System.Web.UI.WebControls.Label lbl_myyuyue;
+
+        /// <summary>
+        /// gv_xianshiyuyueshuju 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_xianshiyuyueshuju;
 
         /// <summary>
         /// btn_Back 控件。
