@@ -178,6 +178,13 @@
     <Compile Include="个人中心\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="建档\DocumentationOne.aspx.cs">
+      <DependentUpon>DocumentationOne.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="建档\DocumentationOne.aspx.designer.cs">
+      <DependentUpon>DocumentationOne.aspx</DependentUpon>
+    </Compile>
     <Compile Include="挂号\GuaHao.aspx.cs">
       <DependentUpon>GuaHao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -221,6 +228,7 @@
     <Content Include="个人中心\Load.aspx" />
     <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
+    <Content Include="建档\DocumentationOne.aspx" />
     <Content Include="挂号\GuaHao.aspx" />
     <Content Include="查询科室\FindDepartment.aspx" />
     <Content Include="母版页\PageSite.Master" />

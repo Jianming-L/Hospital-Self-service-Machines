@@ -27,5 +27,10 @@ namespace Hospital_Self_service_Machines
         {
             Response.Redirect("查询科室/FindDepartment.aspx");
         }
+
+        protected void btn_BulidInfo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("建档/DocumentationOne.aspx");
+        }
     }
 }
