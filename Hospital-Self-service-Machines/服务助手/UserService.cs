@@ -173,5 +173,34 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
+        
+        public bool deleteyestodaydata(DateTime dateTime)
+        {
+            string commandText =
+                $@"DELETE tb_Registerd WHERE (SELECT DATEADD(SS,-1,DATEADD(DD,1,CONVERT(DATETIME,CONVERT(VARCHAR(10),GETDATE(),20))))) <= '{dateTime}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            try
+            {
+                con.Open();
+                int result=cmd.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

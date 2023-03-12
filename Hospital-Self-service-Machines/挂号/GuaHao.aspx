@@ -22,6 +22,7 @@
     <div style="margin-left:10%;width:1200px;padding-top:40px;padding-left:20px">
         <asp:Label runat="server" ID="lbl_msg" ForeColor="Red" Text="***注意预约时间范围：当天7：00-21：00可预约，其余时间或其它日期不可预约；预约时间段只能在当前时间下一个时间段"></asp:Label>
         <br />
+        <asp:Label runat="server" ID="lbl_time" ForeColor="Red"></asp:Label>
         <table>
             <tr>
                 <td>
@@ -40,7 +41,7 @@
                                     <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                                    <asp:TemplateField HeaderText="确认预约日期"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd ',minDate:'%y-%M-%d',maxDate:'%y-%M-%d'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
+                                    <asp:TemplateField HeaderText="日期"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd ',minDate:'%y-%M-%d',maxDate:'%y-%M-%d'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="确认时间段"><ItemTemplate><asp:DropDownList runat="server" ID="ddl_time" DataSource='<%# DropDownList_Time() %>' DataValueField="RegisterTime" DataTextField="RegisterTime" Width="150px" ></asp:DropDownList></ItemTemplate></asp:TemplateField>
                                     <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
                         <ControlStyle CssClass="btn_yuyue"></ControlStyle>
@@ -60,7 +61,7 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
+                <td><asp:Label runat="server" ID="lbl_null" Font-Size="Medium" ForeColor="Red"></asp:Label></td>
                 <td></td>
                 <td style="padding-top:20px;text-align:right">
                     <asp:Button runat="server" ID="btn_Back" Text="返回" Width="80" Height="40" OnClick="btn_Back_Click" />
@@ -69,6 +70,5 @@
         </table>
         <br />
     </div>
-    <asp:Label runat="server" ID="lbl"></asp:Label>
-    <asp:Label runat="server" ID="Label1"></asp:Label>
+<%--    <asp:Label runat="server" ID="Label1"></asp:Label>--%>
 </asp:Content>

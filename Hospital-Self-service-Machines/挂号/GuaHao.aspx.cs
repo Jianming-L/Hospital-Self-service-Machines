@@ -10,6 +10,7 @@ using System.Data;
 using Hospital_Self_service_Machines.服务助手;
 using System.Reflection.Emit;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Hospital_Self_service_Machines.挂号
 {
@@ -29,6 +30,7 @@ namespace Hospital_Self_service_Machines.挂号
                 {
                     listboxBind();
                     DropDownList_Time();
+                    usersrv.deleteyestodaydata(DateTime.Now);
                 }
             }
         }
@@ -116,14 +118,23 @@ namespace Hospital_Self_service_Machines.挂号
                 con.Close();
             }
         }
+        //SELECT DISTINCT D.DepartmentName,DD.DepartmentDetailName,IIF(R.SpecificTimePeriod= '{}','是','否') AS IsRegisterd
+        //            FROM tb_Department AS D
+        //            LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentNo=D.DepartmentNo
+        //            LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
+        //            WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}'
+
+        //            GROUP BY R.UserNo, D.DepartmentName, DD.DepartmentDetailName
+        //            HAVING IIF(R.UserNo= '{Session["UserNo"].ToString().Trim()}','是','否')='否'
         public void Bind()
         {
             string commandText =
-                $@"SELECT D.DepartmentName,DD.DepartmentDetailName,IIF(UserNo='{Session["UserNo"].ToString().Trim()}','是','否') AS IsRegisterd
+                $@"SELECT D.DepartmentName,DD.DepartmentDetailName,IIF(R.UserNo='{Session["UserNo"]}','是','否') AS IsRegisterd
                     FROM tb_Department AS D
-                    LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentNo=D.DepartmentNo
+                    LEFT JOIN tb_DepartmentDetail AS DD ON D.DepartmentNo=DD.DepartmentNo
                     LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
-                    WHERE D.DepartmentNo='{lb_guahao.SelectedIndex}' AND DD.DepartmentDetailNo='{Session["DepartmentDetailNo"]}'";
+                    LEFT JOIN tb_User AS U ON U.UserNo=R.UserNo
+                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}' AND U.UserNo='{Session["UserNo"]}' ";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlDataAdapter adsa = new SqlDataAdapter(commandText, con);
             try
@@ -135,11 +146,13 @@ namespace Hospital_Self_service_Machines.挂号
                 {
                     gv_guahao.DataSource = ds;
                     gv_guahao.DataBind();
+                    lbl_null.Text = null;
                 }
                 else
                 {
                     gv_guahao.DataSource = null;
                     gv_guahao.DataBind();
+                    lbl_null.Text = "您已经预约过该科室，明天再来预约吧";
                 }
             }
             catch
@@ -244,8 +257,10 @@ namespace Hospital_Self_service_Machines.挂号
         {
             int flag = 0;
             string commandText =
-                $@"SELECT COUNT(R.DepartmentDetailNo) AS PEOSUM,IIF(COUNT(R.DepartmentDetailNo)=5,'SHI','FOU') AS ISFULLREGISTER
+                $@"SELECT COUNT(R.DepartmentDetailNo) AS PEOSUM,IIF(COUNT(R.DepartmentDetailNo)=(SELECT L.LimitCount FROM tb_LimitCount AS L
+																				WHERE L.SpecificTimePeriod='{shijianduan}'),'SHI','FOU') AS ISFULLREGISTER
                 FROM tb_Registerd AS R
+                LEFT JOIN tb_LimitCount AS L ON L.SpecificTimePeriod=R.SpecificTimePeriod
                 GROUP BY R.DepartmentDetailNo,R.RegisterTime,R.SpecificTimePeriod
                 HAVING R.DepartmentDetailNo='{keshihao}' AND R.RegisterTime=@RegisterTime AND R.SpecificTimePeriod='{shijianduan}'";
             SqlConnection con = new SqlConnection(connectionstring);
@@ -272,7 +287,8 @@ namespace Hospital_Self_service_Machines.挂号
                 }
                 else
                 {
-                    Response.Write("<script language=javascript>alert('读取数据失败！请联系前台工作员')</" + "script>");
+                    flag = 0;
+                    //Response.Write("<script language=javascript>alert('读取数据失败！请联系前台工作员')</" + "script>");
                 }
                 if (flag == 1)
                 {
