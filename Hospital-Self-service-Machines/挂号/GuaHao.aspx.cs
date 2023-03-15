@@ -30,7 +30,7 @@ namespace Hospital_Self_service_Machines.挂号
                 {
                     listboxBind();
                     DropDownList_Time();
-                    usersrv.deleteyestodaydata(DateTime.Now);
+                    //usersrv.deleteyestodaydata(DateTime.Now);
                 }
             }
         }
@@ -88,6 +88,7 @@ namespace Hospital_Self_service_Machines.挂号
         {
             FindNumber();
             Bind();
+            BindDoctor();
         }
         public void FindNumber()
         {
@@ -354,6 +355,36 @@ namespace Hospital_Self_service_Machines.挂号
         protected void btn_Back_Click(object sender, EventArgs e)
         {
             Response.Redirect("../PageOne.aspx");
+        }
+
+        protected void lb_yisheng_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        public void BindDoctor()
+        {
+            lb_yisheng.Items.Clear();
+            string commandText =
+                $@"SELECT *
+                    FROM tb_DoctorInfo
+                    WHERE DepartmentDetailNo='{Session["DepartmentDetailNo"]}' AND WorkWeekday='{UserService.WeekdayCount}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                lb_yisheng.Items.Add(sdr["DoctorName"].ToString().Trim());
+                while (sdr.Read())
+                {
+                    lb_yisheng.Items.Add(sdr["DoctorName"].ToString().Trim());
+                }
+            }
+            else
+            {
+                lb_yisheng.Items.Add("暂无此数据");
+            }
+            con.Close();
         }
     }
 }

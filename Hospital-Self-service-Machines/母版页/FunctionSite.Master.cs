@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Hospital_Self_service_Machines.服务助手;
 
 namespace Hospital_Self_service_Machines.母版页
 {
@@ -14,6 +15,7 @@ namespace Hospital_Self_service_Machines.母版页
         {
             lbl_NowTime.Text = DateTime.Now.ToString();
             int weekdaycount = (int)DateTime.Now.DayOfWeek;
+            UserService.WeekdayCount = weekdaycount;
             lbl_Weekly.Text = weekday[weekdaycount];
             if (Session["UserNo"] != null)
             {

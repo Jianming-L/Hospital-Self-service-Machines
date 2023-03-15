@@ -26,15 +26,19 @@
         <table>
             <tr>
                 <td>
-                    <asp:ListBox ID="lb_guahao" runat="server" Width="400px" Height="200px" SelectionMode="Single" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahao_SelectedIndexChanged"></asp:ListBox>
+                    <asp:ListBox ID="lb_guahao" runat="server" Width="250px" Height="200px" SelectionMode="Single" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahao_SelectedIndexChanged"></asp:ListBox>
                 </td>
-                <td style="width:200px"></td>
+                <td style="width:120px"></td>
                 <td>
-                    <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="400px" Height="200px" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahaoxiangxi_SelectedIndexChanged" ></asp:ListBox>
+                    <asp:ListBox ID="lb_guahaoxiangxi" runat="server" Width="250px" Height="200px" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_guahaoxiangxi_SelectedIndexChanged" ></asp:ListBox>
+                </td>
+                <td style="width:120px;text-align:right">医生</td>
+                <td>
+                    <asp:ListBox runat="server" ID="lb_yisheng" Width="250px" Height="200px" CssClass="lb_guahao" AutoPostBack=true OnSelectedIndexChanged="lb_yisheng_SelectedIndexChanged" ></asp:ListBox>
                 </td>
             </tr>
             <tr>
-                <td rowspan="1" colspan="3">
+                <td rowspan="1" colspan="5">
                     <asp:GridView ID="gv_guahao" runat="server" Width="1000px" CssClass="gv_yuyue" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_guahao_RowCommand">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
@@ -66,7 +70,7 @@
                 </td>
             </tr>
             <tr>
-                <td rowspan="1" colspan="3" >
+                <td rowspan="1" colspan="5" >
                     <asp:GridView runat="server" Width="1000px" ID="gv_xianshiyuyueshuju" AutoGenerateColumns="False" CssClass="gv_yuyue">
                         <Columns>
                             <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshidalei" Text='<%# Bind("科室大类") %>'></asp:Label></ItemTemplate></asp:TemplateField>
