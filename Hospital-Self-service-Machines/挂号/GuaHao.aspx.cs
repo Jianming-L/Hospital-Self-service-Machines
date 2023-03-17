@@ -408,12 +408,19 @@ namespace Hospital_Self_service_Machines.挂号
 
         protected void gv_xianshiyuyueshuju_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName == "btn_quxiaoyuyue")
+            if(e.CommandName == "btn_quxiaoyuyue") 
             {
                 int index= Convert.ToInt32(e.CommandArgument);
-                if(usersrv.isdeleteyuyueshijian(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((Label)gv_xianshiyuyueshuju.Rows[index].Cells[2].Text), ))
+                Label1.Text = DateTime.Parse(((System.Web.UI.WebControls.Label)gv_xianshiyuyueshuju.Rows[index].Cells[2].Controls[0]).Text)+""+ ((System.Web.UI.WebControls.Label)gv_xianshiyuyueshuju.Rows[index].Cells[3].Controls[0]).Text;
+                if (usersrv.isdeleteyuyueshijian(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((System.Web.UI.WebControls.Label)gv_xianshiyuyueshuju.Rows[index].Cells[2].Controls[0]).Text), ((System.Web.UI.WebControls.Label)gv_xianshiyuyueshuju.Rows[index].Cells[3].Controls[0]).Text))
                 {
-
+                    Response.Write("<script language=javascript>alert('取消预约成功！')</" + "script>");
+                    Bind();
+                    Bind1();
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('取消预约失败！')</" + "script>");
                 }
             }
         }

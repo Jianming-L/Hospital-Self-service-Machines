@@ -84,7 +84,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshidalei" Text='<%# Bind("科室大类") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                             <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("详细科室") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                            <asp:TemplateField HeaderText="日期"><ItemTemplate><asp:Label runat="server" ID="lbl_riqi" Text='<%# Bind("日期") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                            <asp:TemplateField HeaderText="日期"><ItemTemplate><asp:Label runat="server" ID="lbl_riqi" Text='<%# Eval("日期","{0:yyyy年MM月dd日}") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                             <asp:TemplateField HeaderText="时间段"><ItemTemplate><asp:Label runat="server" ID="lbl_shijianduan" Text='<%# Bind("时间段") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                             <asp:ButtonField HeaderText="操作" Text="取消预约" ControlStyle-CssClass="btn_quxiaoyuyue" CommandName="btn_quxiaoyuyue" />
                         </Columns>
@@ -103,5 +103,5 @@
         </table>
         <br />
     </div>
-<%--    <asp:Label runat="server" ID="Label1"></asp:Label>--%>
+    <asp:Label runat="server" ID="Label1"></asp:Label>
 </asp:Content>
