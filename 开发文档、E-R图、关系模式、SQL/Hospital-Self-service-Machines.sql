@@ -239,6 +239,17 @@ USE 医院自助服务机
 			NOT NULL
 		)
 
+	--用户预约次数
+	IF OBJECT_ID('tb_RegisterdCancelCount')IS NOT NULL
+		DROP TABLE tb_RegisterdCancelCount;
+	GO
+	CREATE TABLE tb_RegisterdCancelCount
+		(UserNo
+			CHAR(10)
+		,Count
+			INT
+		)
+
 	--预约时间
 	IF OBJECT_ID('tb_RegisterdTime')IS NOT NULL
 		DROP TABLE tb_RegisterdTime;

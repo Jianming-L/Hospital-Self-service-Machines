@@ -15,6 +15,10 @@
         .gv_yuyue {
             text-align: center;
         }
+        .btn_quxiaoyuyue{
+            text-decoration:none;
+            color:cadetblue;
+        }
     </style>
     <script src="../DatePicker/WdatePicker.js"></script>
 </asp:Content>
@@ -39,12 +43,17 @@
             </tr>
             <tr>
                 <td rowspan="1" colspan="5">
+                    <asp:Label runat="server" ID="lbl_WorkTime" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="1" colspan="5">
                     <asp:GridView ID="gv_guahao" runat="server" Width="1000px" CssClass="gv_yuyue" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_guahao_RowCommand">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
-                                    <%--<asp:TemplateField HeaderText="是否预约"><ItemTemplate><asp:Label runat="server" ID="lbl_shifouyuyue" Text='<%# Bind("IsRegisterd") %>'></asp:Label></ItemTemplate></asp:TemplateField>--%>
+                                    <asp:TemplateField HeaderText="医生"><ItemTemplate><asp:Label runat="server" ID="lbl_yisheng" Text='<%# Bind("DoctorName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="日期"><ItemTemplate><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd ',minDate:'%y-%M-%d',maxDate:'%y-%M-%d'})" placeholder="点击本框选择预约时间..."></asp:TextBox></ItemTemplate></asp:TemplateField>
                                     <asp:TemplateField HeaderText="确认时间段"><ItemTemplate><asp:DropDownList runat="server" ID="ddl_time" DataSource='<%# DropDownList_Time() %>' DataValueField="RegisterTime" DataTextField="RegisterTime" Width="150px" ></asp:DropDownList></ItemTemplate></asp:TemplateField>
                                     <asp:ButtonField HeaderText="请点击预约" Text="预约" CommandName="btn_yuyue" ControlStyle-CssClass="btn_yuyue" >
@@ -71,17 +80,21 @@
             </tr>
             <tr>
                 <td rowspan="1" colspan="5" >
-                    <asp:GridView runat="server" Width="1000px" ID="gv_xianshiyuyueshuju" AutoGenerateColumns="False" CssClass="gv_yuyue">
+                    <asp:GridView runat="server" Width="1000px" ID="gv_xianshiyuyueshuju" AutoGenerateColumns="False" CssClass="gv_yuyue" OnRowCommand="gv_xianshiyuyueshuju_RowCommand">
                         <Columns>
                             <asp:TemplateField HeaderText="科室大类"><ItemTemplate><asp:Label runat="server" ID="lbl_keshidalei" Text='<%# Bind("科室大类") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                             <asp:TemplateField HeaderText="详细科室"><ItemTemplate><asp:Label runat="server" ID="lbl_xiangxikeshi" Text='<%# Bind("详细科室") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                            <asp:TemplateField HeaderText="日期"><ItemTemplate><asp:Label runat="server" ID="lbl_riqi" Text='<%# Bind("日期") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                             <asp:TemplateField HeaderText="时间段"><ItemTemplate><asp:Label runat="server" ID="lbl_shijianduan" Text='<%# Bind("时间段") %>'></asp:Label></ItemTemplate></asp:TemplateField>
+                            <asp:ButtonField HeaderText="操作" Text="取消预约" ControlStyle-CssClass="btn_quxiaoyuyue" CommandName="btn_quxiaoyuyue" />
                         </Columns>
                     </asp:GridView>
                 </td>
             </tr>
             <tr>
                 <td><%--<asp:Label runat="server" ID="lbl_null" Font-Size="Medium" ForeColor="Red"></asp:Label>--%></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td style="padding-top:20px;text-align:right">
                     <asp:Button runat="server" ID="btn_Back" Text="返回" Width="80" Height="40" OnClick="btn_Back_Click" />

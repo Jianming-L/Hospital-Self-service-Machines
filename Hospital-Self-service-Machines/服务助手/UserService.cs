@@ -177,6 +177,167 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回星期(int)
         /// </summary>
         public static int WeekdayCount { get; set; }
+        /// <summary>
+        /// 返回医生工作时间段
+        /// </summary>
+        public static string WorkTime { get; set; }
+        /// <summary>
+        /// 预约时间在医生工作时间范围之内
+        /// </summary>
+        /// <param name="doctorworktime"></param>
+        /// <param name="starttime"></param>
+        /// <returns></returns>
+        public bool indoctorworktime(DateTime doctorworktime,DateTime starttime)
+        {
+            if(doctorworktime<= starttime)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool isdeleteyuyueshijian(string userno, int departmentno, DateTime riqi, string shijianduan)
+        {
+            string commandText =
+                $@"DELETE tb_Registerd 
+                    WHERE UserNo='{userno}' AND DepartmentDetailNo='{departmentno}' AND RegisterTime='{riqi}' AND SpecificTimePeriod='{shijianduan}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            try
+            {
+                con.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
+                    if (ishasintableRegisterdCancelCount(userno))
+                    {
+                        issucceedupdate(userno);
+                    }
+                    else
+                    {
+                        isinserttableRegisterdCancelCount(userno);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 是否存在用户
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool ishasintableRegisterdCancelCount(string userno)
+        {
+            string commandText =
+                $@"SELECT *
+                    FROM tb_RegisterdCancelCount
+                    WHERE UserNo='{userno}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader= cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 初始插入数据
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool isinserttableRegisterdCancelCount(string userno)
+        {
+            string commandText =
+                $@"INSERT INTO tb_RegisterdCancelCount VALUES('{userno}',1) ";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            try
+            {
+                con.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 当取消预约时，该用户爽约会记过一次
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool issucceedupdate(string userno)
+        {
+            string commandText =
+                $@"UPDATE tb_RegisterdCancelCount SET Count+=1
+                    WHERE UserNo='{userno}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            try
+            {
+                con.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         //public bool deleteyestodaydata(DateTime dateTime)
         //{
         //    string commandText =

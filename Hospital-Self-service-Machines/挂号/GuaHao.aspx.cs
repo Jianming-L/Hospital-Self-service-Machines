@@ -87,7 +87,6 @@ namespace Hospital_Self_service_Machines.挂号
         protected void lb_guahaoxiangxi_SelectedIndexChanged(object sender, EventArgs e)
         {
             FindNumber();
-            Bind();
             BindDoctor();
         }
         public void FindNumber()
@@ -130,16 +129,26 @@ namespace Hospital_Self_service_Machines.挂号
         public void Bind()
         {
             string commandText =
-                $@"SELECT D.DepartmentName,DD.DepartmentDetailName
+                $@"SELECT D.DepartmentName,DD.DepartmentDetailName,DI.DoctorName,DI.WorkTime AS WorkTime
                     FROM tb_Department AS D
                     LEFT JOIN tb_DepartmentDetail AS DD ON D.DepartmentNo=DD.DepartmentNo
-                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}'";
+                    LEFT JOIN tb_DoctorInfo AS DI ON DI.DepartmentDetailNo=DD.DepartmentDetailNo
+                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}' AND DI.WorkWeekday='{UserService.WeekdayCount}'";
             SqlConnection con = new SqlConnection(connectionstring);
+            SqlConnection con1 = new SqlConnection(connectionstring);
             SqlDataAdapter adsa = new SqlDataAdapter(commandText, con);
+            SqlCommand cmd = new SqlCommand(commandText, con1);
+            SqlDataReader reader;
             try
             {
                 con.Open();
+                con1.Open();
                 DataSet ds = new DataSet();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    UserService.WorkTime = reader["WorkTime"].ToString();
+                }
                 adsa.Fill(ds);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -156,12 +165,13 @@ namespace Hospital_Self_service_Machines.挂号
             }
             catch
             {
-                //throw;
-                Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
+                throw;
+                //Response.Write("<script language=javascript>alert('系统出现异常！请联系前台工作员')</" + "script>");
             }
             finally
             {
                 con.Close();
+                con1.Close();
             }
             Bind1();
         }
@@ -171,7 +181,7 @@ namespace Hospital_Self_service_Machines.挂号
         public void Bind1()
         {
             string commandText =
-                $@"SELECT D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 详细科室,R.SpecificTimePeriod AS 时间段
+                $@"SELECT D.DepartmentName AS 科室大类,DD.DepartmentDetailName AS 详细科室,R.RegisterTime AS 日期,R.SpecificTimePeriod AS 时间段
                     FROM tb_Department AS D
                     LEFT JOIN tb_DepartmentDetail AS DD ON D.DepartmentNo=DD.DepartmentNo
                     LEFT JOIN tb_Registerd AS R ON R.DepartmentDetailNo=DD.DepartmentDetailNo
@@ -240,16 +250,24 @@ namespace Hospital_Self_service_Machines.挂号
                         if (time.TrimEnd() != "---请选择---")
                         {
                             DateTime starttime = DateTime.Parse(time.Substring(0, 5));
+                            DateTime doctorstarttime = DateTime.Parse(UserService.WorkTime.Substring(0,5));
                             DateTime date = DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text);//预约日期
                             if (DateTime.Now.ToLocalTime() <= starttime)
                             {
-                                if (IsFullRegister((int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text), time.Trim()))
+                                if (usersrv.indoctorworktime(doctorstarttime, starttime))
                                 {
-                                    Response.Write("<script language=javascript>alert('预约失败！！！\\n该时间段预约人数已满！！！\\n请重新选另一时间段')</" + "script>");
+                                    if (IsFullRegister((int)Session["DepartmentDetailNo"], DateTime.Parse(((TextBox)gv_guahao.Rows[index].Cells[1].FindControl("d412")).Text), time.Trim()))
+                                    {
+                                        Response.Write("<script language=javascript>alert('预约失败！！！\\n该时间段预约人数已满！！！\\n请重新选另一时间段')</" + "script>");
+                                    }
+                                    else
+                                    {
+                                        validate(index, time);
+                                    }
                                 }
                                 else
                                 {
-                                    validate(index, time);
+                                    Response.Write("<script language=javascript>alert('请重新选择预约时间段\\n预约时间段不在医生工作时间')</" + "script>");
                                 }
                             }
                             else
@@ -359,7 +377,8 @@ namespace Hospital_Self_service_Machines.挂号
 
         protected void lb_yisheng_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            Bind();
+            lbl_WorkTime.Text = "请选择相对应的时间段，医生今天在位时间段："+ UserService.WorkTime;
         }
         public void BindDoctor()
         {
@@ -385,6 +404,18 @@ namespace Hospital_Self_service_Machines.挂号
                 lb_yisheng.Items.Add("暂无此数据");
             }
             con.Close();
+        }
+
+        protected void gv_xianshiyuyueshuju_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "btn_quxiaoyuyue")
+            {
+                int index= Convert.ToInt32(e.CommandArgument);
+                if(usersrv.isdeleteyuyueshijian(Session["UserNo"].ToString().Trim(), (int)Session["DepartmentDetailNo"], DateTime.Parse(((Label)gv_xianshiyuyueshuju.Rows[index].Cells[2].Text), ))
+                {
+
+                }
+            }
         }
     }
 }
