@@ -3,11 +3,12 @@
     <style type="text/css">
         .div_intoinformation{
             position:absolute;
-            margin-left:45%;
-            margin-top:5%;
-            background-color:white;
+            margin-left:3%;
+            margin-top:2%;
+            background-color:rgba(255,255,255,0.5);
         }
     </style>
+    <script src="../DatePicker/WdatePicker.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="padding-left:10px;padding-top:10px;">
@@ -29,7 +30,13 @@
         </table>
     </div>
     <div class="div_intoinformation">
-        <p>输入您的个人信息</p>
-
+        <table>
+            <tr>
+                <td>姓名：</td><td style="Width:150px"><asp:Label runat="server" ID="lbl_name" ></asp:Label></td>
+                <td>性别：</td><td style="Width:150px"><asp:RadioButton runat="server" ID="rdb_gender_man" Text="男" GroupName="sex"/><asp:RadioButton runat="server" ID="rdb_gender_woman" Text="女" GroupName="sex"/></td>
+                <td>出生日期：</td><td style="Width:250px"><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy年MM月dd日 '})" placeholder="点击本框选择出生年月..."></asp:TextBox></td>
+                <td>年龄：</td><td><asp:Label runat="server" ID="lbl_age"></asp:Label></td>
+            </tr>
+        </table>
     </div>
 </asp:Content>

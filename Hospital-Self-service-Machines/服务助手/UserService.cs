@@ -12,6 +12,23 @@ namespace Hospital_Self_service_Machines.服务助手
     public class UserService
     {
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
+        /// <summary>
+        /// 返回星期(int)
+        /// </summary>
+        public static int WeekdayCount { get; set; }
+        /// <summary>
+        /// 返回医生工作时间段
+        /// </summary>
+        public static string WorkTime { get; set; }
+        /// <summary>
+        /// 返回医生编号
+        /// </summary>
+        public static string DoctorNo { get; set; }
+        /// <summary>
+        /// 返回用户编号
+        /// </summary>
+        public static string UserName { get; set; }
+
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
@@ -77,7 +94,7 @@ namespace Hospital_Self_service_Machines.服务助手
         public bool IsSucceedLoad(string userno,string password)
         {
             string commandText =
-                $@"SELECT 1 FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
+                $@"SELECT * FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlCommand cmd = new SqlCommand(commandText, con);
             cmd.Parameters.AddWithValue("@UserNo", userno);
@@ -90,6 +107,7 @@ namespace Hospital_Self_service_Machines.服务助手
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    UserName = reader["UserName"].ToString();
                     return true;
                 }
                 else
@@ -173,14 +191,6 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
-        /// <summary>
-        /// 返回星期(int)
-        /// </summary>
-        public static int WeekdayCount { get; set; }
-        /// <summary>
-        /// 返回医生工作时间段
-        /// </summary>
-        public static string WorkTime { get; set; }
         /// <summary>
         /// 预约时间在医生工作时间范围之内
         /// </summary>

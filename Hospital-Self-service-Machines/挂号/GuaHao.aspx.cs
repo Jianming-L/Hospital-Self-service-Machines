@@ -133,7 +133,7 @@ namespace Hospital_Self_service_Machines.挂号
                     FROM tb_Department AS D
                     LEFT JOIN tb_DepartmentDetail AS DD ON D.DepartmentNo=DD.DepartmentNo
                     LEFT JOIN tb_DoctorInfo AS DI ON DI.DepartmentDetailNo=DD.DepartmentDetailNo
-                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}' AND DI.WorkWeekday='{UserService.WeekdayCount}'";
+                    WHERE DD.DepartmentDetailNo= '{Session["DepartmentDetailNo"]}' AND DI.WorkWeekday='{UserService.WeekdayCount}' AND DI.DoctorNo='{UserService.DoctorNo}'";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlConnection con1 = new SqlConnection(connectionstring);
             SqlDataAdapter adsa = new SqlDataAdapter(commandText, con);
@@ -377,8 +377,9 @@ namespace Hospital_Self_service_Machines.挂号
 
         protected void lb_yisheng_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UserService.DoctorNo = lb_yisheng.SelectedItem.Value;
             Bind();
-            lbl_WorkTime.Text = "请选择相对应的时间段，医生今天在位时间段："+ UserService.WorkTime;
+            lbl_WorkTime.Text = "请选择相对应的时间段，医生今天在位时间段：" + UserService.WorkTime;
         }
         public void BindDoctor()
         {
@@ -393,10 +394,12 @@ namespace Hospital_Self_service_Machines.挂号
             SqlDataReader sdr = cmd.ExecuteReader();
             if (sdr.Read())
             {
-                lb_yisheng.Items.Add(sdr["DoctorName"].ToString().Trim());
+                //lb_yisheng.Items.Add(sdr["DoctorName"].ToString().Trim(), sdr["DoctorNo"].ToString());
+                lb_yisheng.Items.Add(new ListItem(sdr["DoctorName"].ToString().Trim(), sdr["DoctorNo"].ToString()));
                 while (sdr.Read())
                 {
-                    lb_yisheng.Items.Add(sdr["DoctorName"].ToString().Trim());
+                    lb_yisheng.Items.Add(new ListItem(sdr["DoctorName"].ToString().Trim(), sdr["DoctorNo"].ToString()));
+                    //lb_yisheng.Items.Add(sdr["DoctorName"].ToString().Trim());
                 }
             }
             else
