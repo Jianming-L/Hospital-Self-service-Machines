@@ -12,28 +12,27 @@ namespace Hospital_Self_service_Machines.建档
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //lbl_name.Text = UserService.UserName;
-            lbl_name.Text = "";
-            if (d412.Text != "")
+            if (!IsPostBack)
             {
-                lbl_age.Text=GetAgeByBirthdate(d412.Text).ToString();
+                lbl_name.Text = UserService.UserName;
+                //lbl_name.Text = "";
             }
         }
-        public void Bind()
+
+        protected void btn_submit_Click(object sender, EventArgs e)
         {
-            //lbl_age.Text = (DateTime.Now - DateTime.Parse(d412.Text)).ToString();
 
         }
-        public int GetAgeByBirthdate(string birthdate)
-        {
-            DateTime now = DateTime.Now;
-            DateTime dt = DateTime.Parse(birthdate);
-            int age = now.Year - dt.Year;
-            if (now.Month < dt.Month || (now.Month == dt.Month && now.Day < dt.Day))
-            {
-                age--;
-            }
-            return age < 0 ? 0 : age;
-        }
+        //public int GetAgeByBirthdate(string birthdate)
+        //{
+        //    DateTime now = DateTime.Now;
+        //    DateTime dt = DateTime.Parse(birthdate);
+        //    int age = now.Year - dt.Year;
+        //    if (now.Month < dt.Month || (now.Month == dt.Month && now.Day < dt.Day))
+        //    {
+        //        age--;
+        //    }
+        //    return age < 0 ? 0 : age;
+        //}
     }
 }

@@ -666,7 +666,124 @@ USE 医院自助服务机
 	(104,'陈仓翼',33,0,'7:00-12:00'),
 	(105,'刘枝迟',33,0,'18:00-24:00')
 
+	IF OBJECT_ID('tb_Nation')IS NOT NULL
+		DROP TABLE tb_Nation;
+	GO
+	CREATE TABLE tb_Nation
+		(No
+			INT
+			NOT NULL
+			PRIMARY KEY(No)
+		,NationName
+			CHAR(50)
+			NOT NULL
+		)
+	INSERT INTO tb_Nation(No,NationName)VALUES 
+	(1,'中国'),
+	(2,'俄罗斯'),
+	(3,'美国')
 
+	IF OBJECT_ID('tb_Province')IS NOT NULL
+		DROP TABLE tb_Province;
+	GO
+	CREATE TABLE tb_Province
+		(No
+			INT
+			NOT NULL
+			PRIMARY KEY(No)
+		,ProvinceName
+			CHAR(50)
+			NOT NULL
+		)
+	INSERT INTO tb_Province(No,ProvinceName)VALUES 
+	(1,'福建'),
+	(2,'浙江'),
+	(3,'台湾')
+
+	IF OBJECT_ID('tb_City')IS NOT NULL
+		DROP TABLE tb_City;
+	GO
+	CREATE TABLE tb_City
+		(No
+			INT
+			NOT NULL
+			PRIMARY KEY(No)
+		,CityName
+			CHAR(50)
+			NOT NULL
+		,ProvinceNo
+			INT 
+			NOT NULL
+			CONSTRAINT fk_City_ProvinceNo
+			FOREIGN KEY (ProvinceNo)
+			REFERENCES tb_Province(No)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
+		)
+	INSERT INTO tb_City(No,CityName,ProvinceNo)VALUES 
+	(1,'福州',1),
+	(2,'厦门',1),
+	(3,'杭州',2),
+	(4,'宁波',2),
+	(5,'台北',3),
+	(6,'高雄',3)
+
+	IF OBJECT_ID('tb_Country')IS NOT NULL
+		DROP TABLE tb_Country;
+	GO
+	CREATE TABLE tb_Country
+		(No
+			INT
+			NOT NULL
+			PRIMARY KEY(No)
+		,CityName
+			CHAR(50)
+			NOT NULL
+		,CityNo
+			INT 
+			NOT NULL
+			CONSTRAINT fk_Country_CityNo
+			FOREIGN KEY (CityNo)
+			REFERENCES tb_City(No)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
+		)
+	INSERT INTO tb_Country(No,CityName,CityNo)VALUES 
+	(1,'闽侯',1),
+	(2,'思明',2),
+	(3,'余杭',2),
+	(4,'江北',2),
+	(5,'台北',3),
+	(6,'高雄',3)
+
+
+	--建档信息
+	IF OBJECT_ID('tb_DocumentationInformation')IS NOT NULL
+		DROP TABLE tb_DocumentationInformation;
+	GO
+	CREATE TABLE tb_DocumentationInformation
+		(UserNo
+			CHAR(10)
+			NOT NULL
+			CONSTRAINT pk_DocumentationInformation_UserNo
+			PRIMARY KEY (UserNo)
+		,UserName
+			VARCHAR(20)
+		,Gender
+			BIT
+		,Birthday
+			CHAR(20)
+		,Nation
+			CHAR(50)
+		,Province
+			CHAR(30)
+		,City
+			CHAR(30)
+		,Country
+			CHAR(50)
+		,EthnicGroup
+			CHAR(20)
+		)
 
 
 
