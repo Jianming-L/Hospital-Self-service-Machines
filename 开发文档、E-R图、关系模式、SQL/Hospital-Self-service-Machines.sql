@@ -666,6 +666,7 @@ USE 医院自助服务机
 	(104,'陈仓翼',33,0,'7:00-12:00'),
 	(105,'刘枝迟',33,0,'18:00-24:00')
 
+	--国家
 	IF OBJECT_ID('tb_Nation')IS NOT NULL
 		DROP TABLE tb_Nation;
 	GO
@@ -679,10 +680,12 @@ USE 医院自助服务机
 			NOT NULL
 		)
 	INSERT INTO tb_Nation(No,NationName)VALUES 
+	(0,'---请选择---'),
 	(1,'中国'),
 	(2,'俄罗斯'),
 	(3,'美国')
 
+	--省
 	IF OBJECT_ID('tb_Province')IS NOT NULL
 		DROP TABLE tb_Province;
 	GO
@@ -694,12 +697,21 @@ USE 医院自助服务机
 		,ProvinceName
 			CHAR(50)
 			NOT NULL
+		,NationNo
+			INT
+			CONSTRAINT fk_Province_NationNo
+			FOREIGN KEY (NationNo)
+			REFERENCES tb_Nation(No)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
 		)
-	INSERT INTO tb_Province(No,ProvinceName)VALUES 
-	(1,'福建'),
-	(2,'浙江'),
-	(3,'台湾')
+	INSERT INTO tb_Province(No,ProvinceName,NationNo)VALUES 
+	(0,'---请选择---',0),
+	(1,'福建',1),
+	(2,'浙江',1),
+	(3,'台湾',1)
 
+	--市区
 	IF OBJECT_ID('tb_City')IS NOT NULL
 		DROP TABLE tb_City;
 	GO
@@ -721,6 +733,7 @@ USE 医院自助服务机
 			ON UPDATE CASCADE
 		)
 	INSERT INTO tb_City(No,CityName,ProvinceNo)VALUES 
+	(0,'---请选择---',0),
 	(1,'福州',1),
 	(2,'厦门',1),
 	(3,'杭州',2),
@@ -728,6 +741,7 @@ USE 医院自助服务机
 	(5,'台北',3),
 	(6,'高雄',3)
 
+	--县区
 	IF OBJECT_ID('tb_Country')IS NOT NULL
 		DROP TABLE tb_Country;
 	GO
@@ -749,13 +763,32 @@ USE 医院自助服务机
 			ON UPDATE CASCADE
 		)
 	INSERT INTO tb_Country(No,CityName,CityNo)VALUES 
+	(0,'---请选择---',0),
 	(1,'闽侯',1),
 	(2,'思明',2),
-	(3,'余杭',2),
-	(4,'江北',2),
-	(5,'台北',3),
-	(6,'高雄',3)
+	(3,'余杭',3),
+	(4,'江北',4),
+	(5,'中正',5),
+	(6,'桃园',6)
 
+	IF OBJECT_ID('tb_EthnicGroup')IS NOT NULL
+		DROP TABLE tb_EthnicGroup;
+	GO
+	CREATE TABLE tb_EthnicGroup
+		(EthnicGroupNo
+			INT
+			NOT NULL
+			PRIMARY KEY(EthnicGroupNo)
+		,EthnicGroupName
+			CHAR(30)
+			NOT NULL
+		)
+	INSERT INTO tb_EthnicGroup(EthnicGroupNo,EthnicGroupName)VALUES 
+	(0,'---请选择---'),
+	(1,'汉族'),
+	(2,'壮族'),
+	(3,'畲族'),
+	(4,'高山族')
 
 	--建档信息
 	IF OBJECT_ID('tb_DocumentationInformation')IS NOT NULL
