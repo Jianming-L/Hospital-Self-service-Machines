@@ -12,6 +12,7 @@ namespace Hospital_Self_service_Machines.服务助手
     public class UserService
     {
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
+        static string conns = "Data Source=(Local);Initial Catalog=医院自助服务机;Integrated Security=True;";
         /// <summary>
         /// 返回星期(int)
         /// </summary>
@@ -28,7 +29,18 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回用户编号
         /// </summary>
         public static string UserName { get; set; }
-
+        /// <summary>
+        /// 返回国籍编号
+        /// </summary>
+        public static int NationNo { get; set; }
+        /// <summary>
+        /// 返回省编号
+        /// </summary>
+        public static int ProvinceNo { get; set; }
+        /// <summary>
+        /// 返回市区编号
+        /// </summary>
+        public static int CityNo { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
@@ -348,6 +360,16 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
+        //public static DataTable Table(string sql)
+        //{
+        //    using(SqlConnection con=new SqlConnection(conns))
+        //    {
+        //        SqlDataAdapter adsa = new SqlDataAdapter(sql, con);
+        //        DataTable dt = new DataTable();
+        //        adsa.Fill(dt);
+        //        return dt;
+        //    }
+        //}
         //public bool deleteyestodaydata(DateTime dateTime)
         //{
         //    string commandText =

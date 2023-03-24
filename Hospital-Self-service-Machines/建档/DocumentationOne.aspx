@@ -1,4 +1,4 @@
-﻿<%@ Page Title="输入个人信息" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="DocumentationOne.aspx.cs" Inherits="Hospital_Self_service_Machines.建档.DocumentationOne" %>
+﻿<%@ Page Title="输入个人信息" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="DocumentationOne.aspx.cs" Inherits="Hospital_Self_service_Machines.建档.DocumentationOne" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .div_intoinformation{
@@ -38,15 +38,15 @@
                 <td>姓名：</td><td><asp:Label runat="server" ID="lbl_name" Width="150" ></asp:Label></td>
                 <td>性别：</td><td style="Width:150px"><asp:RadioButton runat="server" ID="rdb_gender_man" Text="男" GroupName="sex"/><asp:RadioButton runat="server" ID="rdb_gender_woman" Text="女" GroupName="sex"/></td>
                 <td>出生日期：</td><td><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy年MM月dd日 '})" placeholder="点击本框选择出生年月..."></asp:TextBox></td>
-                <td>国籍：</td><td style="Width:150px"><asp:DropDownList runat="server" ID="ddl_nation" DataSource='<%# DropDownList_nation() %>' DataValueField="No" DataTextField="NationName" Width="150px"></asp:DropDownList></td>
+                <td>国籍：</td><td style="Width:150px"><asp:DropDownList runat="server" ID="ddl_nation" Width="150px" AutoPostBack=true OnSelectedIndexChanged="ddl_nation_SelectedIndexChanged"></asp:DropDownList></td>
             </tr>
             <tr style="height:20px"></tr>
             <tr>
-                <td>出生地：</td><td><asp:DropDownList runat="server" ID="ddl_sheng" Width="150"></asp:DropDownList></td>
+                <td>出生地：</td><td><asp:DropDownList runat="server" ID="ddl_sheng" Width="150" AutoPostBack=true OnSelectedIndexChanged="ddl_sheng_SelectedIndexChanged"></asp:DropDownList></td>
                 <td>省(区、市)</td>
-                <td><asp:DropDownList runat="server" ID="ddl_shi" Width="150"></asp:DropDownList></td>
-                <td>市</td><td><asp:DropDownList runat="server" ID="ddl_xian" Width="180"></asp:DropDownList>县</td>
-                <td>民族：</td><td><asp:DropDownList runat="server" ID="ddl_minzu" Width="150"></asp:DropDownList></td>
+                <td><asp:DropDownList runat="server" ID="ddl_shi" Width="150" AutoPostBack=true OnSelectedIndexChanged="ddl_shi_SelectedIndexChanged"></asp:DropDownList></td>
+                <td>市</td><td><asp:DropDownList runat="server" ID="ddl_xian" Width="180" AutoPostBack=true></asp:DropDownList>县</td>
+                <td>民族：</td><td><asp:DropDownList runat="server" ID="ddl_minzu" Width="150" AutoPostBack=true></asp:DropDownList></td>
             </tr>
         </table>
     </div>

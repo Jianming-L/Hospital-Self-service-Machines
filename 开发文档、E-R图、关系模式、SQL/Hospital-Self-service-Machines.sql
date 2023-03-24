@@ -750,7 +750,7 @@ USE 医院自助服务机
 			INT
 			NOT NULL
 			PRIMARY KEY(No)
-		,CityName
+		,CountryName
 			CHAR(50)
 			NOT NULL
 		,CityNo
@@ -762,7 +762,7 @@ USE 医院自助服务机
 			ON DELETE CASCADE
 			ON UPDATE CASCADE
 		)
-	INSERT INTO tb_Country(No,CityName,CityNo)VALUES 
+	INSERT INTO tb_Country(No,CountryName,CityNo)VALUES 
 	(0,'---请选择---',0),
 	(1,'闽侯',1),
 	(2,'思明',2),
