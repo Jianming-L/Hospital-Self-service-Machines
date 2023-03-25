@@ -42,11 +42,12 @@
             </tr>
             <tr style="height:20px"></tr>
             <tr>
-                <td>出生地：</td><td><asp:DropDownList runat="server" ID="ddl_sheng" Width="150" AutoPostBack=true OnSelectedIndexChanged="ddl_sheng_SelectedIndexChanged"></asp:DropDownList></td>
+                <td>出生地：</td><td><asp:DropDownList runat="server" ID="ddl_sheng" Width="150" AutoPostBack=true OnSelectedIndexChanged="ddl_sheng_SelectedIndexChanged">
+                </asp:DropDownList></td>
                 <td>省(区、市)</td>
                 <td><asp:DropDownList runat="server" ID="ddl_shi" Width="150" AutoPostBack=true OnSelectedIndexChanged="ddl_shi_SelectedIndexChanged"></asp:DropDownList></td>
                 <td>市</td><td><asp:DropDownList runat="server" ID="ddl_xian" Width="180" AutoPostBack=true></asp:DropDownList>县</td>
-                <td>民族：</td><td><asp:DropDownList runat="server" ID="ddl_minzu" Width="150" AutoPostBack=true></asp:DropDownList></td>
+                <td>民族：</td><td><asp:DropDownList runat="server" ID="ddl_minzu" Width="150" AutoPostBack=true OnSelectedIndexChanged="ddl_minzu_SelectedIndexChanged"></asp:DropDownList></td>
             </tr>
         </table>
     </div>
@@ -55,4 +56,5 @@
         <asp:Button runat="server" ID="btn_back" Width="80" Height="40" Text="返回" OnClick="btn_back_Click" />
     </div>
     <asp:Label runat="server" ID="lbl_msg"></asp:Label>
+    <asp:Label runat="server" ID="lbl_msd"></asp:Label>
 </asp:Content>

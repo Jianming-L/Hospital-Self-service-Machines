@@ -92,7 +92,7 @@
                 </td>
             </tr>
             <tr>
-                <td><%--<asp:Label runat="server" ID="lbl_null" Font-Size="Medium" ForeColor="Red"></asp:Label>--%></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -103,5 +103,4 @@
         </table>
         <br />
     </div>
-    <asp:Label runat="server" ID="Label1"></asp:Label>
 </asp:Content>

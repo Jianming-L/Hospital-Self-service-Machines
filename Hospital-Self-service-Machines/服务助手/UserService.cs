@@ -41,6 +41,22 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回市区编号
         /// </summary>
         public static int CityNo { get; set; }
+        /// <summary>
+        /// 返回县区编号
+        /// </summary>
+        public static int CountryNo { get; set; }
+        /// <summary>
+        /// 返回民族编号
+        /// </summary>
+        public static int EthnicGroupNo { get; set; }
+        /// <summary>
+        /// 返回性别
+        /// </summary>
+        public static int Gender { get; set; }
+        /// <summary>
+        /// 返回出生日期
+        /// </summary>
+        public static DateTime Birthday { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
@@ -360,16 +376,16 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
-        //public static DataTable Table(string sql)
-        //{
-        //    using(SqlConnection con=new SqlConnection(conns))
-        //    {
-        //        SqlDataAdapter adsa = new SqlDataAdapter(sql, con);
-        //        DataTable dt = new DataTable();
-        //        adsa.Fill(dt);
-        //        return dt;
-        //    }
-        //}
+        public static DataTable Table(string sql)
+        {
+            using (SqlConnection con = new SqlConnection(conns))
+            {
+                SqlDataAdapter adsa = new SqlDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                adsa.Fill(dt);
+                return dt;
+            }
+        }
         //public bool deleteyestodaydata(DateTime dateTime)
         //{
         //    string commandText =
