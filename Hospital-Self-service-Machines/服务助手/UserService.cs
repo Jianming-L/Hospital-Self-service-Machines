@@ -26,7 +26,7 @@ namespace Hospital_Self_service_Machines.服务助手
         /// </summary>
         public static string DoctorNo { get; set; }
         /// <summary>
-        /// 返回用户编号
+        /// 返回用户姓名
         /// </summary>
         public static string UserName { get; set; }
         /// <summary>
@@ -57,6 +57,26 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回出生日期
         /// </summary>
         public static DateTime Birthday { get; set; }
+        /// <summary>
+        /// 返回国籍
+        /// </summary>
+        public static string NationName { get; set; }
+        /// <summary>
+        /// 返回省
+        /// </summary>
+        public static string ProvinceName { get; set; }
+        /// <summary>
+        /// 返回市区
+        /// </summary>
+        public static string CityName { get; set; }
+        /// <summary>
+        /// 返回县区
+        /// </summary>
+        public static string CountryName { get; set; }
+        /// <summary>
+        /// 返回民族
+        /// </summary>
+        public static string EthnicGroupName { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =

@@ -1,5 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="DocumentationTwo.aspx.cs" Inherits="Hospital_Self_service_Machines.建档.DocumentationTwo" %>
+﻿<%@ Page Title="确认信息" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="DocumentationTwo.aspx.cs" Inherits="Hospital_Self_service_Machines.建档.DocumentationTwo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .div_table{
+            margin-left:10%;
+            margin-top:3%;
+            background-color:rgba(255,255,255,0.5);
+            text-align:center;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="padding-left:10px;padding-top:10px;">
@@ -12,7 +20,7 @@
                     <span style="background-color:aqua;font-size:30px">>>>确认信息</span>
                 </td>
                 <td>
-                    <span style="background-color:white">>>>正在建档</span>
+                    <span style="background-color:white">>>>正在建档中</span>
                 </td>
                 <td>
                     <span style="background-color:white">>>>完成</span>
@@ -22,5 +30,26 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
+    </div>
+    <div>
+        <table class="div_table" border="1" cellspacing="0">
+             <tr>
+                <td>姓名：</td><td><asp:Label runat="server" ID="lbl_name" Width="150" ></asp:Label></td>
+                <td>性别：</td><td style="Width:150px"><asp:Label runat="server" ID="lbl_Gender"></asp:Label></td>
+                <td>出生日期：</td><td colspan="2"><asp:Label runat="server" ID="lbl_Birthday" Width="150"></asp:Label></td>
+                <td>国籍：</td><td style="Width:150px"><asp:Label runat="server" ID="lbl_nation"></asp:Label></td>
+            </tr>
+            <tr>
+                <td>出生地：</td><td><asp:Label runat="server" ID="lbl_province"></asp:Label></td>
+                <td>省(区、市)</td>
+                <td><asp:Label runat="server" ID="lbl_city"></asp:Label></td>
+                <td>市</td><td><asp:Label runat="server" ID="lbl_country"></asp:Label></td><td>县</td>
+                <td>民族：</td><td><asp:Label runat="server" ID="lbl_minzu"></asp:Label></td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-left:50%;margin-top:20%">
+        <asp:Button runat="server" ID="btn_submit" Width="80" Height="40" Text="下一步" OnClick="btn_submit_Click" />
+        <asp:Button runat="server" ID="btn_back" Width="80" Height="40" Text="上一步" OnClick="btn_back_Click"/>
     </div>
 </asp:Content>

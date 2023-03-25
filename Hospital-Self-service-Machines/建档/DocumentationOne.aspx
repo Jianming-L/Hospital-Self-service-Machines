@@ -21,7 +21,7 @@
                     <span style="background-color:white">>>>确认信息</span>
                 </td>
                 <td>
-                    <span style="background-color:white">>>>正在建档</span>
+                    <span style="background-color:white">>>>正在建档中</span>
                 </td>
                 <td>
                     <span style="background-color:white">>>>完成</span>
@@ -55,6 +55,6 @@
         <asp:Button runat="server" ID="btn_submit" Width="80" Height="40" Text="下一步" OnClick="btn_submit_Click" />
         <asp:Button runat="server" ID="btn_back" Width="80" Height="40" Text="返回" OnClick="btn_back_Click" />
     </div>
-    <asp:Label runat="server" ID="lbl_msg"></asp:Label>
-    <asp:Label runat="server" ID="lbl_msd"></asp:Label>
+<%--    <asp:Label runat="server" ID="lbl_msg"></asp:Label>
+    <asp:Label runat="server" ID="lbl_msd"></asp:Label>--%>
 </asp:Content>

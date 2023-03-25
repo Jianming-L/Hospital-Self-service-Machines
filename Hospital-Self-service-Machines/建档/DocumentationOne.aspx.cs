@@ -18,30 +18,84 @@ namespace Hospital_Self_service_Machines.建档
         {
             if (!IsPostBack)
             {
+                //if (Session["UserNo"] == null)
+                //{
+                //    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
+                //}
+                //else
+                //{
                 lbl_name.Text = UserService.UserName;
                 DropDownList_nation();
                 ddl_minzu.Items.Clear();
                 DropDownList_minzu();
+                //}
             }
         }
-        
+
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-            if (rdb_gender_man.Checked == true)
+            if (validite())
             {
-                UserService.Gender = 1;
+                if (rdb_gender_man.Checked == true)
+                {
+                    UserService.Gender = 1;
+                }
+                if (rdb_gender_woman.Checked == true)
+                {
+                    UserService.Gender = 0;
+                }
+                UserService.NationNo = int.Parse(ddl_nation.SelectedItem.Value);
+                UserService.ProvinceNo = int.Parse(ddl_sheng.SelectedItem.Value);
+                UserService.CityNo = int.Parse(ddl_shi.SelectedItem.Value);
+                UserService.CountryNo = int.Parse(ddl_xian.SelectedItem.Value);
+                UserService.EthnicGroupNo = int.Parse(ddl_minzu.SelectedItem.Value);
+                UserService.Birthday = DateTime.Parse(d412.Text);
+                UserService.NationName = ddl_nation.SelectedItem.Text;
+                UserService.ProvinceName = ddl_sheng.SelectedItem.Text;
+                UserService.CityName = ddl_shi.SelectedItem.Text;
+                UserService.CountryName = ddl_xian.SelectedItem.Text;
+                UserService.EthnicGroupName = ddl_minzu.SelectedItem.Text;
+                Response.Redirect("DocumentationTwo.aspx");
             }
-            if (rdb_gender_woman.Checked == true)
+            else
             {
-                UserService.Gender = 0;
+                Response.Write("<script language=javascript>alert('请填全相关信息！！！')</" + "script>");
             }
-            UserService.NationNo = int.Parse(ddl_nation.SelectedItem.Value);
-            UserService.ProvinceNo = int.Parse(ddl_sheng.SelectedItem.Value);
-            UserService.CityNo = int.Parse(ddl_shi.SelectedItem.Value);
-            UserService.CountryNo = int.Parse(ddl_xian.SelectedItem.Value);
-            UserService.EthnicGroupNo = int.Parse(ddl_minzu.SelectedItem.Value);
-            UserService.Birthday = DateTime.Parse(d412.Text);
-            Response.Redirect("DocumentationTwo.aspx");
+        }
+        public bool validite()
+        {
+            if (rdb_gender_man.Checked == false && rdb_gender_woman.Checked == false)
+            {
+                return false;
+            }
+            else if(ddl_nation.SelectedItem.Text == "---请选择---")
+            {
+                return false;
+            }
+            else if(ddl_sheng.Text == ""|| ddl_sheng.SelectedItem.Text == "---请选择---")
+            {
+                return false;
+            }
+            else if (ddl_shi.Text == "" || ddl_shi.SelectedItem.Text == "---请选择---")
+            {
+                return false;
+            }
+            else if (ddl_xian.Text == "" || ddl_xian.SelectedItem.Text == "---请选择---")
+            {
+                return false;
+            }
+            else if (ddl_minzu.SelectedItem.Value == "0")
+            {
+                return false;
+            }
+            else if (d412.Text == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         protected void btn_back_Click(object sender, EventArgs e)
