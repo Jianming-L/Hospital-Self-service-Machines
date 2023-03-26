@@ -49,7 +49,7 @@
         </table>
     </div>
     <div style="margin-left:50%;margin-top:20%">
-        <asp:Button runat="server" ID="btn_submit" Width="80" Height="40" Text="下一步" OnClick="btn_submit_Click" />
+        <asp:Button runat="server" ID="btn_submit" Width="80" Height="40" Text="下一步" OnClick="btn_submit_Click" OnClientClick="return confirm('确定建档吗?');" />
         <asp:Button runat="server" ID="btn_back" Width="80" Height="40" Text="上一步" OnClick="btn_back_Click"/>
     </div>
 </asp:Content>

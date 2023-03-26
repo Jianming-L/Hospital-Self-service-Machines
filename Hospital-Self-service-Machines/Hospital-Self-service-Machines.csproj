@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS样式\CSS.css" />
+    <Content Include="CSS样式\loading.css" />
     <Content Include="CSS样式\virtualkeyboard.css" />
     <Content Include="Global.asax" />
     <Content Include="image\Doctor.png" />
@@ -178,6 +179,13 @@
     <Compile Include="个人中心\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="建档\DocumentationFour.aspx.cs">
+      <DependentUpon>DocumentationFour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="建档\DocumentationFour.aspx.designer.cs">
+      <DependentUpon>DocumentationFour.aspx</DependentUpon>
+    </Compile>
     <Compile Include="建档\DocumentationOne.aspx.cs">
       <DependentUpon>DocumentationOne.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -242,6 +250,7 @@
     <Content Include="个人中心\Load.aspx" />
     <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
+    <Content Include="建档\DocumentationFour.aspx" />
     <Content Include="建档\DocumentationOne.aspx" />
     <Content Include="建档\DocumentationThree.aspx" />
     <Content Include="建档\DocumentationTwo.aspx" />

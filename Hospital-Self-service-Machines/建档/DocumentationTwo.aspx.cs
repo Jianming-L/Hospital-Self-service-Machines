@@ -35,6 +35,7 @@ namespace Hospital_Self_service_Machines.建档
         protected void btn_submit_Click(object sender, EventArgs e)
         {
             Response.Redirect("DocumentationThree.aspx");
+            //Response.Write("<script language=javascript>alert('确定建档吗！！！');location.href='DocumentationThree.aspx'</" + "script>");
         }
 
         protected void btn_back_Click(object sender, EventArgs e)
