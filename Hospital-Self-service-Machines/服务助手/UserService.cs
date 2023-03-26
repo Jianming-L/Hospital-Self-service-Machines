@@ -14,6 +14,10 @@ namespace Hospital_Self_service_Machines.服务助手
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
         static string conns = "Data Source=(Local);Initial Catalog=医院自助服务机;Integrated Security=True;";
         /// <summary>
+        /// 返回用户账号
+        /// </summary>
+        public static string UserNo { get; set; }
+        /// <summary>
         /// 返回星期(int)
         /// </summary>
         public static int WeekdayCount { get; set; }

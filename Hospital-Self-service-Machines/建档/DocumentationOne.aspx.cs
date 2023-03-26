@@ -18,17 +18,17 @@ namespace Hospital_Self_service_Machines.建档
         {
             if (!IsPostBack)
             {
-                //if (Session["UserNo"] == null)
-                //{
-                //    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
-                //}
-                //else
-                //{
-                lbl_name.Text = UserService.UserName;
-                DropDownList_nation();
-                ddl_minzu.Items.Clear();
-                DropDownList_minzu();
-                //}
+                if (Session["UserNo"] == null)
+                {
+                    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
+                }
+                else
+                {
+                    lbl_name.Text = UserService.UserName;
+                    DropDownList_nation();
+                    ddl_minzu.Items.Clear();
+                    DropDownList_minzu();
+                }
             }
         }
 

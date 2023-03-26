@@ -20,13 +20,17 @@
         }
         .div_guide {
             float:left;
-            margin-top: 550px;
+            margin-top: 170px;
         }
         .a_guide {
             margin-left: 10px;
         }
         .a_FindGuide {
-            margin-left: 200px;
+            margin-left: 100px;
+            font-size: 22px;
+            font-weight: 400;
+        }
+        .a_FindGuide1{
             font-size: 22px;
             font-weight: 400;
         }
@@ -57,8 +61,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="div_backgroud">
-        <div class="div_guide"><a class="a_guide">在使用该服务机前，请先看使用说明详细内容确保你能顺利使用该服务机</a>
-            <br /><a href="使用说明/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
+        <div class="div_guide">
+            <h1 style="font-family:华文行楷;margin-left:20px;font-size:50px;margin-bottom:270px">西虹市第一医院欢迎您！！！</h1>
+            <span>
+                <a >在使用该服务机前，请先看使用说明详细内容确保你能顺利使用该服务机</a>
+                <br /><a href="使用说明/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
+                <a href="使用说明/TreatmentProcess.aspx" class="a_FindGuide1">点击查看就诊流程</a>
+            </span>
         </div>
         <table style="float:left;margin-top:4px;margin-left:100px;" class="table_button">
             <tr>
@@ -79,7 +88,7 @@
                 <td ></td>
                 <td><asp:Button runat="server" ID="btn_TakeNumber" Text="" BackColor="transparent" CssClass="btnSize_quhao" /><span class="zitistyle">取号</span></td>
                 <td></td>
-                <td><asp:Button runat="server" ID="btn_OtherFunction" Text="" BackColor="transparent" CssClass="btnSize_qita"/><span class="zitistyle">其它</span></td>
+                <td><asp:Button runat="server" ID="btn_OtherFunction" Text="" BackColor="transparent" CssClass="btnSize_qita" OnClick="btn_OtherFunction_Click"/><span class="zitistyle">其它</span></td>
             </tr>
         </table>
     </div>

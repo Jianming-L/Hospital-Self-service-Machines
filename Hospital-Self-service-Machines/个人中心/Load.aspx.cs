@@ -21,6 +21,7 @@ namespace Hospital_Self_service_Machines.个人中心
             if (usersrv.IsSucceedLoad(txb_UserNo.Text, txb_Password.Text))
             {
                 Session["UserNo"] = txb_UserNo.Text;
+                UserService.UserNo= txb_UserNo.Text;
                 Response.Write("<script language=javascript>alert('登录成功！');location.href='../PageOne.aspx'</" + "script>");
             }
             else

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital_Self_service_Machines.其它;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -31,6 +32,11 @@ namespace Hospital_Self_service_Machines
         protected void btn_BulidInfo_Click(object sender, EventArgs e)
         {
             Response.Redirect("建档/DocumentationOne.aspx");
+        }
+
+        protected void btn_OtherFunction_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("其它/OtherFunction.aspx");
         }
     }
 }

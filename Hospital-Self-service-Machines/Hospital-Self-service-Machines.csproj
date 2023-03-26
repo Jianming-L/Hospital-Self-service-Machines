@@ -77,6 +77,7 @@
     <Content Include="image\公司.png" />
     <Content Include="image\其它.png" />
     <Content Include="image\医院.png" />
+    <Content Include="image\就诊流程.png" />
     <Content Include="image\建档.png" />
     <Content Include="image\我的.png" />
     <Content Include="image\排队取号.png" />
@@ -179,6 +180,20 @@
     <Compile Include="个人中心\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="使用说明\TreatmentProcess.aspx.cs">
+      <DependentUpon>TreatmentProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="使用说明\TreatmentProcess.aspx.designer.cs">
+      <DependentUpon>TreatmentProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="其它\OtherFunction.aspx.cs">
+      <DependentUpon>OtherFunction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="其它\OtherFunction.aspx.designer.cs">
+      <DependentUpon>OtherFunction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="建档\DocumentationFour.aspx.cs">
       <DependentUpon>DocumentationFour.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,6 +265,8 @@
     <Content Include="个人中心\Load.aspx" />
     <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
+    <Content Include="使用说明\TreatmentProcess.aspx" />
+    <Content Include="其它\OtherFunction.aspx" />
     <Content Include="建档\DocumentationFour.aspx" />
     <Content Include="建档\DocumentationOne.aspx" />
     <Content Include="建档\DocumentationThree.aspx" />

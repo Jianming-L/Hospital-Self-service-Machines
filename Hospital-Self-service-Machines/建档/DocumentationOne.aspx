@@ -37,7 +37,7 @@
             <tr>
                 <td>姓名：</td><td><asp:Label runat="server" ID="lbl_name" Width="150" ></asp:Label></td>
                 <td>性别：</td><td style="Width:150px"><asp:RadioButton runat="server" ID="rdb_gender_man" Text="男" GroupName="sex"/><asp:RadioButton runat="server" ID="rdb_gender_woman" Text="女" GroupName="sex"/></td>
-                <td>出生日期：</td><td><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy年MM月dd日 '})" placeholder="点击本框选择出生年月..."></asp:TextBox></td>
+                <td>出生日期：</td><td><asp:TextBox runat="server" class="Wdate" ID="d412" autocomplete="off" onfocus="WdatePicker({skin:'blue',dateFmt:'yyyy年MM月dd日 ',maxDate:'%y-%M-%d'})" placeholder="点击本框选择出生年月..."></asp:TextBox></td>
                 <td>国籍：</td><td style="Width:150px"><asp:DropDownList runat="server" ID="ddl_nation" Width="150px" AutoPostBack=true OnSelectedIndexChanged="ddl_nation_SelectedIndexChanged"></asp:DropDownList></td>
             </tr>
             <tr style="height:20px"></tr>
