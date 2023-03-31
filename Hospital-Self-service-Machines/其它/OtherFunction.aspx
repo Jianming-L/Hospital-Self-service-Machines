@@ -1,4 +1,4 @@
-﻿<%@ Page Title="专家查询" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="OtherFunction.aspx.cs" Inherits="Hospital_Self_service_Machines.其它.OtherFunction" %>
+﻿  <%@ Page Title="专家查询" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="OtherFunction.aspx.cs" Inherits="Hospital_Self_service_Machines.其它.OtherFunction" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .lkb{
@@ -6,12 +6,13 @@
             text-decoration:none;
         }
     </style>
-</asp:Content>
+  </asp:Content>
+<%--asp.net引用母版页后，子页面引用外部JS文件问题--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="padding-top:1%;text-align:center">
         <h1 style="font-family:华文行楷;color:crimson">-->专家介绍<--</h1>
     </div>
-    <div style="margin-left:560px;">
+    <div style="margin-left:560px">
         <table>
             <tr>
                 <td><asp:TextBox runat="server" ID="txb_Name" height="20px" Width="300px" placeholder="模糊查询专家名字"></asp:TextBox></td>
@@ -76,7 +77,6 @@
             ConnectionString="<%$ ConnectionStrings:医院自助服务机 %>"
             SelectCommand="SELECT DISTINCT DI.DoctorName,DD.DepartmentDetailName FROM tb_DoctorInfo AS DI LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentDetailNo=DI.DepartmentDetailNo WHERE DI.DepartmentDetailNo<>0">
         </asp:SqlDataSource>
-        
     </div>
     <asp:Label runat="server" ID="lbl_msg"></asp:Label>
 </asp:Content>

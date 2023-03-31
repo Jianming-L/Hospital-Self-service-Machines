@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
@@ -80,7 +81,7 @@ namespace Hospital_Self_service_Machines.其它
                     }
                 }
             }
-            else if(UserService.RestFlat == 2)
+            else if (UserService.RestFlat == 2)
             {
                 bind2();
                 GridView theGrid = sender as GridView;
