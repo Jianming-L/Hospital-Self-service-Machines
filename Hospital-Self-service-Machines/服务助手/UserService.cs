@@ -81,6 +81,18 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回民族
         /// </summary>
         public static string EthnicGroupName { get; set; }
+        /// <summary>
+        /// 返回总数
+        /// </summary>
+        public static int RecordCount { get; set; }
+        /// <summary>
+        /// 返回是否点击搜索进行分页的标志
+        /// </summary>
+        public static int SearchFlat { get; set; }
+        /// <summary>
+        /// 返回是否点击重置gridview的标志
+        /// </summary>
+        public static int RestFlat { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
