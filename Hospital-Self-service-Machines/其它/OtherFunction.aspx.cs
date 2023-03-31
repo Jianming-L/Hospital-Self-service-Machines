@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Hospital_Self_service_Machines.其它
 {
@@ -18,12 +19,13 @@ namespace Hospital_Self_service_Machines.其它
         {
             if (!IsPostBack)
             {
-
+                //lbl_msg.Text = UserService.RecordCount.ToString();
             }
         }
 
         protected void btn_Find_Click(object sender, EventArgs e)
         {
+            UserService.RestFlat = 0;
             ViewState["search"] = this.txb_Name.Text;
             UserService.SearchFlat = 1;
             bind();
@@ -61,6 +63,22 @@ namespace Hospital_Self_service_Machines.其它
                 newPageIndex = newPageIndex < 0 ? 0 : newPageIndex;
                 newPageIndex = newPageIndex >= theGrid.PageCount ? theGrid.PageCount - 1 : newPageIndex;
                 theGrid.PageIndex = newPageIndex;
+                if (theGrid.PageCount > 0)
+                {
+                    theGrid.PageIndex = theGrid.PageCount - 1;   //  将当前显示页的索引转到最后一页    
+                    theGrid.DataBind();
+                    int lastSize = theGrid.Rows.Count;           //  获得最后一页的行数
+                    if (theGrid.PageCount > 1)     //  如果页数大于1页，则计算出
+                    {                                                       //  总行数=（总页数-1）* 每页行数 +  最后一页的行数
+                        int rowsCount = theGrid.PageSize * (theGrid.PageCount - 1) + lastSize;
+                        UserService.RecordCount = rowsCount;
+                    }
+                    else
+                    {
+                        //lbl_recordcount.Text = lastSize.ToString();
+                        theGrid.PageIndex = 0;
+                    }
+                }
             }
             else if(UserService.RestFlat == 2)
             {
@@ -112,25 +130,23 @@ namespace Hospital_Self_service_Machines.其它
                 newPageIndex = newPageIndex < 0 ? 0 : newPageIndex;
                 newPageIndex = newPageIndex >= theGrid.PageCount ? theGrid.PageCount - 1 : newPageIndex;
                 theGrid.PageIndex = newPageIndex;
+                if (theGrid.PageCount > 0)
+                {
+                    theGrid.PageIndex = theGrid.PageCount - 1;   //  将当前显示页的索引转到最后一页    
+                    theGrid.DataBind();
+                    int lastSize = theGrid.Rows.Count;           //  获得最后一页的行数
+                    if (theGrid.PageCount > 1)     //  如果页数大于1页，则计算出
+                    {                                                       //  总行数=（总页数-1）* 每页行数 +  最后一页的行数
+                        int rowsCount = theGrid.PageSize * (theGrid.PageCount - 1) + lastSize;
+                        UserService.RecordCount = rowsCount;
+                    }
+                    else
+                    {
+                        //lbl_recordcount.Text = lastSize.ToString();
+                        theGrid.PageIndex = 0;
+                    }
+                }
             }
-
-
-            //if (theGrid.PageCount > 0)
-            //{
-            //    theGrid.PageIndex = theGrid.PageCount - 1;   //  将当前显示页的索引转到最后一页    
-            //    theGrid.DataBind();         
-            //    int lastSize = theGrid.Rows.Count;           //  获得最后一页的行数
-            //    if (theGrid.PageCount > 1)     //  如果页数大于1页，则计算出
-            //    {                                                       //  总行数=（总页数-1）* 每页行数 +  最后一页的行数
-            //        int rowsCount = theGrid.PageSize * (theGrid.PageCount - 1) + lastSize;
-            //        UserService.RecordCount = rowsCount;
-            //    }
-            //    else
-            //    {
-            //        //lbl_recordcount.Text = lastSize.ToString();   
-            //        theGrid.PageIndex = 0;
-            //    }
-            //}
         }
 
         protected void gv_FindName_PageIndexChanged(object sender, EventArgs e)
@@ -143,13 +159,26 @@ namespace Hospital_Self_service_Machines.其它
             UserService.SearchFlat = 0;
             UserService.RestFlat = 2;
             txb_Name.Text = null;
+            gv_FindName.DataSource = null;
             bind2();
-            UserService.RestFlat = 0;
         }
         public void bind2()
         {
             this.SqlDataSource1.SelectCommand =
                 "SELECT DISTINCT DI.DoctorName,DD.DepartmentDetailName FROM tb_DoctorInfo AS DI LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentDetailNo=DI.DepartmentDetailNo WHERE DI.DepartmentDetailNo<>0";
+        }
+
+        protected void btn_Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../PageOne.aspx");
+        }
+
+        protected void gv_FindName_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "btn_Find")
+            {
+
+            }
         }
     }
 }

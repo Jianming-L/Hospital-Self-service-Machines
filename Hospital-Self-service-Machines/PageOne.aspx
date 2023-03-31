@@ -62,7 +62,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="div_backgroud">
         <div class="div_guide">
-            <h1 style="font-family:华文行楷;margin-left:20px;font-size:50px;margin-bottom:270px">西虹市第一医院欢迎您！！！</h1>
+            <h1 style="font-family:华文行楷;margin-left:30px;font-size:50px;margin-bottom:270px">西虹市第一医院欢迎您！！！</h1>
             <span>
                 <a >在使用该服务机前，请先看使用说明详细内容确保你能顺利使用该服务机</a>
                 <br /><a href="使用说明/InstructionManual.aspx" class="a_FindGuide">点击该处查看详细使用说明</a>
