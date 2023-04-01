@@ -93,6 +93,14 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回是否点击重置gridview的标志
         /// </summary>
         public static int RestFlat { get; set; }
+        /// <summary>
+        /// 返回医生姓名
+        /// </summary>
+        public static string DoctorName { get; set; }
+        /// <summary>
+        /// 返回详细科室
+        /// </summary>
+        public static string DepartmentDetial { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =

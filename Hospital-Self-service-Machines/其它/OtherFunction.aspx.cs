@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Hospital_Self_service_Machines.其它
 {
@@ -176,9 +178,35 @@ namespace Hospital_Self_service_Machines.其它
 
         protected void gv_FindName_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "btn_Find")
+            if(e.CommandName == "btn_FindDocInfo")
             {
+                int index = Convert.ToInt32(e.CommandArgument);
+                UserService.DoctorName = ((System.Web.UI.WebControls.Label)gv_FindName.Rows[index].Cells[2].FindControl("lbl_name")).Text;
+                UserService.DepartmentDetial= ((System.Web.UI.WebControls.Label)gv_FindName.Rows[index].Cells[1].FindControl("lbl_keshi")).Text;
+                //lbl_msg.Text = ((System.Web.UI.WebControls.Label)gv_FindName.Rows[index].Cells[2].FindControl("lbl_name")).Text +((System.Web.UI.WebControls.Label)gv_FindName.Rows[index].Cells[1].FindControl("lbl_keshi")).Text;
+            }
+        }
 
+        protected void btn_FindDocInfo_Click(object sender, EventArgs e)
+        {
+            
+        }
+        /// <summary>
+        ///  GridView 控件之前，必须先为该控件中的每一行创建一个 GridViewRow 对象。
+        ///  在创建 GridView 控件中的每一行时，将引发 RowCreated 事件。
+        ///  这使我们可以提供一个这样的事件处理方法，即每次发生此事件时都执行一个自定义例程（如在行中添加自定义内容，当然也可以添加e.CommandArgument属性为模版列里的LinkButton）。
+        ///  GridViewRowEventArgs 对象将被传给事件处理方法，随之我们可以访问正在创建的行的属性。
+        ///  若要访问行中的特定单元格，可以使用 GridViewRowEventArgs 对象的 Cells 属性。
+        ///  使用 RowType 属性可确定正在创建的是哪一种行类型（标题行、数据行等等）。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void gv_FindName_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Button Button1 = (Button)e.Row.FindControl("btn_FindDocInfo");
+                Button1.CommandArgument = e.Row.RowIndex.ToString();
             }
         }
     }

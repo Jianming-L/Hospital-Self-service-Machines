@@ -187,6 +187,13 @@
     <Compile Include="使用说明\TreatmentProcess.aspx.designer.cs">
       <DependentUpon>TreatmentProcess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="其它\DoctorInfo.aspx.cs">
+      <DependentUpon>DoctorInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="其它\DoctorInfo.aspx.designer.cs">
+      <DependentUpon>DoctorInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="其它\OtherFunction.aspx.cs">
       <DependentUpon>OtherFunction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -266,6 +273,7 @@
     <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
     <Content Include="使用说明\TreatmentProcess.aspx" />
+    <Content Include="其它\DoctorInfo.aspx" />
     <Content Include="其它\OtherFunction.aspx" />
     <Content Include="建档\DocumentationFour.aspx" />
     <Content Include="建档\DocumentationOne.aspx" />

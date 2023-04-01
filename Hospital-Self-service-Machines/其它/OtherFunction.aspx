@@ -6,6 +6,11 @@
             text-decoration:none;
         }
     </style>
+    <script LANGUAGE="JavaScript">
+    function openwin() {
+        window.open("DoctorInfo.aspx", "newwindow", "height=400, width=800,top=190, left=380 ,toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no") //写成一行
+    }
+    </script>
   </asp:Content>
 <%--asp.net引用母版页后，子页面引用外部JS文件问题--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -25,7 +30,7 @@
         <table>
             <tr>
                 <td rowspan="4">
-                    <asp:GridView runat="server" ID="gv_FindName" DataSourceID="sqlDataSource1" Width="1000px" AllowPaging="True" AutoPostBack=true AutoGenerateColumns="False" OnRowCommand="gv_FindName_RowCommand" OnPageIndexChanged="gv_FindName_PageIndexChanged" OnPageIndexChanging="gv_FindName_PageIndexChanging" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView runat="server" ID="gv_FindName" DataSourceID="sqlDataSource1" Width="1000px" AllowPaging="True" AutoPostBack=true AutoGenerateColumns="False" OnRowCommand="gv_FindName_RowCommand" OnPageIndexChanged="gv_FindName_PageIndexChanged" OnPageIndexChanging="gv_FindName_PageIndexChanging" OnRowCreated="gv_FindName_RowCreated" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField HeaderText="专家"><ItemTemplate><asp:Label runat="server" ID="lbl_name" Text='<%# Bind("DoctorName") %>'></asp:Label>
@@ -33,7 +38,7 @@
                             <asp:TemplateField HeaderText="科室"><ItemTemplate><asp:Label runat="server" ID="lbl_keshi" Text='<%# Bind("DepartmentDetailName") %>'></asp:Label></ItemTemplate></asp:TemplateField>
                             <asp:TemplateField HeaderText="操作">
                                 <ItemTemplate>
-                                    <asp:Button ID="btn_Find" runat="server" Text="查看" />
+                                    <asp:Button runat="server" ID="btn_FindDocInfo" OnClick="btn_FindDocInfo_Click" CommandName="btn_FindDocInfo" OnClientClick="openwin()" Text="查看"  />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

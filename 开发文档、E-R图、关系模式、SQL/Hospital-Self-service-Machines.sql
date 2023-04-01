@@ -666,6 +666,22 @@ USE 医院自助服务机
 	(104,'陈仓翼',33,0,'07:00-12:00'),
 	(105,'刘枝迟',33,0,'18:00-24:00')
 
+	--专家信息
+	IF OBJECT_ID('tb_ExpertInfo')IS NOT NULL
+		DROP TABLE tb_ExpertInfo;
+	GO
+	CREATE TABLE tb_ExpertInfo
+		(ExpertInfoNo
+			INT
+			NOT NULL
+			PRIMARY KEY(ExpertInfoNo)
+		,Info
+			VARCHAR(1000)
+		)
+	--INSERT INTO tb_ExpertInfo(ExpertInfoNo,Info) VALUES
+	--()
+
+
 	--国家
 	IF OBJECT_ID('tb_Nation')IS NOT NULL
 		DROP TABLE tb_Nation;
