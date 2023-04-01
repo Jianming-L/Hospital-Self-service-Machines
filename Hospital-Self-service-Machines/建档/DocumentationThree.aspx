@@ -3,7 +3,8 @@
     <link href="../CSS样式/loading.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="padding-left:10px;padding-top:10px;">
+    <div style="background-color:rgb(255,255,255,0.8);padding-bottom:50px">
+        <div style="padding-left:10px;padding-top:10px;">
         <table>
             <tr>
                 <td>
@@ -24,20 +25,18 @@
             </tr>
         </table>
     </div>
-    <p style="text-align:center;font-size:40px;font-family:Architects Daughter,cursive;">正在建档中</p>
-    <div class="grid">
-        <div class="loader" >
-            <div id="ld4">
-                <div>
+    <div>
+        <p style="text-align:center;font-size:40px;font-family:Architects Daughter,cursive;">正在建档中</p>
+        <div class="grid">
+            <div class="loader">
+                <div id="ld4">
+                    <div style="width:30px;height:30px"></div>
+                    <div style="width:30px;height:30px"></div>
+                    <div style="width:30px;height:30px"></div>
+                    <div style="width:30px;height:30px"></div>
                 </div>
-                <div>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-             </div>
-         </div>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
         var i = 5;
@@ -52,4 +51,5 @@
             setTimeout(JumpPage, 1000);
         }
     </script>
+    </div>
 </asp:Content>

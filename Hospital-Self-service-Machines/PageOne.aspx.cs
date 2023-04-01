@@ -36,7 +36,12 @@ namespace Hospital_Self_service_Machines
 
         protected void btn_OtherFunction_Click(object sender, EventArgs e)
         {
-            Response.Redirect("其它/OtherFunction.aspx");
+            Response.Redirect("专家介绍/OtherFunction.aspx");
+        }
+
+        protected void btn_TakeNumber_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("报告打印/ReportPrinting.aspx");
         }
     }
 }

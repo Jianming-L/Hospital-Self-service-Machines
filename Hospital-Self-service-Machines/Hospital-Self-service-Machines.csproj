@@ -80,6 +80,7 @@
     <Content Include="image\就诊流程.png" />
     <Content Include="image\建档.png" />
     <Content Include="image\我的.png" />
+    <Content Include="image\报告打印.png" />
     <Content Include="image\排队取号.png" />
     <Content Include="image\查询科室.png" />
     <Content Include="image\预约.png" />
@@ -187,18 +188,18 @@
     <Compile Include="使用说明\TreatmentProcess.aspx.designer.cs">
       <DependentUpon>TreatmentProcess.aspx</DependentUpon>
     </Compile>
-    <Compile Include="其它\DoctorInfo.aspx.cs">
+    <Compile Include="专家介绍\DoctorInfo.aspx.cs">
       <DependentUpon>DoctorInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="其它\DoctorInfo.aspx.designer.cs">
+    <Compile Include="专家介绍\DoctorInfo.aspx.designer.cs">
       <DependentUpon>DoctorInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="其它\OtherFunction.aspx.cs">
+    <Compile Include="专家介绍\OtherFunction.aspx.cs">
       <DependentUpon>OtherFunction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="其它\OtherFunction.aspx.designer.cs">
+    <Compile Include="专家介绍\OtherFunction.aspx.designer.cs">
       <DependentUpon>OtherFunction.aspx</DependentUpon>
     </Compile>
     <Compile Include="建档\DocumentationFour.aspx.cs">
@@ -228,6 +229,13 @@
     </Compile>
     <Compile Include="建档\DocumentationTwo.aspx.designer.cs">
       <DependentUpon>DocumentationTwo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="报告打印\ReportPrinting.aspx.cs">
+      <DependentUpon>ReportPrinting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="报告打印\ReportPrinting.aspx.designer.cs">
+      <DependentUpon>ReportPrinting.aspx</DependentUpon>
     </Compile>
     <Compile Include="挂号\GuaHao.aspx.cs">
       <DependentUpon>GuaHao.aspx</DependentUpon>
@@ -273,12 +281,13 @@
     <Content Include="使用说明\InstructionManual.aspx" />
     <Content Include="个人中心\Register.aspx" />
     <Content Include="使用说明\TreatmentProcess.aspx" />
-    <Content Include="其它\DoctorInfo.aspx" />
-    <Content Include="其它\OtherFunction.aspx" />
+    <Content Include="专家介绍\DoctorInfo.aspx" />
+    <Content Include="专家介绍\OtherFunction.aspx" />
     <Content Include="建档\DocumentationFour.aspx" />
     <Content Include="建档\DocumentationOne.aspx" />
     <Content Include="建档\DocumentationThree.aspx" />
     <Content Include="建档\DocumentationTwo.aspx" />
+    <Content Include="报告打印\ReportPrinting.aspx" />
     <Content Include="挂号\GuaHao.aspx" />
     <Content Include="查询科室\FindDepartment.aspx" />
     <Content Include="母版页\PageSite.Master" />

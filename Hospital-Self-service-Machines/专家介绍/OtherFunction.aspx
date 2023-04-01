@@ -1,5 +1,6 @@
 ﻿  <%@ Page Title="专家查询" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="OtherFunction.aspx.cs" Inherits="Hospital_Self_service_Machines.其它.OtherFunction" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../JS文件/virtualkeyboard.js"></script>
     <style type="text/css">
         .lkb{
             color:white;

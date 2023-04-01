@@ -86,7 +86,7 @@
             <tr>
                 <td><asp:Button runat="server" ID="btn_FindDepartment" Text="" BackColor="transparent" CssClass="btnSize_findkeshi" OnClick="btn_FindDepartment_Click"/><span class="zitistyle">查询科室</span></td>
                 <td ></td>
-                <td><asp:Button runat="server" ID="btn_TakeNumber" Text="" BackColor="transparent" CssClass="btnSize_quhao" /><span class="zitistyle">取号</span></td>
+                <td><asp:Button runat="server" ID="btn_TakeNumber" Text="" BackColor="transparent" CssClass="btnSize_quhao" OnClick="btn_TakeNumber_Click" /><span class="zitistyle">检验报告打印</span></td>
                 <td></td>
                 <td><asp:Button runat="server" ID="btn_OtherFunction" Text="" BackColor="transparent" CssClass="btnSize_qita" OnClick="btn_OtherFunction_Click"/><span class="zitistyle">专家介绍</span></td>
             </tr>
