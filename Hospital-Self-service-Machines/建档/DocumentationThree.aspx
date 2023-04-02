@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="正在建档中" Language="C#" MasterPageFile="~/母版页/FunctionSite.Master" AutoEventWireup="true" CodeBehind="DocumentationThree.aspx.cs" Inherits="Hospital_Self_service_Machines.建档.DocumentationThree" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../CSS样式/loading.css" rel="stylesheet" />
+    <style type="text/css">
+
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="background-color:rgb(255,255,255,0.8);padding-bottom:50px">
@@ -29,7 +32,7 @@
         <p style="text-align:center;font-size:40px;font-family:Architects Daughter,cursive;">正在建档中</p>
         <div class="grid">
             <div class="loader">
-                <div id="ld4">
+                <div id="ld4" style="margin-left:600px">
                     <div style="width:30px;height:30px"></div>
                     <div style="width:30px;height:30px"></div>
                     <div style="width:30px;height:30px"></div>

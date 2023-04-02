@@ -14,21 +14,28 @@ namespace Hospital_Self_service_Machines.建档
         {
             if (!IsPostBack)
             {
-                if (UserService.Gender == 1)
+                if (Session["UserNo"] == null)
                 {
-                    lbl_Gender.Text = "男";
+                    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
                 }
-                if (UserService.Gender == 0)
+                else
                 {
-                    lbl_Gender.Text = "女";
+                    if (UserService.Gender == 1)
+                    {
+                        lbl_Gender.Text = "男";
+                    }
+                    if (UserService.Gender == 0)
+                    {
+                        lbl_Gender.Text = "女";
+                    }
+                    lbl_name.Text = UserService.UserName;
+                    lbl_Birthday.Text = UserService.Birthday.ToString("D");
+                    lbl_nation.Text = UserService.NationName.ToString();
+                    lbl_province.Text = UserService.ProvinceName.ToString();
+                    lbl_city.Text = UserService.CityName.ToString();
+                    lbl_country.Text = UserService.CountryName.ToString();
+                    lbl_minzu.Text = UserService.EthnicGroupName.ToString();
                 }
-                lbl_name.Text = UserService.UserName;
-                lbl_Birthday.Text= UserService.Birthday.ToString("D");
-                lbl_nation.Text= UserService.NationName.ToString();
-                lbl_province.Text = UserService.ProvinceName.ToString();
-                lbl_city.Text = UserService.CityName.ToString();
-                lbl_country.Text = UserService.CountryName.ToString();
-                lbl_minzu.Text = UserService.EthnicGroupName.ToString();
             }
         }
 

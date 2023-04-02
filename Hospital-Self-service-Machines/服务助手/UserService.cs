@@ -430,6 +430,43 @@ namespace Hospital_Self_service_Machines.服务助手
                 return dt;
             }
         }
+        /// <summary>
+        /// 判断该用户是否已经建档
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool IsHasBuildInfo(string userno)
+        {
+            string commandText =
+                $@"SELECT *
+                    FROM tb_DocumentationInformation
+                    WHERE UserNo='{userno}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         //public bool deleteyestodaydata(DateTime dateTime)
         //{
         //    string commandText =

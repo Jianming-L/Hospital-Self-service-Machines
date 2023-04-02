@@ -87,6 +87,33 @@ namespace Hospital_Self_service_Machines.报告打印
         protected global::System.Web.UI.WebControls.GridView gv_baogaotable;
 
         /// <summary>
+        /// lbl_null 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_null;
+
+        /// <summary>
+        /// lbl_jianceshijian 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_jianceshijian;
+
+        /// <summary>
+        /// lbl_jianceyisheng 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_jianceyisheng;
+
+        /// <summary>
         /// btn_printing 控件。
         /// </summary>
         /// <remarks>

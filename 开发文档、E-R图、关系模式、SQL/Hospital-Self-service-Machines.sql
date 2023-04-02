@@ -849,8 +849,76 @@ USE 医院自助服务机
 			CHAR(20)
 		)
 
+	--检测信息
+	IF OBJECT_ID('tb_PatientCheckInformation')IS NOT NULL
+		DROP TABLE tb_PatientCheckInformation;
+	GO
+	CREATE TABLE tb_PatientCheckInformation
+	(UserNo
+		CHAR(10)
+		NOT NULL
+	,ItemNo
+		INT
+		NOT NULL
+	,ResultScore
+		CHAR(10)
+		NOT NULL
+	)
+	INSERT INTO tb_PatientCheckInformation(UserNo,ItemNo,ResultScore)VALUES
+	('3210707010',1,'5.9'),
+	('3210707010',2,'40.4'),
+	('3210707010',3,'5.8'),
+	('3210707010',4,'44.5'),
+	('3210707010',5,'8.3'),
+	('3210707010',6,'1'),
+	('3210707010',7,'2.6'),
+	('3210707010',8,'2.4')
 
+	--检验日期基本信息
+	IF OBJECT_ID('tb_CheckDateInformation')IS NOT NULL
+		DROP TABLE tb_CheckDateInformation;
+	GO
+	CREATE TABLE tb_CheckDateInformation
+	(UserNo
+		CHAR(10)
+		NOT NULL
+	,CheckTime
+		DATE
+		NOT NULL
+	,DoctorCheckName
+		CHAR(20)
+		NOT NULL
+	)
+	INSERT INTO tb_CheckDateInformation(UserNo,CheckTime,DoctorCheckName)VALUES
+	('3210707010','2023-4-3','张三')
 
+	--项目信息
+	IF OBJECT_ID('tb_ItemInformation')IS NOT NULL
+		DROP TABLE tb_ItemInformation;
+	GO
+	CREATE TABLE tb_ItemInformation
+	(ItemNo
+		INT
+		NOT NULL
+	,ItemName
+		CHAR(100)
+		NOT NULL
+	,ReferenceValue
+		CHAR(30)
+		NOT NULL
+	,Unit
+		CHAR(20)
+		NOT NULL
+	)
+	INSERT INTO tb_ItemInformation(ItemNo,ItemName,ReferenceValue,Unit)VALUES
+	(1,'白细胞计数（WBC）','3.5-9.5','10^9/L'),
+	(2,'淋巴细胞百分率（LY%）','20-50','%'),
+	(3,'单核细胞百分率（MO%）','3.0-10.0','%'),
+	(4,'中性粒细胞百分率（NE%）','40.0-75.0','%'),
+	(5,'嗜酸性粒细胞百分率（EO%）','0.4-8.0','%'),
+	(6,'嗜碱性粒细胞百分率（BA%）','0.0-1.0','%'),
+	(7,'中性粒细胞绝对值（NE#）','1.8-6.3','10^9/L'),
+	(8,'单核细胞计数（LY#）','1.1-3.2','10^9/L')
 
 
 
