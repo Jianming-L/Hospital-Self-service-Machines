@@ -141,6 +141,7 @@
     <Content Include="DatePicker\WdatePicker.js" />
     <Content Include="PageOne.aspx" />
     <Content Include="DatePicker\skin\blueFresh\Thumbs.db" />
+    <Content Include="缴费\PayMoney.aspx" />
     <None Include="Scripts\jquery-3.6.3.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.3.js" />
     <Content Include="Scripts\jquery-3.6.3.min.js" />
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="母版页\PageSite.Master.designer.cs">
       <DependentUpon>PageSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="缴费\PayMoney.aspx.cs">
+      <DependentUpon>PayMoney.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="缴费\PayMoney.aspx.designer.cs">
+      <DependentUpon>PayMoney.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

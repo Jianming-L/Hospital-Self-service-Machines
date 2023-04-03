@@ -920,8 +920,44 @@ USE 医院自助服务机
 	(7,'中性粒细胞绝对值（NE#）','1.8-6.3','10^9/L'),
 	(8,'单核细胞计数（LY#）','1.1-3.2','10^9/L')
 
+	--缴费单
+	IF OBJECT_ID('tb_Payment')IS NOT NULL
+		DROP TABLE tb_Payment;
+	GO
+	CREATE TABLE tb_Payment
+	(UserNo
+		CHAR(10)
+		NOT NULL
+	,PayItemNo
+		CHAR(20)
+		NOT NULL
+	,PayTime
+		DATE
+	)
+	INSERT INTO tb_Payment(UserNo,PayItemNo)VALUES
+	('3210707010',1),
+	('3210707010',2),
+	('3210707010',3)
 
-
+	--价格单
+	IF OBJECT_ID('tb_Price')IS NOT NULL
+		DROP TABLE tb_Price;
+	GO
+	CREATE TABLE tb_Price
+	(PayItemNo
+		CHAR(20)
+		NOT NULL
+	,PayItemName
+		CHAR(100)
+		NOT NULL
+	,Price	
+		DECIMAL(5,2)
+		NOT NULL
+	)
+	INSERT INTO tb_Price(PayItemNo,PayItemName,Price)VALUES
+	(1,'999感冒清热颗粒',22.86),
+	(2,'布洛芬缓释胶囊',14.4),
+	(3,'复方氨酚烷胺胶囊',3)
 
 --	INSERT INTO tb_Registerd(UserNo,DepartmentDetailNo,RegisterTime,SpecificTimePeriod) VALUES
 --(3210707010,1,'2023-3-11','07:00-07:30'),

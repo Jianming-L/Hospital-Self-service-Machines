@@ -43,5 +43,10 @@ namespace Hospital_Self_service_Machines
         {
             Response.Redirect("报告打印/ReportPrinting.aspx");
         }
+
+        protected void btn_Payment_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("缴费/PayMoney.aspx");
+        }
     }
 }

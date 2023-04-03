@@ -75,7 +75,7 @@
                 <td class="auto-style2"></td>
                 <td class="auto-style1"><asp:Button runat="server" ID="btn_BulidInfo" Text="" BackColor="transparent" CssClass="btnSize_jiandang" OnClick="btn_BulidInfo_Click"/><br /><span class="zitistyle">建档</span></td>
                 <td class="auto-style2"></td>
-                <td class="auto-style1"><asp:Button runat="server" ID="btn_Payment" Text="" BackColor="transparent" CssClass="btnSize_jiaofei" /><br /><span class="zitistyle">缴费</span></td>
+                <td class="auto-style1"><asp:Button runat="server" ID="btn_Payment" Text="" BackColor="transparent" CssClass="btnSize_jiaofei" OnClick="btn_Payment_Click" /><br /><span class="zitistyle">缴费</span></td>
             </tr>
             <tr><td style="height:40px"></td>
                 <td></td>

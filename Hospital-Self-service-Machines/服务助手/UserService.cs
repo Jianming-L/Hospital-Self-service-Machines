@@ -101,6 +101,14 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回详细科室
         /// </summary>
         public static string DepartmentDetial { get; set; }
+        /// <summary>
+        /// 返回缴费总数
+        /// </summary>
+        public static decimal PayCount { get; set; }
+        /// <summary>
+        /// 返回缴费项目数量
+        /// </summary>
+        public static int PayItemCount { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
@@ -449,6 +457,70 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Open();
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 是否已经缴费
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool IsHasPayment(string userno)
+        {
+            string commandText =
+                $@"UPDATE tb_Payment SET PayTime='{DateTime.Now.ToString("d")}'
+                    WHERE UserNo='{userno}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            try
+            {
+                con.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == UserService.PayItemCount)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public bool IsHasPaymentTime(string userno)
+        {
+            string commandText =
+                $@"UPDATE tb_Payment SET PayTime='{DateTime.Now.ToString("d")}'
+                    WHERE UserNo='{userno}'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            try
+            {
+                con.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == UserService.PayItemCount)
                 {
                     return true;
                 }
