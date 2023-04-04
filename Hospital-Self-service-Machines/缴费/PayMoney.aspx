@@ -25,7 +25,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align:left"><asp:Label runat="server" ID="lbl_SumPrice"></asp:Label></td>
+                <td style="text-align:right;padding-right:75px">总金额：<asp:Label runat="server" ID="lbl_SumPrice"></asp:Label></td>
             </tr>
             <tr>
                 <td style="text-align:center">

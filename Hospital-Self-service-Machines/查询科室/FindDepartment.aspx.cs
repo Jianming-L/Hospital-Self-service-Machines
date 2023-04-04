@@ -16,15 +16,15 @@ namespace Hospital_Self_service_Machines.查询科室
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserNo"] == null)
-            {
-                Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
-            }
-            else
-            {
-                listboxBind();
-                btn_Back.Visible = false;
-            }
+            //if (Session["UserNo"] == null)
+            //{
+            //    Response.Write("<script language=javascript>alert('请先登录您的账号！');location.href='../个人中心/Load.aspx'</" + "script>");
+            //}
+            //else
+            //{
+            listboxBind();
+            btn_Back.Visible = false;
+            //}
         }
         public void listboxBind()
         {

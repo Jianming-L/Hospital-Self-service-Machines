@@ -109,6 +109,10 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回缴费项目数量
         /// </summary>
         public static int PayItemCount { get; set; }
+        /// <summary>
+        /// 返回总价格
+        /// </summary>
+        public static decimal SumPrice { get; set; }
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
@@ -482,8 +486,8 @@ namespace Hospital_Self_service_Machines.服务助手
         public bool IsHasPayment(string userno)
         {
             string commandText =
-                $@"UPDATE tb_Payment SET PayTime='{DateTime.Now.ToString("d")}'
-                    WHERE UserNo='{userno}'";
+                $@"UPDATE tb_Payment SET PayTime='{DateTime.Now.ToString("d")}',Flat=1
+                    WHERE UserNo='{userno}' AND Flat=0";
             SqlConnection con = new SqlConnection(connectionstring);
             SqlCommand cmd = new SqlCommand(commandText, con);
             try
@@ -528,6 +532,47 @@ namespace Hospital_Self_service_Machines.服务助手
                 {
                     return false;
                 }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 判断提交还是未提交
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool IsSubmitPayment(string userno)
+        {
+            string commandText =
+                $@"SELECT COUNT(*) AS A
+                    FROM tb_Payment
+                    WHERE UserNo='{userno}' AND Flat=0";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    int result = int.Parse(reader["A"].ToString());
+                    if (result == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return false;
             }
             catch (Exception)
             {

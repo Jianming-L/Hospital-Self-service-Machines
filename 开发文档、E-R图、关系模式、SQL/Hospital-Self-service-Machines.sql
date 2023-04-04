@@ -933,11 +933,13 @@ USE 医院自助服务机
 		NOT NULL
 	,PayTime
 		DATE
+	,Flat--标记
+		INT
 	)
-	INSERT INTO tb_Payment(UserNo,PayItemNo)VALUES
-	('3210707010',1),
-	('3210707010',2),
-	('3210707010',3)
+	INSERT INTO tb_Payment(UserNo,PayItemNo,Flat)VALUES
+	('3210707010',1,0),
+	('3210707010',2,0),
+	('3210707010',3,0)
 
 	--价格单
 	IF OBJECT_ID('tb_Price')IS NOT NULL
