@@ -32,7 +32,7 @@
         <p style="text-align:center;font-size:40px;font-family:Architects Daughter,cursive;">正在建档中</p>
         <div class="grid">
             <div class="loader">
-                <div id="ld4" style="margin-left:600px">
+                <div id="ld4">
                     <div style="width:30px;height:30px"></div>
                     <div style="width:30px;height:30px"></div>
                     <div style="width:30px;height:30px"></div>
