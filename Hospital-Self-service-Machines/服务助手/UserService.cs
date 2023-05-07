@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Data;
+using System.Web.Services.Description;
 
 namespace Hospital_Self_service_Machines.服务助手
 {
@@ -113,6 +114,14 @@ namespace Hospital_Self_service_Machines.服务助手
         /// 返回总价格
         /// </summary>
         public static decimal SumPrice { get; set; }
+        /// <summary>
+        /// 登录失败次数
+        /// </summary>
+        public static int LogInFailCount = 0;
+        /// <summary>
+        /// 是否冻结
+        /// </summary>
+        public static int IsActivated=0;
         public bool IsSignUp(string userno,string usename,string password)
         {
             string commandText =
@@ -175,8 +184,9 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
-        public bool IsSucceedLoad(string userno,string password)
+        public bool IsSucceedLoad(string userno, string password)
         {
+            string IsHasActivated;
             string commandText =
                 $@"SELECT * FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
             SqlConnection con = new SqlConnection(connectionstring);
@@ -191,7 +201,76 @@ namespace Hospital_Self_service_Machines.服务助手
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    UserName = reader["UserName"].ToString();
+                    IsHasActivated = reader["IsActivated"].ToString();
+                    if (IsHasActivated =="False")
+                    {
+                        UserName = reader["UserName"].ToString();
+                        return true;
+                    }
+                    else
+                    {
+                        IsActivated = 1;
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public string LogInFailMax(string userno, string password)
+        {
+            if (LogInFailCount >= 3)
+            {
+                IsHasActivated(userno, password);
+                string message = "密码错误已达上限,您的账号已被冻结\\n请联系前台进行解封！";
+                return message;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public string LogInFail()
+        {
+            if (LogInFailCount > 0 && LogInFailCount < 3)
+            {
+                string message = $"密码错误，请重新输入！\\n您还有{3 - LogInFailCount}次机会！";
+                return message;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// 对账号进行冻结
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool IsHasActivated(string userno, string password)
+        {
+            string commandText =
+                $@"UPDATE tb_User SET IsActivated=1,LoginFailCount='{LogInFailCount}' WHERE UserNo=@UserNo";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            cmd.Parameters.AddWithValue("@UserNo", userno);
+            try
+            {
+                con.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
                     return true;
                 }
                 else
@@ -573,6 +652,40 @@ namespace Hospital_Self_service_Machines.服务助手
                     }
                 }
                 return false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        /// <summary>
+        /// 是否存在该用户
+        /// </summary>
+        /// <param name="userno"></param>
+        /// <returns></returns>
+        public bool IsHasUser(string userno)
+        {
+            string commandText =
+                $@"SELECT * FROM tb_User WHERE UserNo LIKE '%{userno}%'";
+            SqlConnection con = new SqlConnection(connectionstring);
+            SqlCommand cmd = new SqlCommand(commandText, con);
+            SqlDataReader reader;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {

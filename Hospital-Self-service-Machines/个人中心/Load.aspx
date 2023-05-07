@@ -35,10 +35,15 @@
                             账号:
                         </td>
                         <td>
-                            <asp:TextBox runat="server" ID="txb_UserNo" autocomplete="off" ></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txb_UserNo" autocomplete="off" AutoPostBack="True" OnTextChanged="txb_UserNo_TextChanged" ></asp:TextBox>
                         </td>
                         <td style="text-align:left">
-                            <asp:RequiredFieldValidator ID="rfvNo" runat="server" ErrorMessage="*" ControlToValidate="txb_UserNo" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvNo" runat="server" ErrorMessage="*" ControlToValidate="txb_UserNo" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="padding-left:90px">
+                            <asp:Label runat="server" ID="lbl_IsHasUser" ForeColor="red" AutoPostBack="True"></asp:Label>
                         </td>
                     </tr>
                     <tr style="text-align:right">
@@ -49,14 +54,14 @@
                             <asp:TextBox runat="server" ID="txb_Password" autocomplete="off" ></asp:TextBox>
                         </td>
                         <td style="text-align:left">
-                            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="*" ControlToValidate="txb_Password" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="*" ControlToValidate="txb_Password" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr><td><asp:Label runat="server" ID="lbl_msg"></asp:Label></td></tr>
                     <tr><td style="height:30px"></td></tr>
                     <tr>
                         <td></td>
-                        <td style="margin-left:290px" width="80px">
+                        <td style="padding-left:50px" width="80px">
                             <asp:Button runat="server" ID="btn_SignUp" Text="登录" OnClick="btn_SignUp_Click" Width="80px" Height="40px" />
                         </td>
                     </tr>

@@ -27,9 +27,16 @@ USE 医院自助服务机
 		,Password
 			VARBINARY(20)
 			NOT NULL
+		,IsActivated
+			BIT
+			NOT NULL
+		,LoginFailCount
+			INT
+			NOT NULL
+			DEFAULT 0
 		)
-	INSERT INTO tb_User(UserNo,UserName,Password) VALUES
-	('3210707010','李健铭',HASHBYTES('MD2','qwe123456'))
+	INSERT INTO tb_User(UserNo,UserName,Password,IsActivated) VALUES
+	('3210707010','李健铭',HASHBYTES('MD2','qwe123456'),0)
 
 	IF OBJECT_ID('tb_Department')IS NOT NULL
 		DROP TABLE tb_Department;
