@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,6 +143,14 @@
     <Content Include="PageOne.aspx" />
     <Content Include="DatePicker\skin\blueFresh\Thumbs.db" />
     <Content Include="缴费\PayMoney.aspx" />
+    <Content Include="Hospital-Self-service-Machines.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Hospital-Self-service-Machines.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Hospital-Self-service-Machines.dbml.layout">
+      <DependentUpon>Hospital-Self-service-Machines.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.6.3.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.3.js" />
     <Content Include="Scripts\jquery-3.6.3.min.js" />
@@ -152,6 +161,11 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hospital-Self-service-Machines.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hospital-Self-service-Machines.dbml</DependentUpon>
     </Compile>
     <Compile Include="PageOne.aspx.cs">
       <DependentUpon>PageOne.aspx</DependentUpon>
@@ -304,6 +318,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

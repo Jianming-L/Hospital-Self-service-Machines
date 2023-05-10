@@ -14,6 +14,7 @@ namespace Hospital_Self_service_Machines.服务助手
     {
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
         static string conns = "Data Source=(Local);Initial Catalog=医院自助服务机;Integrated Security=True;";
+        Hospital_Self_service_MachinesDataContext db = new Hospital_Self_service_MachinesDataContext();
         /// <summary>
         /// 返回用户账号
         /// </summary>
@@ -186,6 +187,9 @@ namespace Hospital_Self_service_Machines.服务助手
         }
         public bool IsSucceedLoad(string userno, string password)
         {
+            var user = (from c in db.tb_User
+                        where c.UserNo == userno
+                        select c).First();
             string IsHasActivated;
             string commandText =
                 $@"SELECT * FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
@@ -204,7 +208,8 @@ namespace Hospital_Self_service_Machines.服务助手
                     IsHasActivated = reader["IsActivated"].ToString();
                     if (IsHasActivated =="False")
                     {
-                        UserName = reader["UserName"].ToString();
+                        //UserName = reader["UserName"].ToString();
+                        UserName=user.UserName;
                         return true;
                     }
                     else
