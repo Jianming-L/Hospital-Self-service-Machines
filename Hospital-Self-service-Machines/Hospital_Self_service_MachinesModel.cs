@@ -10,6 +10,7 @@ namespace Hospital_Self_service_Machines
         public Hospital_Self_service_MachinesModel()
             : base("name=Hospital_Self_service_MachinesModel")
         {
+            //Database.SetInitializer<Hospital_Self_service_MachinesModel>(null);
         }
 
         public virtual DbSet<User> User { get; set; }

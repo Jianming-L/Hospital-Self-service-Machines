@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Data;
 using System.Web.Services.Description;
+using Npgsql;
+using NpgsqlTypes;
+using System.Text;
 
 namespace Hospital_Self_service_Machines.服务助手
 {
@@ -14,6 +17,7 @@ namespace Hospital_Self_service_Machines.服务助手
     {
         private string connectionstring = ConfigurationManager.ConnectionStrings["医院自助服务机"].ConnectionString;
         static string conns = "Data Source=(Local);Initial Catalog=医院自助服务机;Integrated Security=True;";
+        private static string conpngsql = "Host=localhost;Port=5432;Username=postgres;Password=123456;Database=HospitalSelfserviceMachines";
         //Hospital_Self_service_MachinesDataContext db = new Hospital_Self_service_MachinesDataContext();
         /// <summary>
         /// 返回用户账号
@@ -187,37 +191,68 @@ namespace Hospital_Self_service_Machines.服务助手
         }
         public bool IsSucceedLoad(string userno, string password)
         {
-            Hospital_Self_service_MachinesModel db = new Hospital_Self_service_MachinesModel(); 
-            var users = (from u in db.User
-                        where u.UserNo == userno
-                        select u).First();
-            string IsHasActivated;
+            //Hospital_Self_service_MachinesModel db = new Hospital_Self_service_MachinesModel(); 
+            //var users = (from u in db.User
+            //            where u.UserNo == userno
+            //            select u).First();
+            //string IsHasActivated;
+            //string commandText =
+            //    $@"SELECT * FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
+            //SqlConnection con = new SqlConnection(connectionstring);
+            //SqlCommand cmd = new SqlCommand(commandText, con);
+            //cmd.Parameters.AddWithValue("@UserNo", userno);
+            //cmd.Parameters.AddWithValue("@Password", password);
+            //cmd.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
+            //SqlDataReader reader;
+            //try
+            //{
+            //    con.Open();
+            //    reader = cmd.ExecuteReader();
+            //    if (reader.Read())
+            //    {
+            //        IsHasActivated = reader["IsActivated"].ToString();
+            //        if (IsHasActivated =="False")
+            //        {
+            //            //UserName = reader["UserName"].ToString();
+            //            UserName=users.UserName;
+            //            return true;
+            //        }
+            //        else
+            //        {
+            //            IsActivated = 1;
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
+            //finally
+            //{
+            //    con.Close();
+            //}
+            //update public."user" set userpassword = md5('qwe123456')
+            //update public."user" set userpassword = 'qwe123456'
+            //加密密码的数据类型转换出现bug，待解决。暂时不用加密密码进行登录操作
             string commandText =
-                $@"SELECT * FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
-            SqlConnection con = new SqlConnection(connectionstring);
-            SqlCommand cmd = new SqlCommand(commandText, con);
-            cmd.Parameters.AddWithValue("@UserNo", userno);
-            cmd.Parameters.AddWithValue("@Password", password);
-            cmd.Parameters["@Password"].SqlDbType = SqlDbType.VarChar;
-            SqlDataReader reader;
+                $@"SELECT * FROM public.user WHERE userno=@userno AND userpassword=@userpassword";
+            NpgsqlConnection con = new NpgsqlConnection(conpngsql);
+            NpgsqlCommand cmd = new NpgsqlCommand(commandText, con);
+            con.Open();
+            NpgsqlDataReader reader;
+            cmd.Parameters.AddWithValue("@userno", userno);
+            cmd.Parameters.AddWithValue("@userpassword", password);
             try
             {
-                con.Open();
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    IsHasActivated = reader["IsActivated"].ToString();
-                    if (IsHasActivated =="False")
-                    {
-                        //UserName = reader["UserName"].ToString();
-                        UserName=users.UserName;
-                        return true;
-                    }
-                    else
-                    {
-                        IsActivated = 1;
-                        return false;
-                    }
+                    return true;
                 }
                 else
                 {
@@ -232,6 +267,7 @@ namespace Hospital_Self_service_Machines.服务助手
             {
                 con.Close();
             }
+
         }
         public string LogInFailMax(string userno, string password)
         {
