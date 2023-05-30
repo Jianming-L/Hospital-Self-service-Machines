@@ -10,6 +10,8 @@ using System.Web.Services.Description;
 using Npgsql;
 using NpgsqlTypes;
 using System.Text;
+using System.Security.Cryptography;
+using Hospital_Self_service_Machines.DataAccessLayer;
 
 namespace Hospital_Self_service_Machines.服务助手
 {
@@ -189,12 +191,44 @@ namespace Hospital_Self_service_Machines.服务助手
                 con.Close();
             }
         }
+        ///// <summary>
+        ///// MD5加密
+        ///// </summary>
+        ///// <param name="text"></param>
+        ///// <returns></returns>
+        //private byte[] MD5(string text)
+        //{
+        //    byte[] texts=Encoding.Default.GetBytes(text);
+        //    MD5 md5=new MD5CryptoServiceProvider();
+        //    byte[] result=md5.ComputeHash(texts);
+        //    return result;
+        //}
+        ///// <summary>
+        ///// MD5值是否相等
+        ///// </summary>
+        ///// <param name="md5"></param>
+        ///// <param name="othertext"></param>
+        ///// <returns></returns>
+        //private bool MD5Equal(byte[] md5,string othertext)
+        //    =>md5.SequenceEqual(this.MD5(othertext));
+        //private bool HandleUserPasswordNotMach(byte[] progresqlpassword, string password)
+        //{
+        //    bool isPasswordMatch = this.MD5Equal(progresqlpassword, password);
+        //    if (isPasswordMatch == true)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
         public bool IsSucceedLoad(string userno, string password)
         {
-            //Hospital_Self_service_MachinesModel db = new Hospital_Self_service_MachinesModel(); 
+            //Hospital_Self_service_MachinesModel db = new Hospital_Self_service_MachinesModel();
             //var users = (from u in db.User
-            //            where u.UserNo == userno
-            //            select u).First();
+            //             where u.UserNo == userno
+            //             select u).First();
             //string IsHasActivated;
             //string commandText =
             //    $@"SELECT * FROM tb_User WHERE UserNo=@userno AND Password=HASHBYTES('MD2',@Password)";
@@ -211,10 +245,10 @@ namespace Hospital_Self_service_Machines.服务助手
             //    if (reader.Read())
             //    {
             //        IsHasActivated = reader["IsActivated"].ToString();
-            //        if (IsHasActivated =="False")
+            //        if (IsHasActivated == "False")
             //        {
             //            //UserName = reader["UserName"].ToString();
-            //            UserName=users.UserName;
+            //            UserName = users.UserName;
             //            return true;
             //        }
             //        else
@@ -240,18 +274,32 @@ namespace Hospital_Self_service_Machines.服务助手
             //update public."user" set userpassword = 'qwe123456'
             //加密密码的数据类型转换出现bug，待解决。暂时不用加密密码进行登录操作
             string commandText =
-                $@"SELECT * FROM public.user WHERE userno=@userno AND userpassword=@userpassword";
+                $@"SELECT * FROM public.user WHERE userno=@userno AND userpassword=encode(Digest(@password, 'md5'), 'hex')";
             NpgsqlConnection con = new NpgsqlConnection(conpngsql);
             NpgsqlCommand cmd = new NpgsqlCommand(commandText, con);
+            //string commandText =
+            //    $@"SELECT * FROM tb_User WHERE UserNo=@userno";
+            //SqlConnection con = new SqlConnection(connectionstring);
+            //SqlCommand cmd = new SqlCommand(commandText, con);
+            cmd.Parameters.AddWithValue("@userno", userno);
+            cmd.Parameters.AddWithValue("@password", password);
             con.Open();
             NpgsqlDataReader reader;
-            cmd.Parameters.AddWithValue("@userno", userno);
-            cmd.Parameters.AddWithValue("@userpassword", password);
+            //User user = this.UserDal.Select(userNo);
             try
             {
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    //UserDal userDal = new UserDal();
+                    //if (HandleUserPasswordNotMach(userDal.select(), password) == true)
+                    //{
+                    //    return true;
+                    //}
+                    //else
+                    //{
+                    //    return false;
+                    //}
                     return true;
                 }
                 else
@@ -267,7 +315,6 @@ namespace Hospital_Self_service_Machines.服务助手
             {
                 con.Close();
             }
-
         }
         public string LogInFailMax(string userno, string password)
         {

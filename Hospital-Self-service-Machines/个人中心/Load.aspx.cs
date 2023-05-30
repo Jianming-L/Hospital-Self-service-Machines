@@ -60,6 +60,8 @@ namespace Hospital_Self_service_Machines.个人中心
                 if (usersrv.IsHasUser(txb_UserNo.Text.Trim()) && txb_UserNo.Text.Trim() != "")
                 {
                     lbl_IsHasUser.Text = null;
+                    UserService.UserNo = null;
+                    UserService.UserNo = txb_UserNo.Text;
                 }
                 else
                 {
