@@ -183,10 +183,11 @@
   <ItemGroup>
     <Compile Include="DataAccessLayer\IUserDal.cs" />
     <Compile Include="DataAccessLayer\UserDal.cs" />
+    <Compile Include="Model\DoctorNameFindModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hospital_Self_service_MachinesModel.cs" />
+    <Compile Include="Model\Hospital_Self_service_MachinesModel.cs" />
     <Compile Include="PageOne.aspx.cs">
       <DependentUpon>PageOne.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +196,8 @@
       <DependentUpon>PageOne.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DepartmentDetail.cs" />
+    <Compile Include="DoctorInfo.cs" />
     <Compile Include="User.cs" />
     <Compile Include="个人中心\Load.aspx.cs">
       <DependentUpon>Load.aspx</DependentUpon>
@@ -338,7 +341,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

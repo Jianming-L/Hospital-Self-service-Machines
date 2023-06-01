@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -35,8 +36,22 @@ namespace Hospital_Self_service_Machines.其它
         }
         public void bind()
         {
-            this.SqlDataSource1.SelectCommand =
-                "SELECT DISTINCT DI.DoctorName,DD.DepartmentDetailName FROM tb_DoctorInfo AS DI LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentDetailNo=DI.DepartmentDetailNo WHERE DI.DepartmentDetailNo<>0 AND DI.DoctorName LIKE '%" + ViewState["search"].ToString() + "%'";
+            DoctorNameFindModel db = new DoctorNameFindModel();
+            string searchs = ViewState["search"].ToString();
+            var query = (from d in db.DoctorInfo
+                         join dp in db.DepartmentDetail on d.DepartmentDetailNo equals dp.DepartmentDetailNo
+                         where d.DepartmentDetailNo != 0 && d.DoctorName.Contains(searchs)
+                         select new
+                         {
+                             DoctorName = d.DoctorName.Trim(),
+                             DepartmentDetailName = dp.DepartmentDetailName.Trim()
+                         }).ToList();
+            var result = query.ToList().Select(x => $"SELECT '{x.DoctorName}' AS DoctorName,'{x.DepartmentDetailName}' AS DepartmentDetailName");
+            SqlDataSource1.SelectCommand = "SELECT DoctorName, DepartmentDetailName FROM (" + String.Join(" UNION ", result) + ") AS t";
+            gv_FindName.DataSourceID = "SqlDataSource1";
+            gv_FindName.DataBind();
+            //this.SqlDataSource1.SelectCommand =
+            //    "SELECT DISTINCT DI.DoctorName,DD.DepartmentDetailName FROM tb_DoctorInfo AS DI LEFT JOIN tb_DepartmentDetail AS DD ON DD.DepartmentDetailNo=DI.DepartmentDetailNo WHERE DI.DepartmentDetailNo<>0 AND DI.DoctorName LIKE '%" + ViewState["search"].ToString() + "%'";
         }
 
         protected void gv_FindName_PageIndexChanging(object sender, GridViewPageEventArgs e)
