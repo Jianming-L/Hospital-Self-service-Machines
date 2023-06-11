@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,7 +24,14 @@ namespace Hospital_Self_service_Machines.母版页
             {
                 lbl_myinfo.Text = null;
                 lbl_my.Text = null;
+                btn_sessionclear.Text = null;
             }
+        }
+
+        protected void btn_sessionclear_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("/PageOne.aspx");
         }
     }
 }

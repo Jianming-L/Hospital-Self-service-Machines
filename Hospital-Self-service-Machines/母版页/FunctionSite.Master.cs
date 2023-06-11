@@ -25,7 +25,14 @@ namespace Hospital_Self_service_Machines.母版页
             {
                 lbl_myinfo.Text = null;
                 lbl_my.Text = null;
+                btn_sessionclear.Text = null;
             }
+        }
+
+        protected void btn_sessionclear_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("/PageOne.aspx");
         }
     }
 }

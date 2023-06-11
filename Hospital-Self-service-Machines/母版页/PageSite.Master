@@ -37,6 +37,7 @@
                     </td>
                     <td><asp:Label runat="server" ID="lbl_myinfo" BackColor="White" Height="40"><a><img src="../image/我的.png"/ height="40" width="40"></a></asp:Label></td>
                     <td><asp:Label runat="server" ID="lbl_my"><h3 style="color:white">我的</h3></asp:Label></td>
+                    <td><asp:Button runat="server" ID="btn_sessionclear" Text="退出账号" BackColor="transparent" ForeColor="White" BorderStyle="None" OnClick="btn_sessionclear_Click" /></td>
                 </tr>
             </table>
         </div>
